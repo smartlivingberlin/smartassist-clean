@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>
-<title>SmartAssist – News</title><link>https://smartlivingberlin.github.io/smartassist-clean/news.html</link>
-<description>Assistenz-Robotik & KI: kuratierte Meldungen</description>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>SmartAssist – News</title>
+<link>https://smartlivingberlin.github.io/smartassist-clean/news.html</link>
+<description>Assistenz-Robotik &amp; KI: kuratierte Meldungen</description>
+<item><title>Pflege-Assistenz: Neue Studie</title><link>https://example.com/studie</link><pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate><description>Verbesserte Lebensqualität durch Service-Roboter.</description></item><item><title>Sport-Robotik im Training</title><link>https://example.com/sport</link><pubDate>Thu, 18 Sep 2025 00:00:00 +0000</pubDate><description>Sensorik unterstützt Reha-Übungen.</description></item>
 </channel></rss>
