@@ -15,6 +15,10 @@
     .pwa{background:#ef4444;color:#fff}
     canvas{max-width:100%; margin-top:20px}
     select,button{margin:8px;padding:6px 10px;border-radius:6px;cursor:pointer;}
+    .ampel{margin:15px 0;font-size:1.2em;font-weight:bold;padding:10px;border-radius:8px;display:inline-block;}
+    .green{background:#16a34a;color:#fff}
+    .yellow{background:#facc15;color:#000}
+    .red{background:#ef4444;color:#fff}
     .diff-up{color:#16a34a;font-weight:bold}
     .diff-down{color:#ef4444;font-weight:bold}
   </style>
@@ -40,6 +44,7 @@
         <button onclick="exportCSV()">⬇️ CSV Export</button>
         <button onclick="exportPNG()">⬇️ PNG Export</button>
       </div>
+      <div id="ampelBox"></div>
       <canvas id="scoreChart"></canvas>
     </section>
   </main>
@@ -106,6 +111,17 @@
         A11y ${show(diff(4))}, 
         BP ${show(diff(5))}, 
         PWA ${show(diff(6))})</small>`;
+    }
+
+    // 🚦 Ampel Durchschnitt berechnen
+    if(rows.length>=1){
+      const last = rows[rows.length-1];
+      const avg = Math.round((+last[2]+ +last[3]+ +last[4]+ +last[5]+ +last[6]) / 5);
+      let cls="green", txt="🟢 Sehr gut";
+      if(avg<90 && avg>=70){cls="yellow";txt="🟡 Mittel";}
+      if(avg<70){cls="red";txt="🔴 Schwach";}
+      document.getElementById("ampelBox").innerHTML =
+        `<div class="ampel ${cls}">Gesamt-Score: ${avg} (${txt})</div>`;
     }
   }
 
