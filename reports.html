@@ -22,7 +22,8 @@
     .diff-up{color:#16a34a;font-weight:bold}
     .diff-down{color:#ef4444;font-weight:bold}
     .tips{margin-top:10px;font-size:0.95em}
-    .tips li{margin:4px 0}
+    .tips li{margin:6px 0}
+    .tips a{color:#2563eb;text-decoration:underline}
   </style>
 </head>
 <body>
@@ -116,7 +117,7 @@
         PWA ${show(diff(6))})</small>`;
     }
 
-    // 🚦 Ampel Durchschnitt berechnen + Tipps
+    // 🚦 Ampel Durchschnitt berechnen + Tipps mit Links
     if(rows.length>=1){
       const last = rows[rows.length-1];
       const scores = {
@@ -133,13 +134,12 @@
       document.getElementById("ampelBox").innerHTML =
         `<div class="ampel ${cls}">Gesamt-Score: ${avg} (${txt})</div>`;
 
-      // Empfehlungen
       const tips=[];
-      if(scores.perf<90) tips.push("🔧 Performance verbessern: Bilder optimieren, Lazy-Loading, Caching.");
-      if(scores.seo<90) tips.push("📈 SEO optimieren: Meta-Titel & Beschreibungen prüfen, hreflang setzen.");
-      if(scores.a11y<90) tips.push("♿ Accessibility: Kontraste prüfen, Alt-Texte für Bilder hinzufügen.");
-      if(scores.bp<90) tips.push("🛡 Best Practices: HTTPS, sichere Links (rel=noopener), JS-Fehler beheben.");
-      if(scores.pwa<90) tips.push("📱 PWA: Manifest & Service Worker erweitern, Offline-Test durchführen.");
+      if(scores.perf<90) tips.push(`🔧 Performance: <a href="https://web.dev/performance-scoring/" target="_blank">Optimierungstipps</a>`);
+      if(scores.seo<90) tips.push(`📈 SEO: <a href="https://web.dev/seo/" target="_blank">SEO-Basics</a>`);
+      if(scores.a11y<90) tips.push(`♿ Accessibility: <a href="https://web.dev/accessibility-scoring/" target="_blank">Barrierefreiheit</a>`);
+      if(scores.bp<90) tips.push(`🛡 Best Practices: <a href="https://web.dev/pwa-checklist/" target="_blank">Sicherheits-Checkliste</a>`);
+      if(scores.pwa<90) tips.push(`📱 PWA: <a href="https://web.dev/progressive-web-apps/" target="_blank">PWA-Verbesserungen</a>`);
       document.getElementById("tipsBox").innerHTML =
         tips.length ? tips.map(t=>`<li>${t}</li>`).join("") : "<li>✅ Alles im grünen Bereich!</li>";
     }
