@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Audit Reports – SmartAssist</title>
   <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .scores span {display:inline-block; margin:0 6px; padding:4px 8px; border-radius:6px; font-weight:600;}
+    .perf{background:#16a34a;color:#fff}
+    .seo{background:#2563eb;color:#fff}
+    .a11y{background:#9333ea;color:#fff}
+    .bp{background:#f59e0b;color:#fff}
+    .pwa{background:#ef4444;color:#fff}
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -16,7 +24,7 @@
     <h1>🔎 Lighthouse & SEO Reports</h1>
     <p>Automatisch erzeugt bei jedem Push.</p>
 
-    <div class="grid" id="reports-list"></div>
+    <div id="reports-list" class="grid"></div>
   </main>
 
   <footer class="footer">© 2025 SmartAssist</footer>
@@ -33,9 +41,37 @@
     document.getElementById("reports-list").innerHTML = htmls.map(f => `
       <div class="card">
         <h3>${f.name.replace(".report.html","")}</h3>
-        <a class="btn" href="reports/lh/${f.name}" target="_blank" rel="noopener">Öffnen</a>
+        <div class="scores" id="s-${f.name}">Lade Scores…</div>
+        <a class="btn" href="reports/lh/${f.name}" target="_blank" rel="noopener">Report öffnen</a>
       </div>
     `).join("");
+
+    // Versuch: Scores direkt aus den Reports parsen
+    htmls.forEach(async f => {
+      try {
+        const r = await fetch("reports/lh/"+f.name);
+        const t = await r.text();
+        const get = (label)=> {
+          const m = t.match(new RegExp(label+"[\\s\\S]{0,50}(\\d{1,3})","i"));
+          return m? parseInt(m[1]) : "-";
+        };
+        const scores = {
+          perf: get("Performance"),
+          seo: get("SEO"),
+          a11y: get("Accessibility"),
+          bp: get("Best Practices"),
+          pwa: get("PWA")
+        };
+        const el=document.getElementById("s-"+f.name);
+        el.innerHTML = `
+          <span class="perf">Perf: ${scores.perf}</span>
+          <span class="seo">SEO: ${scores.seo}</span>
+          <span class="a11y">A11y: ${scores.a11y}</span>
+          <span class="bp">BP: ${scores.bp}</span>
+          <span class="pwa">PWA: ${scores.pwa}</span>
+        `;
+      } catch(e){ console.error("Parsing-Fehler",f.name,e); }
+    });
   }
   loadReports();
   </script>
