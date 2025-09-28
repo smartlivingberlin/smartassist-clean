@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Audit Reports – SmartAssist</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     .scores span {display:inline-block; margin:0 6px; padding:4px 8px; border-radius:6px; font-weight:600;}
     .perf{background:#16a34a;color:#fff}
@@ -12,7 +13,7 @@
     .a11y{background:#9333ea;color:#fff}
     .bp{background:#f59e0b;color:#fff}
     .pwa{background:#ef4444;color:#fff}
-    .muted{opacity:.7}
+    canvas{max-width:100%; margin-top:20px}
   </style>
 </head>
 <body>
@@ -23,97 +24,49 @@
 
   <main class="container">
     <h1>🔎 Lighthouse & SEO Reports</h1>
-    <p class="muted">Automatisch erzeugt bei jedem Push. Unten siehst du die <strong>letzten 5 Läufe (UTC)</strong>, absteigend sortiert.</p>
+    <p>Automatisch erzeugt bei jedem Push. Unten die <strong>letzten 5 Läufe</strong> mit Scores & ein Verlauf-Diagramm.</p>
 
     <div id="reports-list" class="grid"></div>
 
-    <div class="card">
-      <h3>Alle aktuellen Direktlinks</h3>
-      <p>
-        <a class="btn btn-outline" href="reports/lh/index.latest.report.html" target="_blank" rel="noopener">index.latest</a>
-        <a class="btn btn-outline" href="reports/lh/katalog.latest.report.html" target="_blank" rel="noopener">katalog.latest</a>
-        <a class="btn btn-outline" href="reports/lh/news.latest.report.html" target="_blank" rel="noopener">news.latest</a>
-        <a class="btn btn-outline" href="reports/lh/partner.latest.report.html" target="_blank" rel="noopener">partner.latest</a>
-      </p>
-    </div>
+    <section class="card">
+      <h3>📈 Score-Verlauf</h3>
+      <canvas id="scoreChart"></canvas>
+    </section>
   </main>
 
   <footer class="footer">© 2025 SmartAssist</footer>
 
   <script>
-  // Timestamp aus Dateinamen: name-YYYYMMDD-HHMM.report.html
-  function parseTs(name){
-    const m = name.match(/-(\d{8}-\d{4})\.report\.html$/); // z.B. 20250928-1130
-    if(!m) return null;
-    const ts = m[1];
-    // In schönes Datum (UTC) umwandeln
-    const y=ts.slice(0,4), mo=ts.slice(4,6), d=ts.slice(6,8), h=ts.slice(9,11), mi=ts.slice(11,13);
-    const iso = `${y}-${mo}-${d}T${h}:${mi}:00Z`;
-    return { raw: ts, iso, sortKey: ts }; // sortKey reicht hier
+  async function loadHistory(){
+    try {
+      const res = await fetch("reports/history.csv?"+Date.now());
+      if(!res.ok) return;
+      const txt = await res.text();
+      const lines = txt.trim().split("\n").slice(1); // ohne Header
+      const data = lines.map(l=>l.split(","));
+      const labels = data.map(r=>r[0]+"-"+r[1]);
+      const perf = data.map(r=>+r[2]);
+      const seo  = data.map(r=>+r[3]);
+      const a11y = data.map(r=>+r[4]);
+      const bp   = data.map(r=>+r[5]);
+      const pwa  = data.map(r=>+r[6]);
+      new Chart(document.getElementById("scoreChart"),{
+        type:"line",
+        data:{
+          labels,
+          datasets:[
+            {label:"Perf",data:perf,borderColor:"#16a34a"},
+            {label:"SEO",data:seo,borderColor:"#2563eb"},
+            {label:"A11y",data:a11y,borderColor:"#9333ea"},
+            {label:"BestP",data:bp,borderColor:"#f59e0b"},
+            {label:"PWA",data:pwa,borderColor:"#ef4444"},
+          ]
+        },
+        options:{responsive:true,plugins:{legend:{position:"bottom"}}}
+      });
+    } catch(e){ console.error("History-Fehler",e); }
   }
-
-  async function loadReports() {
-    const api = "https://api.github.com/repos/smartlivingberlin/smartassist-clean/contents/reports/lh";
-    const res = await fetch(api);
-    const wrap = document.getElementById("reports-list");
-    if (!res.ok) { wrap.innerHTML = "<div class='card'>Noch keine Reports vorhanden.</div>"; return; }
-    const files = await res.json();
-
-    // Nur timestamped Reports
-    const reports = files
-      .filter(f => /\.report\.html$/.test(f.name) && /-\d{8}-\d{4}\.report\.html$/.test(f.name))
-      .map(f => {
-        const base = f.name.replace(/-\d{8}-\d{4}\.report\.html$/,""); // z.B. index
-        const ts = parseTs(f.name);
-        return { name: f.name, base, ts, url: "reports/lh/"+f.name };
-      })
-      .filter(r => r.ts)
-      .sort((a,b) => (a.ts.sortKey < b.ts.sortKey ? 1 : -1)) // neueste zuerst
-      .slice(0,5);
-
-    if (!reports.length) { wrap.innerHTML = "<div class='card'>Noch keine timestamped Reports gefunden.</div>"; return; }
-
-    wrap.innerHTML = reports.map(r => `
-      <div class="card">
-        <h3>${r.base} <small class="muted">(${r.ts.raw} UTC)</small></h3>
-        <div class="scores" id="s-${r.name}">Lade Scores…</div>
-        <a class="btn" href="${r.url}" target="_blank" rel="noopener">Report öffnen</a>
-      </div>
-    `).join("");
-
-    // Scores aus HTML parsen (heuristisch)
-    for(const r of reports){
-      try {
-        const txt = await (await fetch(r.url)).text();
-        const take = (label)=> {
-          // Lighthouse HTML enthält Abschnittstitel; wir fischen grob die Zahl (0–100)
-          const m = txt.match(new RegExp(label+"[\\s\\S]{0,120}?(\\b100\\b|\\b\\d?\\d\\b)","i"));
-          return m ? parseInt(m[1],10) : "-";
-        };
-        const scores = {
-          perf: take("Performance"),
-          seo: take("SEO"),
-          a11y: take("Accessibility"),
-          bp: take("Best Practices"),
-          pwa: take("PWA")
-        };
-        const el = document.getElementById("s-"+r.name);
-        el.innerHTML = `
-          <span class="perf">Perf: ${scores.perf}</span>
-          <span class="seo">SEO: ${scores.seo}</span>
-          <span class="a11y">A11y: ${scores.a11y}</span>
-          <span class="bp">BP: ${scores.bp}</span>
-          <span class="pwa">PWA: ${scores.pwa}</span>
-        `;
-      } catch(e){
-        console.error("Parsing-Fehler", r.name, e);
-        const el = document.getElementById("s-"+r.name);
-        if (el) el.textContent = "Scores konnten nicht gelesen werden.";
-      }
-    }
-  }
-
-  loadReports();
+  loadHistory();
   </script>
 </body>
 </html>
