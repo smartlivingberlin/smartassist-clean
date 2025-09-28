@@ -1,4 +1,23 @@
 [
-  {"name":"AssistLab GmbH","type":"Hersteller","focus":"Pflege & Reha","link":"https://example.com","country":"DE"},
-  {"name":"RoboMotion Store","type":"Händler","focus":"Alltag & Haushalt","link":"https://example.com/shop","country":"DE"}
+  {
+    "name": "Robodo AG",
+    "type": "Hersteller",
+    "focus": "Pflege",
+    "country": "CH",
+    "link": "https://robodo.ch"
+  },
+  {
+    "name": "AssistLab GmbH",
+    "type": "Hersteller",
+    "focus": "Pflege & Reha",
+    "link": "https://example.com",
+    "country": "DE"
+  },
+  {
+    "name": "RoboMotion Store",
+    "type": "Händler",
+    "focus": "Alltag & Haushalt",
+    "link": "https://example.com/shop",
+    "country": "DE"
+  }
 ]
