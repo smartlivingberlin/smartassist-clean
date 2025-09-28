@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SmartAssist Admin</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    body{padding:20px}
+    .form{margin:12px 0;padding:12px;border:1px solid #ccc;border-radius:8px}
+    textarea,input,select{width:100%;margin-top:4px;margin-bottom:8px;padding:6px}
+  </style>
+</head>
+<body>
+  <h1>⚙️ SmartAssist Admin</h1>
+
+  <div class="form">
+    <h2>Affiliate Mapping bearbeiten</h2>
+    <label>Marke</label>
+    <input id="affBrand" placeholder="z. B. BostonDynamics">
+    <label>Parameter</label>
+    <input id="affParam" placeholder="z. B. ref=bd&utm_campaign=summer25">
+    <button onclick="addAffiliate()">➕ Affiliate speichern</button>
+    <pre id="affList"></pre>
+    <button onclick="downloadAff()">⬇️ Affiliates.json speichern</button>
+  </div>
+
+  <div class="form">
+    <h2>Produkt-Empfehlungstext</h2>
+    <label>Produkt auswählen</label>
+    <select id="prodSelect"></select>
+    <label>Warum wir empfehlen</label>
+    <textarea id="prodReason" rows="3"></textarea>
+    <button onclick="saveReason()">💾 Reason speichern</button>
+    <pre id="prodPreview"></pre>
+    <button onclick="downloadProds()">⬇️ Products.json speichern</button>
+  </div>
+
+  <div class="form">
+    <h2>Commit-Hinweis</h2>
+    <p>Nach dem Speichern bitte diese Befehle im Terminal ausführen:</p>
+    <pre>git add data/affiliates.json data/products.json
+git commit -m "update: affiliates & reasons via admin"
+git push</pre>
+  </div>
+
+  <script>
+    let affiliates={}, products=[];
+
+    async function loadData(){
+      affiliates = await fetch('../data/affiliates.json').then(r=>r.json()).catch(_=>({"brand_params":{}}));
+      products = await fetch('../data/products.json').then(r=>r.json()).catch(_=>[]);
+      renderAff(); renderProd();
+    }
+
+    function renderAff(){
+      let out='';
+      for(const [brand,param] of Object.entries(affiliates.brand_params||{})){
+        out += brand+': '+param+'\\n';
+      }
+      document.getElementById('affList').textContent=out||'Noch nichts.';
+    }
+
+    function addAffiliate(){
+      const b=document.getElementById('affBrand').value.trim();
+      const p=document.getElementById('affParam').value.trim();
+      if(!b||!p) return alert('Bitte Marke und Parameter eingeben');
+      affiliates.brand_params = affiliates.brand_params||{};
+      affiliates.brand_params[b]=p;
+      renderAff();
+    }
+
+    function downloadAff(){
+      const blob=new Blob([JSON.stringify(affiliates,null,2)],{type:'application/json'});
+      const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+      a.download='affiliates.json'; a.click();
+    }
+
+    function renderProd(){
+      const sel=document.getElementById('prodSelect');
+      sel.innerHTML=products.map((p,i)=>`<option value="${i}">${p.name}</option>`).join('');
+      sel.onchange=()=>{ document.getElementById('prodReason').value=products[sel.value].reason||''; };
+      sel.onchange();
+    }
+
+    function saveReason(){
+      const idx=document.getElementById('prodSelect').value;
+      products[idx].reason=document.getElementById('prodReason').value;
+      renderProd();
+      renderPreview();
+    }
+
+    function renderPreview(){
+      const idx=document.getElementById('prodSelect').value;
+      const p=products[idx];
+      document.getElementById('prodPreview').textContent=JSON.stringify(p,null,2);
+    }
+
+    function downloadProds(){
+      const blob=new Blob([JSON.stringify(products,null,2)],{type:'application/json'});
+      const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+      a.download='products.json'; a.click();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

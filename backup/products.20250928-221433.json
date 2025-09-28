@@ -1,0 +1,62 @@
+[
+  {
+    "name": "iRobot Roomba j7",
+    "brand": "iRobot",
+    "category": "Haushalt",
+    "tags": ["Staubsauger", "Smart-Home"],
+    "price_eur": 899,
+    "battery_Wh": 50,
+    "range_km": null,
+    "image": "https://picsum.photos/seed/roomba-j7/800/600",
+    "link": "https://www.irobot.de/",
+    "reason": "Erkennt Hindernisse automatisch und leert den Staubbehälter selbstständig – ideal für alle, die Zeit sparen wollen."
+  },
+  {
+    "name": "DJI Osmo Pocket 3",
+    "brand": "DJI",
+    "category": "Kamera",
+    "tags": ["Kamera", "Handheld", "4K"],
+    "price_eur": 599,
+    "battery_Wh": 20,
+    "range_km": null,
+    "image": "https://picsum.photos/seed/dji-osmo-pocket-3/800/600",
+    "link": "https://www.dji.com/de/osmo-pocket-3",
+    "reason": "Taschen-Kamera mit stabilisierter 3-Achsen-Gimbal – ideal für Vlogs, Sport und unterwegs."
+  },
+  {
+    "name": "Boston Dynamics Spot",
+    "brand": "BostonDynamics",
+    "category": "Mobilität",
+    "tags": ["Roboterhund", "Industrie", "Outdoor"],
+    "price_eur": 75000,
+    "battery_Wh": 200,
+    "range_km": 5,
+    "image": "https://picsum.photos/seed/spot-robotdog/800/600",
+    "link": "https://www.bostondynamics.com/products/spot/",
+    "reason": "Extrem beweglich, vielseitig einsetzbar in Industrie und Forschung – bekanntester Roboterhund der Welt."
+  },
+  {
+    "name": "ExoMotion Lite",
+    "brand": "ExoMotion",
+    "category": "Assistenz",
+    "tags": ["Exoskelett", "Reha", "Senioren"],
+    "price_eur": 12000,
+    "battery_Wh": 150,
+    "range_km": 20,
+    "image": "https://picsum.photos/seed/exomotion-lite/800/600",
+    "link": "contact-partner.html?name=ExoMotion&product=ExoMotion%20Lite&usecase=Gehhilfe",
+    "reason": "Sehr leichtes Exoskelett, ideal für Alltag und Reha – unterstützt längere Strecken ohne Hilfe."
+  },
+  {
+    "name": "AquaAI SwimBot",
+    "brand": "AquaAI",
+    "category": "Sport",
+    "tags": ["Schwimmen", "Assistenz", "Training"],
+    "price_eur": 2200,
+    "battery_Wh": 90,
+    "range_km": 3,
+    "image": "https://picsum.photos/seed/aquaai-swimbot/800/600",
+    "link": "contact-partner.html?name=AquaAI&product=SwimBot&usecase=Schwimmhilfe",
+    "reason": "Unterstützt beim Schwimmenlernen mit KI-Feedback und Sicherheitsalarm – ideal für Kinder und Senioren."
+  }
+]

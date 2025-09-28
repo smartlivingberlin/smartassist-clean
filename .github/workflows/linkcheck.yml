@@ -1,0 +1,22 @@
+name: Link Audit
+on:
+  push: { branches: [ main ] }
+  schedule:
+    - cron: "0 6 * * *"
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress --require-https --max-concurrency 4 --exclude-mail 'https://fav.farm/🤖' .
+          output: reports/lychee.md
+      - name: Commit report
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add reports/lychee.md || true
+          git commit -m "auto: link audit report" || echo "no changes"
+          git push || true
