@@ -7,21 +7,21 @@
     "price_eur": 899,
     "battery_Wh": 50,
     "range_km": null,
-    "image": "https://images.irobot.de/roomba-j7.jpg",
-    "link": "https://www.irobot.de/roomba-j7",
+    "image": "https://picsum.photos/seed/roomba-j7/800/600",
+    "link": "https://www.irobot.de/",
     "reason": "Erkennt Hindernisse automatisch und leert den Staubbehälter selbstständig – ideal für alle, die Zeit sparen wollen."
   },
   {
-    "name": "DJI Mavic 3",
+    "name": "DJI Osmo Pocket 3",
     "brand": "DJI",
-    "category": "Drohnen",
-    "tags": ["Kamera", "Outdoor"],
-    "price_eur": 1999,
-    "battery_Wh": 77,
-    "range_km": 15,
-    "image": "https://store.dji.com/dji-mavic-3.jpg",
-    "link": "https://store.dji.com/product/mavic-3",
-    "reason": "Lange Akkulaufzeit (45 min) und 4K-Kamera – ideal für Sportaufnahmen oder Bau-Inspektionen."
+    "category": "Kamera",
+    "tags": ["Kamera", "Handheld", "4K"],
+    "price_eur": 599,
+    "battery_Wh": 20,
+    "range_km": null,
+    "image": "https://picsum.photos/seed/dji-osmo-pocket-3/800/600",
+    "link": "https://www.dji.com/de/osmo-pocket-3",
+    "reason": "Taschen-Kamera mit stabilisierter 3-Achsen-Gimbal – ideal für Vlogs, Sport und unterwegs."
   },
   {
     "name": "Boston Dynamics Spot",
@@ -31,8 +31,8 @@
     "price_eur": 75000,
     "battery_Wh": 200,
     "range_km": 5,
-    "image": "https://www.bostondynamics.com/sites/default/files/inline-images/Spot.jpg",
-    "link": "https://www.bostondynamics.com/spot",
+    "image": "https://picsum.photos/seed/spot-robotdog/800/600",
+    "link": "https://www.bostondynamics.com/products/spot/",
     "reason": "Extrem beweglich, vielseitig einsetzbar in Industrie und Forschung – bekanntester Roboterhund der Welt."
   },
   {
@@ -43,20 +43,20 @@
     "price_eur": 12000,
     "battery_Wh": 150,
     "range_km": 20,
-    "image": "https://picsum.photos/seed/exomotion/600/400",
-    "link": "https://example.com/exomotion-lite",
-    "reason": "Sehr leichtes Exoskelett, perfekt für Senioren oder Reha-Nutzer, um längere Strecken ohne Hilfe zu gehen."
+    "image": "https://picsum.photos/seed/exomotion-lite/800/600",
+    "link": "contact-partner.html?name=ExoMotion&product=ExoMotion%20Lite&usecase=Gehhilfe",
+    "reason": "Sehr leichtes Exoskelett, ideal für Alltag und Reha – unterstützt längere Strecken ohne Hilfe."
   },
   {
     "name": "AquaAI SwimBot",
     "brand": "AquaAI",
     "category": "Sport",
-    "tags": ["Schwimmen", "Assistenz"],
+    "tags": ["Schwimmen", "Assistenz", "Training"],
     "price_eur": 2200,
     "battery_Wh": 90,
     "range_km": 3,
-    "image": "https://picsum.photos/seed/aquaai/600/400",
-    "link": "https://example.com/aquaai-swimbot",
+    "image": "https://picsum.photos/seed/aquaai-swimbot/800/600",
+    "link": "contact-partner.html?name=AquaAI&product=SwimBot&usecase=Schwimmhilfe",
     "reason": "Unterstützt beim Schwimmenlernen mit KI-Feedback und Sicherheitsalarm – ideal für Kinder und Senioren."
   }
 ]
