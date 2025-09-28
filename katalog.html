@@ -30,7 +30,7 @@ function render(q){
     <div class="badge">${x.category||'Alltag'}</div>
     <h3>${x.name}</h3><p>${x.helps||''}</p>
     <div class="kv">
-      ${x.link?`<a class="btn btn-outline" href="${x.link}" target="_blank" rel="noopener">Zur Website</a>`:''}
+      ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||""}" href="${x.link}" target="_blank" rel="noopener">Zur Website</a>`:''}
       ${x.docs?`<a class="btn" href="${x.docs}" target="_blank" rel="noopener">Datenblatt</a>`:''}
     </div>
   </div>`).join('') || '<div class="card">Nichts gefunden.</div>';
@@ -41,4 +41,5 @@ load();
 <script src="assets/product-schema.js"></script>
 <div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
 <script type="module">import{videoModal} from "./assets/ui.js"; videoModal();</script>
+<script src="../assets/affiliates.js"></script>
 </body></html>

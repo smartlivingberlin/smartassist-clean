@@ -61,6 +61,7 @@
   <h2 style="margin:16px 0">Neu im Katalog</h2>
   <div id="newgrid" class="grid"></div>
 </section>
+<section class="container"><div class="card reveal"><h2>🏆 Top-Empfehlungen 2025</h2><p><a class="btn" href="top/index.html">Top-Seiten ansehen</a></p></div></section>
 </main>
 
 <footer class="footer">© 2025 SmartAssist — <a href="newsletter.html">Newsletter</a> · <a href="gallery.html">Galerie</a></footer>
@@ -84,6 +85,7 @@ rotator();
 </script>
 <div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
 <script type="module">import{slider,videoModal} from "./assets/ui.js"; slider(".slider",6000); videoModal();</script>
+<script src="../assets/affiliates.js"></script>
 </body></html>
 <script>
 (async ()=>{
@@ -100,7 +102,7 @@ rotator();
           ${x.youtube_id?`<a class="play" href="#" data-yt="${x.youtube_id}">Video</a>`:''}
         </div>
         <p>${x.helps||''}</p>
-        ${x.link?`<a class="btn btn-outline" href="${x.link}" target="_blank" rel="noopener">Website</a>`:''}
+        ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||""}" href="${x.link}" target="_blank" rel="noopener">Website</a>`:''}
       </div>`).join('');
   }catch(e){}
 })();
@@ -120,7 +122,7 @@ rotator();
           ${x.youtube_id?`<a class="play" href="#" data-yt="${x.youtube_id}">Video</a>`:''}
         </div>
         <p>${x.helps||''}</p>
-        ${x.link?`<a class="btn btn-outline" href="${x.link}" target="_blank" rel="noopener">Website</a>`:''}
+        ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||""}" href="${x.link}" target="_blank" rel="noopener">Website</a>`:''}
       </div>`).join('');
   }catch(e){}
 })();

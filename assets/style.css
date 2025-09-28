@@ -85,3 +85,7 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--br);border-
 @media (max-width:900px){ .masonry{column-count:2} }
 @media (max-width:560px){ .masonry{column-count:1} }
 .tile{break-inside:avoid;margin:0 0 14px}
+
+/* Chips */
+.chip{display:inline-flex;align-items:center;border:1px solid var(--br);background:#fff;padding:6px 10px;border-radius:999px;cursor:pointer}
+.chip.active{background:#eef2ff;border-color:#c7d2fe;color:#1e3a8a}

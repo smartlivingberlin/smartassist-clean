@@ -1,0 +1,20 @@
+{
+  "_comment": "Einfach: Marke -> Parameter; optional domain_fallback für generische Händler.",
+  "brand_params": {
+    "ExoMotion": "ref=smartassist-exo&utm_source=smartassist&utm_medium=referral",
+    "SightWare": "ref=smartassist-sight&utm_source=smartassist",
+    "CookBots": "cid=smartassist-kitchen&utm_campaign=aff",
+    "CareTech": "partner=smartassist-care",
+    "RehabSense": "affid=rehab-991",
+    "HandyBots": "ref=hb-smartassist",
+    "AquaAI": "ref=aquaai-smartassist",
+    "SafeBot": "utm_source=smartassist&utm_medium=ref&utm_campaign=homeguard"
+  },
+  "domain_fallback": {
+    "amazon.": "tag=smartassist-21",
+    "aliexpress.": "aff_fcid=smartassist",
+    "banggood.": "p=smartassist",
+    "store.": "utm_source=smartassist"
+  },
+  "default_params": "utm_source=smartassist&utm_medium=referral"
+}
