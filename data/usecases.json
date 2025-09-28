@@ -1,7 +1,67 @@
 [
-  {"slug":"gehilfe","title":"Gehilfe-Robotik","intro":"Roboter & Exoskelette, die beim Gehen & Aufstehen unterstützen.","keywords":["Exoskelett","Gehhilfe","Reha"],"cta":"Zum Katalog"},
-  {"slug":"sehhilfe","title":"Seh-Assistenz","intro":"Computer Vision & Wearables zur Orientierung und Erkennung.","keywords":["Sehbehinderung","OCR","Wearable"],"cta":"Zum Katalog"},
-  {"slug":"kochen","title":"Küchen-Assistenz","intro":"Greifen, Rühren, Schneiden – Hilfe bei motorischen Aufgaben.","keywords":["Haushalt","Greifarm","Assistenz"],"cta":"Zum Katalog"},
-  {"slug":"pflege","title":"Pflege-Assistenz","intro":"Transfer, Monitoring, soziale Roboter für den Pflegealltag.","keywords":["Pflege","Hebehilfe","Service-Roboter"],"cta":"Zum Katalog"},
-  {"slug":"sport","title":"Sport-/Reha-Robotik","intro":"Sensorik & Robotik für Training und Rehabilitation.","keywords":["Reha","Sensorik","Therapie"],"cta":"Zum Katalog"}
+  {
+    "slug": "haushalt",
+    "title": "Haushaltshilfen",
+    "intro": "Greifen, Putzen, Tragen",
+    "keywords": [
+      "Greifarm",
+      "Staubsaugerroboter"
+    ],
+    "cta": "Zum Katalog"
+  },
+  {
+    "slug": "gehilfe",
+    "title": "Gehilfe-Robotik",
+    "intro": "Roboter & Exoskelette, die beim Gehen & Aufstehen unterstützen.",
+    "keywords": [
+      "Exoskelett",
+      "Gehhilfe",
+      "Reha"
+    ],
+    "cta": "Zum Katalog"
+  },
+  {
+    "slug": "sehhilfe",
+    "title": "Seh-Assistenz",
+    "intro": "Computer Vision & Wearables zur Orientierung und Erkennung.",
+    "keywords": [
+      "Sehbehinderung",
+      "OCR",
+      "Wearable"
+    ],
+    "cta": "Zum Katalog"
+  },
+  {
+    "slug": "kochen",
+    "title": "Küchen-Assistenz",
+    "intro": "Greifen, Rühren, Schneiden – Hilfe bei motorischen Aufgaben.",
+    "keywords": [
+      "Haushalt",
+      "Greifarm",
+      "Assistenz"
+    ],
+    "cta": "Zum Katalog"
+  },
+  {
+    "slug": "pflege",
+    "title": "Pflege-Assistenz",
+    "intro": "Transfer, Monitoring, soziale Roboter für den Pflegealltag.",
+    "keywords": [
+      "Pflege",
+      "Hebehilfe",
+      "Service-Roboter"
+    ],
+    "cta": "Zum Katalog"
+  },
+  {
+    "slug": "sport",
+    "title": "Sport-/Reha-Robotik",
+    "intro": "Sensorik & Robotik für Training und Rehabilitation.",
+    "keywords": [
+      "Reha",
+      "Sensorik",
+      "Therapie"
+    ],
+    "cta": "Zum Katalog"
+  }
 ]
