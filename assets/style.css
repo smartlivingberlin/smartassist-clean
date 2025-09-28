@@ -89,3 +89,9 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--br);border-
 /* Chips */
 .chip{display:inline-flex;align-items:center;border:1px solid var(--br);background:#fff;padding:6px 10px;border-radius:999px;cursor:pointer}
 .chip.active{background:#eef2ff;border-color:#c7d2fe;color:#1e3a8a}
+
+/* UX-Feinschliff */
+:focus-visible{outline:2px solid #2563eb; outline-offset:3px}
+.btn{transition:transform .08s ease}
+.btn:hover{transform:translateY(-1px)}
+.grid .card img{display:block;width:100%;height:auto;border-radius:12px}
