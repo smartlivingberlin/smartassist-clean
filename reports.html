@@ -21,6 +21,8 @@
     .red{background:#ef4444;color:#fff}
     .diff-up{color:#16a34a;font-weight:bold}
     .diff-down{color:#ef4444;font-weight:bold}
+    .tips{margin-top:10px;font-size:0.95em}
+    .tips li{margin:4px 0}
   </style>
 </head>
 <body>
@@ -45,6 +47,7 @@
         <button onclick="exportPNG()">⬇️ PNG Export</button>
       </div>
       <div id="ampelBox"></div>
+      <ul id="tipsBox" class="tips"></ul>
       <canvas id="scoreChart"></canvas>
     </section>
   </main>
@@ -113,15 +116,32 @@
         PWA ${show(diff(6))})</small>`;
     }
 
-    // 🚦 Ampel Durchschnitt berechnen
+    // 🚦 Ampel Durchschnitt berechnen + Tipps
     if(rows.length>=1){
       const last = rows[rows.length-1];
-      const avg = Math.round((+last[2]+ +last[3]+ +last[4]+ +last[5]+ +last[6]) / 5);
+      const scores = {
+        perf:+last[2],
+        seo:+last[3],
+        a11y:+last[4],
+        bp:+last[5],
+        pwa:+last[6]
+      };
+      const avg = Math.round((scores.perf+ scores.seo+ scores.a11y+ scores.bp+ scores.pwa) / 5);
       let cls="green", txt="🟢 Sehr gut";
       if(avg<90 && avg>=70){cls="yellow";txt="🟡 Mittel";}
       if(avg<70){cls="red";txt="🔴 Schwach";}
       document.getElementById("ampelBox").innerHTML =
         `<div class="ampel ${cls}">Gesamt-Score: ${avg} (${txt})</div>`;
+
+      // Empfehlungen
+      const tips=[];
+      if(scores.perf<90) tips.push("🔧 Performance verbessern: Bilder optimieren, Lazy-Loading, Caching.");
+      if(scores.seo<90) tips.push("📈 SEO optimieren: Meta-Titel & Beschreibungen prüfen, hreflang setzen.");
+      if(scores.a11y<90) tips.push("♿ Accessibility: Kontraste prüfen, Alt-Texte für Bilder hinzufügen.");
+      if(scores.bp<90) tips.push("🛡 Best Practices: HTTPS, sichere Links (rel=noopener), JS-Fehler beheben.");
+      if(scores.pwa<90) tips.push("📱 PWA: Manifest & Service Worker erweitern, Offline-Test durchführen.");
+      document.getElementById("tipsBox").innerHTML =
+        tips.length ? tips.map(t=>`<li>${t}</li>`).join("") : "<li>✅ Alles im grünen Bereich!</li>";
     }
   }
 
