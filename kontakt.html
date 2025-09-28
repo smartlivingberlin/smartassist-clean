@@ -10,7 +10,7 @@
 </nav>
 <main class="container">
   <h1>Schreib uns</h1>
-  <form action="#" onsubmit="event.preventDefault(); alert('Danke! (Formspree kann später eingehängt werden)'); this.reset();" class="card">
+  <form data-form data-action="">
     <input name="name" placeholder="Name" required style="width:100%;padding:10px;margin:6px 0;">
     <input name="email" type="email" placeholder="E-Mail" required style="width:100%;padding:10px;margin:6px 0;">
     <textarea name="msg" placeholder="Nachricht" rows="4" style="width:100%;padding:10px;margin:6px 0;"></textarea>
@@ -18,4 +18,5 @@
   </form>
 </main>
 <footer>© 2025 SmartAssist</footer>
+<script src="assets/form.js"></script>
 </body></html>
