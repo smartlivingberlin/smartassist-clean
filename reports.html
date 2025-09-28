@@ -14,6 +14,7 @@
     .bp{background:#f59e0b;color:#fff}
     .pwa{background:#ef4444;color:#fff}
     canvas{max-width:100%; margin-top:20px}
+    select{margin:10px 0;padding:6px;border-radius:6px;}
   </style>
 </head>
 <body>
@@ -30,6 +31,9 @@
 
     <section class="card">
       <h3>📈 Score-Verlauf</h3>
+      <label>Seite auswählen:
+        <select id="pageFilter"></select>
+      </label>
       <canvas id="scoreChart"></canvas>
     </section>
   </main>
@@ -37,6 +41,8 @@
   <footer class="footer">© 2025 SmartAssist</footer>
 
   <script>
+  let chart;
+
   async function loadHistory(){
     try {
       const res = await fetch("reports/history.csv?"+Date.now());
@@ -44,28 +50,45 @@
       const txt = await res.text();
       const lines = txt.trim().split("\n").slice(1); // ohne Header
       const data = lines.map(l=>l.split(","));
-      const labels = data.map(r=>r[0]+"-"+r[1]);
-      const perf = data.map(r=>+r[2]);
-      const seo  = data.map(r=>+r[3]);
-      const a11y = data.map(r=>+r[4]);
-      const bp   = data.map(r=>+r[5]);
-      const pwa  = data.map(r=>+r[6]);
-      new Chart(document.getElementById("scoreChart"),{
-        type:"line",
-        data:{
-          labels,
-          datasets:[
-            {label:"Perf",data:perf,borderColor:"#16a34a"},
-            {label:"SEO",data:seo,borderColor:"#2563eb"},
-            {label:"A11y",data:a11y,borderColor:"#9333ea"},
-            {label:"BestP",data:bp,borderColor:"#f59e0b"},
-            {label:"PWA",data:pwa,borderColor:"#ef4444"},
-          ]
-        },
-        options:{responsive:true,plugins:{legend:{position:"bottom"}}}
-      });
+      const pages = [...new Set(data.map(r=>r[1]))];
+      const sel = document.getElementById("pageFilter");
+      sel.innerHTML = pages.map(p=>`<option value="${p}">${p}</option>`).join("");
+      sel.onchange=()=>renderChart(data, sel.value);
+      renderChart(data, pages[0]);
     } catch(e){ console.error("History-Fehler",e); }
   }
+
+  function renderChart(data, page){
+    const rows = data.filter(r=>r[1]===page);
+    const labels = rows.map(r=>r[0]);
+    const perf = rows.map(r=>+r[2]);
+    const seo  = rows.map(r=>+r[3]);
+    const a11y = rows.map(r=>+r[4]);
+    const bp   = rows.map(r=>+r[5]);
+    const pwa  = rows.map(r=>+r[6]);
+
+    const ctx = document.getElementById("scoreChart");
+    if(chart) chart.destroy();
+    chart = new Chart(ctx,{
+      type:"line",
+      data:{
+        labels,
+        datasets:[
+          {label:"Perf",data:perf,borderColor:"#16a34a"},
+          {label:"SEO",data:seo,borderColor:"#2563eb"},
+          {label:"A11y",data:a11y,borderColor:"#9333ea"},
+          {label:"BestP",data:bp,borderColor:"#f59e0b"},
+          {label:"PWA",data:pwa,borderColor:"#ef4444"},
+        ]
+      },
+      options:{
+        responsive:true,
+        plugins:{legend:{position:"bottom"}},
+        scales:{y:{min:0,max:100}}
+      }
+    });
+  }
+
   loadHistory();
   </script>
 </body>
