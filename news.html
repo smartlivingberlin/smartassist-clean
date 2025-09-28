@@ -1,0 +1,23 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="nav">
+  <a href="index.html">SmartAssist</a>
+  <a href="katalog.html">Katalog</a>
+  <a href="news.html"><strong>News</strong></a>
+  <a href="partner.html">Partner</a><a href="kontakt.html">Kontakt</a>
+</nav>
+<main class="container">
+  <h1>News</h1>
+  <div id="news"></div>
+</main>
+<footer>© 2025 SmartAssist</footer>
+<script>
+fetch('data/news.json').then(r=>r.json()).then(items=>{
+  const box=document.getElementById('news'); box.innerHTML='';
+  box.innerHTML = items.map(n=>`<div class="card"><h3>${n.title}</h3><small>${n.date}</small><p>${n.summary||''}</p><a href="${n.link}" target="_blank" rel="noopener">Quelle</a></div>`).join('');
+}).catch(_=>{document.getElementById('news').innerHTML='<div class="card">Noch keine News.</div>';});
+</script>
+</body></html>
