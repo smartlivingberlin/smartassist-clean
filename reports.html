@@ -22,8 +22,12 @@
     .diff-up{color:#16a34a;font-weight:bold}
     .diff-down{color:#ef4444;font-weight:bold}
     .tips{margin-top:10px;font-size:0.95em}
-    .tips li{margin:6px 0}
-    .tips a{color:#2563eb;text-decoration:underline}
+    .tips li{margin:6px 0;cursor:pointer;color:#2563eb;text-decoration:underline}
+    /* Modal */
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;}
+    .modal-content{background:#fff;padding:20px;border-radius:8px;max-width:500px;width:90%;box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+    .modal-content h3{margin-top:0}
+    .close{float:right;font-size:1.4em;cursor:pointer}
   </style>
 </head>
 <body>
@@ -55,8 +59,57 @@
 
   <footer class="footer">© 2025 SmartAssist</footer>
 
+  <!-- Modal -->
+  <div id="tipModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="tipTitle"></h3>
+      <p id="tipText"></p>
+      <p><a id="tipLink" href="#" target="_blank">🔗 Mehr erfahren</a></p>
+    </div>
+  </div>
+
   <script>
   let chart, allData=[];
+
+  const tipDetails={
+    perf:{
+      title:"Performance verbessern",
+      text:"Optimieren Sie Bilder (WebP, AVIF), nutzen Sie Lazy Loading und Browser-Caching. Minimieren Sie CSS/JS und prüfen Sie die Ladezeit mit PageSpeed.",
+      link:"https://web.dev/performance-scoring/"
+    },
+    seo:{
+      title:"SEO optimieren",
+      text:"Achten Sie auf aussagekräftige Meta-Titel und Beschreibungen. Fügen Sie hreflang-Tags hinzu, wenn mehrere Sprachen genutzt werden.",
+      link:"https://web.dev/seo/"
+    },
+    a11y:{
+      title:"Accessibility (Barrierefreiheit)",
+      text:"Sorgen Sie für ausreichende Farbkontraste, Tastatur-Navigation und Alt-Texte bei Bildern. So wird die Seite für alle zugänglich.",
+      link:"https://web.dev/accessibility-scoring/"
+    },
+    bp:{
+      title:"Best Practices",
+      text:"Stellen Sie sicher, dass alle Links sicher sind (rel=noopener), HTTPS aktiv ist und keine JavaScript-Fehler im Browser auftreten.",
+      link:"https://web.dev/pwa-checklist/"
+    },
+    pwa:{
+      title:"Progressive Web App (PWA)",
+      text:"Richten Sie ein Manifest.json und Service Worker korrekt ein. Prüfen Sie die Seite offline und aktivieren Sie Push-Optionen.",
+      link:"https://web.dev/progressive-web-apps/"
+    }
+  };
+
+  function openModal(key){
+    const tip=tipDetails[key];
+    document.getElementById("tipTitle").innerText=tip.title;
+    document.getElementById("tipText").innerText=tip.text;
+    document.getElementById("tipLink").href=tip.link;
+    document.getElementById("tipModal").style.display="flex";
+  }
+  function closeModal(){
+    document.getElementById("tipModal").style.display="none";
+  }
 
   async function loadHistory(){
     try {
@@ -103,21 +156,7 @@
       }
     });
 
-    // ➕ Vergleich letzter vs. vorletzter Run
-    if(rows.length>=2){
-      const last = rows[rows.length-1];
-      const prev = rows[rows.length-2];
-      const diff = (i)=> last[i]-prev[i];
-      const show = (val)=> val>0 ? `<span class="diff-up">⬆️ +${val}</span>` : (val<0 ? `<span class="diff-down">⬇️ ${val}</span>` : "–");
-      document.querySelector("h3").innerHTML = `📈 Score-Verlauf <small>(letzter vs. vorher: 
-        Perf ${show(diff(2))}, 
-        SEO ${show(diff(3))}, 
-        A11y ${show(diff(4))}, 
-        BP ${show(diff(5))}, 
-        PWA ${show(diff(6))})</small>`;
-    }
-
-    // 🚦 Ampel Durchschnitt berechnen + Tipps mit Links
+    // Ampel + Tipps
     if(rows.length>=1){
       const last = rows[rows.length-1];
       const scores = {
@@ -135,13 +174,13 @@
         `<div class="ampel ${cls}">Gesamt-Score: ${avg} (${txt})</div>`;
 
       const tips=[];
-      if(scores.perf<90) tips.push(`🔧 Performance: <a href="https://web.dev/performance-scoring/" target="_blank">Optimierungstipps</a>`);
-      if(scores.seo<90) tips.push(`📈 SEO: <a href="https://web.dev/seo/" target="_blank">SEO-Basics</a>`);
-      if(scores.a11y<90) tips.push(`♿ Accessibility: <a href="https://web.dev/accessibility-scoring/" target="_blank">Barrierefreiheit</a>`);
-      if(scores.bp<90) tips.push(`🛡 Best Practices: <a href="https://web.dev/pwa-checklist/" target="_blank">Sicherheits-Checkliste</a>`);
-      if(scores.pwa<90) tips.push(`📱 PWA: <a href="https://web.dev/progressive-web-apps/" target="_blank">PWA-Verbesserungen</a>`);
+      if(scores.perf<90) tips.push(`<li onclick="openModal('perf')">🔧 Performance verbessern</li>`);
+      if(scores.seo<90) tips.push(`<li onclick="openModal('seo')">📈 SEO optimieren</li>`);
+      if(scores.a11y<90) tips.push(`<li onclick="openModal('a11y')">♿ Accessibility verbessern</li>`);
+      if(scores.bp<90) tips.push(`<li onclick="openModal('bp')">🛡 Best Practices prüfen</li>`);
+      if(scores.pwa<90) tips.push(`<li onclick="openModal('pwa')">📱 PWA Funktionen erweitern</li>`);
       document.getElementById("tipsBox").innerHTML =
-        tips.length ? tips.map(t=>`<li>${t}</li>`).join("") : "<li>✅ Alles im grünen Bereich!</li>";
+        tips.length ? tips.join("") : "<li>✅ Alles im grünen Bereich!</li>";
     }
   }
 
