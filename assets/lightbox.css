@@ -3,11 +3,12 @@
 .lightbox-content img,.lightbox-content iframe{max-width:100%;height:auto;display:block;margin:auto}
 .lightbox-content h3{margin:.6rem 0}
 .lightbox-content p{font-size:.9rem;color:#444}
-.lightbox .close,.lightbox .prev,.lightbox .next{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(0,0,0,.7);color:#fff;border:none;font-size:1.5rem;
+.lightbox .close,.lightbox .prev,.lightbox .next,.lightbox .toggle{
+  position:absolute;background:rgba(0,0,0,.7);color:#fff;border:none;font-size:1.5rem;
   cursor:pointer;line-height:1;padding:.4rem .6rem;border-radius:4px
 }
-.lightbox .close{top:.5rem;right:.5rem;transform:none}
-.lightbox .prev{left:.5rem}
-.lightbox .next{right:.5rem}
+.lightbox .close{top:.5rem;right:.5rem}
+.lightbox .prev{left:.5rem;top:50%;transform:translateY(-50%)}
+.lightbox .next{right:.5rem;top:50%;transform:translateY(-50%)}
+.lightbox .toggle{bottom:.5rem;left:50%;transform:translateX(-50%)}
+.lightbox .status{position:absolute;bottom:.5rem;right:.5rem;font-size:.8rem;color:#333;background:#eee;padding:.2rem .5rem;border-radius:4px}

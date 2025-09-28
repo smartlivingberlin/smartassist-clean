@@ -1,5 +1,7 @@
 let galleryItems=[];
 let currentIndex=0;
+let autoplayTimer=null;
+let autoplayOn=true;
 
 function renderLightbox(index){
   const item=galleryItems[index];
@@ -9,6 +11,28 @@ function renderLightbox(index){
   lb.querySelector("h3").innerText=item.title;
   lb.querySelector("p").innerText=item.info;
   currentIndex=index;
+}
+
+function nextSlide(){ renderLightbox((currentIndex+1)%galleryItems.length); }
+function prevSlide(){ renderLightbox((currentIndex-1+galleryItems.length)%galleryItems.length); }
+
+function startAutoplay(){
+  stopAutoplay();
+  autoplayTimer=setInterval(nextSlide,5000);
+  autoplayOn=true;
+  updateStatus();
+}
+function stopAutoplay(){
+  if(autoplayTimer) clearInterval(autoplayTimer);
+  autoplayOn=false;
+  updateStatus();
+}
+function toggleAutoplay(){
+  if(autoplayOn){ stopAutoplay(); } else { startAutoplay(); }
+}
+function updateStatus(){
+  const status=document.querySelector(".lightbox .status");
+  if(status) status.innerText=autoplayOn?"⏸ Auto-Play läuft":"▶ Manuell";
 }
 
 function openLightbox(index){
@@ -24,14 +48,18 @@ function openLightbox(index){
       <button class="close">×</button>
       <button class="prev">◀</button>
       <button class="next">▶</button>
+      <button class="toggle">⏯</button>
+      <div class="status"></div>
     </div>`;
   document.body.appendChild(lb);
 
-  lb.querySelector(".close").onclick=()=>lb.remove();
-  lb.querySelector(".prev").onclick=()=>renderLightbox((currentIndex-1+galleryItems.length)%galleryItems.length);
-  lb.querySelector(".next").onclick=()=>renderLightbox((currentIndex+1)%galleryItems.length);
-  lb.onclick=e=>{ if(e.target===lb) lb.remove(); };
+  lb.querySelector(".close").onclick=()=>{ stopAutoplay(); lb.remove(); };
+  lb.querySelector(".prev").onclick=()=>{ prevSlide(); stopAutoplay(); };
+  lb.querySelector(".next").onclick=()=>{ nextSlide(); stopAutoplay(); };
+  lb.querySelector(".toggle").onclick=toggleAutoplay;
+  lb.onclick=e=>{ if(e.target===lb){ stopAutoplay(); lb.remove(); } };
   currentIndex=index;
+  startAutoplay();
 }
 
 function galleryInit(){
