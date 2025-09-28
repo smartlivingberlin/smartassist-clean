@@ -52,7 +52,6 @@ load();
 <script src="assets/theme.js"></script>
 <script src="assets/trending.js"></script>
 <script src="assets/palette.js"></script>
-<script src="assets/img-auto.js"></script>
 </body></html>
 <script>
 (function(){

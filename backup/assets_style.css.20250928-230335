@@ -137,5 +137,3 @@ img{border-radius:12px}
 
 .badge-trend{background:linear-gradient(90deg,var(--brand),var(--accent)); color:#fff; padding:.15rem .4rem; border-radius:8px; font-size:.75rem}
 [data-track]{cursor:pointer}
-
-.img-badge{position:absolute;bottom:6px;right:6px;background:var(--brand);color:#fff;font-size:.65rem;padding:.15rem .4rem;border-radius:6px}

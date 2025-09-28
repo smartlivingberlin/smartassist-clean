@@ -49,5 +49,4 @@ document.querySelectorAll(".tabs button").forEach(btn=>{
 <script src="assets/theme.js"></script>
 <script src="assets/polls.js"></script>
 <script src="assets/palette.js"></script>
-<script src="assets/lazy-video.js"></script>
 </body></html>

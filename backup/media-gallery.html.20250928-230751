@@ -56,5 +56,4 @@ load();
 <script src="assets/trending.js"></script>
 <script src="assets/palette.js"></script>
 <script src="assets/lazy-video.js"></script>
-<script src="assets/img-auto.js"></script>
 </body></html>
