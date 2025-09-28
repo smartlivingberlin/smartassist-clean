@@ -1,0 +1,51 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Media-Galerie – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.masonry{column-count:3;column-gap:1rem}
+.masonry .item{break-inside:avoid;margin-bottom:1rem;display:block;background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .2s}
+.masonry .item:hover{transform:translateY(-2px)}
+.masonry img,.masonry iframe{width:100%;height:auto;display:block}
+.masonry h3{font-size:1rem;margin:.4rem .6rem}
+.masonry p{font-size:.85rem;color:#475569;margin:.2rem .6rem .6rem}
+@media(max-width:768px){.masonry{column-count:2}}
+@media(max-width:480px){.masonry{column-count:1}}
+</style>
+</head><body>
+<nav class="nav"><a href="index.html">🏠</a> 
+<a href="news.html">News</a>
+<a href="news-archive.html">Archiv</a>
+<a href="news-timeline.html">Timeline</a>
+<a href="media-gallery.html"><strong>Galerie</strong></a></nav>
+
+<main class="container">
+  <h1>Media-Galerie</h1>
+  <p class="muted">Alle Bilder & Videos aus News gesammelt – im Pinterest-Stil.</p>
+  <div id="gallery" class="masonry"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+async function load(){
+  const data=await fetch('data/news-archive.json').then(r=>r.json());
+  const c=document.getElementById('gallery');
+  c.innerHTML=data.map(x=>{
+    let media="";
+    if(x.video){
+      if(x.video.type==="youtube") media=`<iframe src="https://www.youtube.com/embed/${x.video.id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
+      if(x.video.type==="vimeo") media=`<iframe src="https://player.vimeo.com/video/${x.video.id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
+    } else {
+      const thumb=x.thumb||"https://picsum.photos/seed/"+encodeURIComponent(x.id)+"/600/400";
+      media=`<img src="${thumb}" alt="">`;
+    }
+    return `<a class="item" href="${x.link}" target="_blank" rel="noopener">
+      ${media}
+      <h3>${x.title}</h3>
+      <p>${x.source} – ${x.published}</p>
+    </a>`;
+  }).join('');
+}
+load();
+</script>
+</body></html>
