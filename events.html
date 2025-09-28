@@ -3,48 +3,22 @@
 <title>Events & Messen – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css"></head>
 <body>
-<nav class="nav">
-  <a class="nav-brand" href="index.html">SmartAssist</a>
-  <a href="katalog.html">Katalog</a><a href="news.html">News</a><a href="partner.html">Partner</a>
-  <a href="events.html"><strong>Events</strong></a><a href="usecases.html">Use-Cases</a><a href="stories.html">Stories</a>
-<a href="lead.html">📘 Guide</a>
-</nav>
+<nav class="nav"><a href="index.html">🏠</a> <strong>Events</strong></nav>
 <main class="container">
   <h1>Events & Messen</h1>
-  <div class="kv">
-    <select id="filter">
-      <option value="upcoming">Bevorstehend</option>
-      <option value="past">Vergangen</option>
-      <option value="all">Alle</option>
-    </select>
-  </div>
-  <div id="elist" class="grid" style="margin-top:12px"></div>
+  <p class="muted">Robotics/Assistenz – anstehende Termine mit iCal-Export.</p>
+  <div id="elist" class="grid"></div>
+  <p class="card"><a class="btn" href="events.ics">📅 iCal Export (alle)</a></p>
 </main>
 <footer class="footer">© 2025 SmartAssist</footer>
 <script>
-const $=s=>document.querySelector(s);
-function statusOf(ev){
-  const today=new Date().toISOString().slice(0,10);
-  if(ev.to<today) return 'past';
-  if(ev.from>=today || (ev.from<=today && ev.to>=today)) return 'upcoming';
-  return 'past';
-}
-fetch('data/events.json').then(r=>r.json()).then(list=>{
-  const el=$("#elist"), f=$("#filter");
-  const render=(mode='upcoming')=>{
-    const items=list.filter(ev=> mode==='all'?true: statusOf(ev)===mode)
-      .sort((a,b)=>(a.from>b.from?1:-1));
-    el.innerHTML = items.map(ev=>`
-      <div class="card item">
-        <div class="badge">${statusOf(ev)==='upcoming'?'Bevorstehend':'Vergangen'}</div>
-        <h3>${ev.name}</h3>
-        <p>${ev.city}, ${ev.country} · ${ev.from} – ${ev.to}</p>
-        <p class="muted">${ev.focus||''}</p>
-        ${ev.link?`<a class="btn" target="_blank" rel="noopener" href="${ev.link}">Zur Eventseite</a>`:''}
-      </div>`).join('') || '<div class="card">Keine Einträge.</div>';
-  };
-  $("#filter").addEventListener('change',e=>render(e.target.value));
-  render('upcoming');
+fetch('data/events.json').then(r=>r.json()).then(d=>{
+  const upcoming=d.filter(x=>new Date(x.start) >= new Date()).sort((a,b)=>new Date(a.start)-new Date(b.start));
+  const c=document.getElementById('elist');
+  c.innerHTML=upcoming.map(x=>`<a class="card" href="${x.url}" target="_blank" rel="noopener" data-track="event:${x.title}" data-id="event:${x.title}">
+    <h3>${x.title}</h3>
+    <p class="muted">${new Date(x.start).toLocaleString('de-DE')} – ${x.location||''}</p>
+  </a>`).join('') || "<p class='muted'>Bald neue Termine…</p>";
 });
 </script>
 </body></html>

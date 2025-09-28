@@ -3,7 +3,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>News-Archiv – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
 <nav class="nav"><a href="index.html">🏠</a> <a href="news.html">News</a> <a href="news-archive.html"><strong>Archiv</strong></a></nav>
 <main class="container">
@@ -29,6 +28,4 @@ function render(q=""){
 }
 document.getElementById('filter').oninput=e=>render(e.target.value.toLowerCase());
 </script>
-<script src="assets/theme.js"></script>
-<script src="assets/palette.js"></script>
 </body></html>

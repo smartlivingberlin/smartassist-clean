@@ -134,6 +134,3 @@ img{border-radius:12px}
 /* Navbar Mini-Polish */
 .nav strong,.nav .nav-brand{color:var(--text)}
 .nav a:hover{opacity:.9}
-
-.badge-trend{background:linear-gradient(90deg,var(--brand),var(--accent)); color:#fff; padding:.15rem .4rem; border-radius:8px; font-size:.75rem}
-[data-track]{cursor:pointer}

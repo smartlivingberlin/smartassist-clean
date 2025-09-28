@@ -1,0 +1,42 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partner kontaktieren – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<nav class="nav"><a href="index.html">🏠</a> <a href="partner.html">Partner</a> <strong>Kontakt</strong></nav>
+<main class="container">
+  <article class="card">
+    <h1>Kontakt zu Partnern</h1>
+    <p class="muted">Wähle einen Partner und optional ein Produkt – wir erzeugen eine vorgefüllte E-Mail.</p>
+    <div class="grid">
+      <label>Partner:
+        <select id="partner"></select>
+      </label>
+      <label>Produkt/Use-Case:
+        <input id="subject" placeholder="z. B. ExoWalk Gehhilfe">
+      </label>
+      <label>Nachricht:
+        <textarea id="message" rows="6" placeholder="Kurz Ihr Anliegen..."></textarea>
+      </label>
+    </div>
+    <div class="btn-group">
+      <button class="btn" id="mailtoBtn">✉️ E-Mail öffnen</button>
+    </div>
+  </article>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+let PARTNERS=[];
+fetch('data/partners.json').then(r=>r.json()).then(d=>{
+  PARTNERS=d; const sel=document.getElementById('partner');
+  sel.innerHTML = d.map(p=>`<option value="${p.email}">${p.name}</option>`).join('');
+});
+document.getElementById('mailtoBtn').onclick=()=>{
+  const to=document.getElementById('partner').value||'info@example.com';
+  const subj='Anfrage: '+(document.getElementById('subject').value||'Produktberatung');
+  const body=(document.getElementById('message').value||'')+
+    '\n\n--\nVon SmartAssist\nWebsite: '+location.href;
+  location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+};
+</script>
+</body></html>

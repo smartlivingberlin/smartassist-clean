@@ -2,7 +2,6 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Katalog – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css"><meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/pages/katalog.html.svg">
-<link rel="stylesheet" href="assets/theme-variants.css">
 </head>
 <body>
 <nav class="nav">
@@ -50,8 +49,6 @@ load();
 <script src="assets/csv_export.js"></script>
 <script src="assets/price_alert.js"></script>
 <script src="assets/theme.js"></script>
-<script src="assets/trending.js"></script>
-<script src="assets/palette.js"></script>
 </body></html>
 <script>
 (function(){

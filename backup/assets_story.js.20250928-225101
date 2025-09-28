@@ -36,11 +36,10 @@ function startStories(force=false,tag="all"){
 function showStory(){
   const s=stories[storyIndex]; if(!s)return;
   const ov=document.querySelector(".story-overlay");
-  ov.querySelector(".story-content").innerHTML=`${s.media}<h3>${s.title}</h3><p>${s.info}</p><div id="poll-here" style="margin-top:.5rem"></div><p><a class="btn" href="news.html">Weitere News</a></p>`;
+  ov.querySelector(".story-content").innerHTML=`${s.media}<h3>${s.title}</h3><p>${s.info}</p>`;
   const bars=ov.querySelectorAll(".story-progress span");
   bars.forEach((b,i)=>{b.style.width=i<storyIndex?"100%":(i===storyIndex?"0":"0");});
   animateProgress(bars[storyIndex]);
-  try{ const spot=document.getElementById("poll-here"); if(spotclearTimeout(storyTimer);clearTimeout(storyTimer);window.renderPoll){ renderPoll(spot,"news-"+storyIndex,["👍 Hilfreich","👎 Nicht relevant"]); } }catch(e){}
   clearTimeout(storyTimer);
   storyTimer=setTimeout(()=>{ nextStory(); },storyDur);
 }

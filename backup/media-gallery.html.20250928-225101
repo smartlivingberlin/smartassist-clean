@@ -13,7 +13,6 @@
 @media(max-width:768px){.masonry{column-count:2}}
 @media(max-width:480px){.masonry{column-count:1}}
 </style>
-<link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
 <nav class="nav"><a href="index.html">🏠</a> 
 <a href="news.html">News</a>
@@ -38,7 +37,7 @@ async function load(){
       if(x.video.type==="vimeo") media=`<iframe src="https://player.vimeo.com/video/${x.video.id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
     } else {
       const thumb=x.thumb||"https://picsum.photos/seed/"+encodeURIComponent(x.id)+"/600/400";
-      media=`<img src="${thumb}" alt="" loading="lazy" srcset="${thumb} 600w, ${thumb}<img src="${thumb}" alt="">w=900 900w" sizes="(max-width:640px) 100vw, 33vw">`;
+      media=`<img src="${thumb}" alt="">`;
     }
     return `<a class="item" href="${x.link}" target="_blank" rel="noopener">
       ${media}
@@ -51,8 +50,4 @@ load();
 </script>
 <link rel="stylesheet" href="assets/lightbox.css">
 <script src="assets/lightbox.js"></script>
-<script src="assets/theme.js"></script>
-<script src="assets/polls.js"></script>
-<script src="assets/trending.js"></script>
-<script src="assets/palette.js"></script>
 </body></html>

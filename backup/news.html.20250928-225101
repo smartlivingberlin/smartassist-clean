@@ -12,19 +12,18 @@
 .news-card h3{margin:.2rem 0;font-size:1.1rem}
 .news-card p{font-size:.9rem;color:#475569}
 </style>
-<link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
 <nav class="nav"><a class="nav-brand" href="index.html">SmartAssist</a> 
 <a href="news.html"><strong>News</strong></a>
 <a href="news-archive.html">Archiv</a>
-<a href="news-timeline.html">Timeline</a> <a href="lead.html">Guide</a> <a href="events.html">Events</a></nav>
+<a href="news-timeline.html">Timeline</a></nav>
 
 <main class="container">
   <article class="card"><h1>News & Stories</h1>
     <p class="muted">Mit Bildern und Videos aus Robotik, Assistenz & KI.</p>
   </article>
   <section id="autonews" class="news-grid"></section>
-<section class="card"><a class="btn" href="media-gallery.html">Zur Media-Galerie →</a></section><section class="card"><a class="btn btn-outline" href="news.xml">RSS abonnieren</a></section></main>
+<section class="card"><a class="btn" href="media-gallery.html">Zur Media-Galerie →</a></section></main>
 <footer class="footer">© 2025 SmartAssist</footer>
 <script>
 fetch('data/news.json').then(r=>r.json()).then(d=>{
@@ -36,7 +35,7 @@ fetch('data/news.json').then(r=>r.json()).then(d=>{
       if(x.video.type==="vimeo") media=`<iframe src="https://player.vimeo.com/video/${x.video.id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
     } else {
       const thumb=x.thumb||"https://picsum.photos/seed/"+encodeURIComponent(x.id)+"/600/400";
-      media=`<img src="${thumb}" alt="" loading="lazy" srcset="${thumb} 600w, ${thumb}<img src="${thumb}" alt="">w=900 900w" sizes="(max-width:640px) 100vw, 33vw">`;
+      media=`<img src="${thumb}" alt="">`;
     }
     return `<a class="news-card" href="${x.link}" target="_blank" rel="noopener">
       ${media}
@@ -49,9 +48,4 @@ fetch('data/news.json').then(r=>r.json()).then(d=>{
   }).join('');
 });
 </script>
-<script src="assets/theme.js"></script>
-<script src="assets/polls.js"></script>
-<script src="assets/trending.js"></script>
-<script src="assets/palette.js"></script>
-<script src="../assets/structured-data.js"></script>
 </body></html>

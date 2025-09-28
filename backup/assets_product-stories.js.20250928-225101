@@ -57,13 +57,12 @@ function showPStory(){
   ov.querySelector(".story-content").innerHTML=`
     ${s.media}
     <h3>${s.title}</h3>
-    <p>${s.info}</p><div id="poll-here" style="margin-top:.5rem"></div>
+    <p>${s.info}</p>
     ${!s.compare?`<a class="btn" href="${s.link}" target="_blank" rel="noopener">🔗 Zum Produkt</a>`:""}
   `;
   const bars=ov.querySelectorAll(".story-progress span");
   bars.forEach((b,i)=>{b.style.width=i<pIndex?"100%":(i===pIndex?"0":"0");});
   animateP(bars[pIndex]);
-  try{ const spot=document.getElementById("poll-here"); if(spotclearTimeout(pTimer);clearTimeout(pTimer);window.renderPoll){ if(s.compare){ renderPoll(spot,"cmp-"+pIndex,["◀ Links besser","▶ Rechts besser"]); } else { renderPoll(spot,"prod-"+pIndex,["⭐ Will ich merken","🙂 Interessant"]); } } }catch(e){}
   clearTimeout(pTimer);
   pTimer=setTimeout(()=>{ nextP(); },pDur);
 }
