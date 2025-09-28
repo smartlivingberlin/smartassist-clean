@@ -2,6 +2,10 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Partner – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
+<link rel="canonical" href="https://smartlivingberlin.github.io/smartassist-clean/partner.html">
+<meta property="og:title" content="Partner – SmartAssist">
+<meta property="og:description" content="Hersteller, Händler & Institute – Assistenz-Robotik im Überblick.">
+<meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/partner.svg">
 </head><body>
 <nav class="nav">
   <a href="index.html">SmartAssist</a>
@@ -11,7 +15,21 @@
 </nav>
 <main class="container">
   <h1>Partner</h1>
-  <div class="card">Demnächst: Hersteller, Händler, Institute.</div>
+  <p class="card">Hier findest du Hersteller, Händler und Institute. <a href="submit-partner.html">Partner einreichen</a></p>
+  <div id="plist"></div>
 </main>
 <footer>© 2025 SmartAssist</footer>
+<script>
+fetch('data/partners.json').then(r=>r.json()).then(list=>{
+  const box=document.getElementById('plist');
+  if(!Array.isArray(list)||!list.length){ box.innerHTML='<div class="card">Noch keine Einträge.</div>'; return;}
+  box.innerHTML = '<div class="grid">'+list.map(p=>`
+    <div class="card">
+      <div class="badge">${p.type||'Partner'}</div>
+      <h3>${p.name}</h3>
+      <p>${p.focus||''}${p.country?` · ${p.country}`:''}</p>
+      ${p.link?`<a href="${p.link}" target="_blank" rel="noopener">Zur Website</a>`:''}
+    </div>`).join('')+'</div>';
+});
+</script>
 </body></html>
