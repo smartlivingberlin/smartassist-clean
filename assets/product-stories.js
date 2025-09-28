@@ -1,4 +1,4 @@
-let products=[],pIndex=0,pTimer=null,pDur=6000;
+let products=[],slides=[],pIndex=0,pTimer=null,pDur=6000;
 
 async function loadProducts(){
   const d=await fetch("data/products.json").then(r=>r.json());
@@ -10,6 +10,7 @@ async function loadProducts(){
       media=`<img src="${img}" alt="">`;
     }
     return {
+      id:x.id,
       media,
       title:x.name,
       info:`${x.brand||""} – ${x.price||"Preis auf Anfrage"}`,
@@ -17,11 +18,33 @@ async function loadProducts(){
       link:x.link||"#"
     };
   });
+
+  // Einzel-Slides
+  slides=[...products];
+
+  // Vergleichs-Slides: paarweise
+  for(let i=0;i<products.length-1;i++){
+    const a=products[i],b=products[i+1];
+    slides.push({
+      compare:true,
+      title:`Vergleich: ${a.title} vs ${b.title}`,
+      info:"Gegenüberstellung der Features",
+      media:`
+        <div style="display:flex;gap:1rem;justify-content:center">
+          <div style="flex:1;background:#fff;color:#000;padding:.5rem;border-radius:6px">
+            ${a.media}<h4>${a.title}</h4><p>${a.info}</p><small>${a.features}</small>
+          </div>
+          <div style="flex:1;background:#fff;color:#000;padding:.5rem;border-radius:6px">
+            ${b.media}<h4>${b.title}</h4><p>${b.info}</p><small>${b.features}</small>
+          </div>
+        </div>`
+    });
+  }
 }
 
 function startPStories(){
   loadProducts().then(()=>{
-    if(!products.length) return;
+    if(!slides.length) return;
     const ov=document.querySelector(".story-overlay");
     ov.style.display="flex";
     pIndex=0; showPStory();
@@ -29,14 +52,13 @@ function startPStories(){
 }
 
 function showPStory(){
-  const s=products[pIndex]; if(!s)return;
+  const s=slides[pIndex]; if(!s)return;
   const ov=document.querySelector(".story-overlay");
   ov.querySelector(".story-content").innerHTML=`
     ${s.media}
     <h3>${s.title}</h3>
     <p>${s.info}</p>
-    <p><small>${s.features}</small></p>
-    <a class="btn" href="${s.link}" target="_blank" rel="noopener">🔗 Zum Produkt</a>
+    ${!s.compare?`<a class="btn" href="${s.link}" target="_blank" rel="noopener">🔗 Zum Produkt</a>`:""}
   `;
   const bars=ov.querySelectorAll(".story-progress span");
   bars.forEach((b,i)=>{b.style.width=i<pIndex?"100%":(i===pIndex?"0":"0");});
@@ -55,14 +77,14 @@ function animateP(bar){
   }
   requestAnimationFrame(step);
 }
-function nextP(){ pIndex=(pIndex+1)%products.length; showPStory(); }
-function prevP(){ pIndex=(pIndex-1+products.length)%products.length; showPStory(); }
+function nextP(){ pIndex=(pIndex+1)%slides.length; showPStory(); }
+function prevP(){ pIndex=(pIndex-1+slides.length)%slides.length; showPStory(); }
 
 window.addEventListener("DOMContentLoaded",()=>{
   const ov=document.querySelector(".story-overlay");
   const bars=ov.querySelector(".bars");
   bars.innerHTML="";
-  for(let i=0;i<10;i++){
+  for(let i=0;i<15;i++){
     const div=document.createElement("div");
     div.className="story-progress";div.innerHTML="<span></span>";
     bars.appendChild(div);
