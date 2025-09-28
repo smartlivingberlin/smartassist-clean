@@ -12,27 +12,36 @@ function renderLightbox(index){
   lb.querySelector("p").innerText=item.info;
   currentIndex=index;
 }
-
 function nextSlide(){ renderLightbox((currentIndex+1)%galleryItems.length); }
 function prevSlide(){ renderLightbox((currentIndex-1+galleryItems.length)%galleryItems.length); }
 
 function startAutoplay(){
   stopAutoplay();
   autoplayTimer=setInterval(nextSlide,5000);
-  autoplayOn=true;
-  updateStatus();
+  autoplayOn=true; updateStatus();
 }
 function stopAutoplay(){
   if(autoplayTimer) clearInterval(autoplayTimer);
-  autoplayOn=false;
-  updateStatus();
+  autoplayOn=false; updateStatus();
 }
-function toggleAutoplay(){
-  if(autoplayOn){ stopAutoplay(); } else { startAutoplay(); }
-}
+function toggleAutoplay(){ autoplayOn?stopAutoplay():startAutoplay(); }
 function updateStatus(){
   const status=document.querySelector(".lightbox .status");
   if(status) status.innerText=autoplayOn?"⏸ Auto-Play läuft":"▶ Manuell";
+}
+
+function closeLightbox(){
+  stopAutoplay();
+  const lb=document.querySelector(".lightbox");
+  if(lb) lb.remove();
+  document.removeEventListener("keydown",keyHandler);
+}
+
+function keyHandler(e){
+  if(e.key==="ArrowRight"){ nextSlide(); stopAutoplay(); }
+  if(e.key==="ArrowLeft"){ prevSlide(); stopAutoplay(); }
+  if(e.key===" "){ e.preventDefault(); toggleAutoplay(); }
+  if(e.key==="Escape"){ closeLightbox(); }
 }
 
 function openLightbox(index){
@@ -53,13 +62,15 @@ function openLightbox(index){
     </div>`;
   document.body.appendChild(lb);
 
-  lb.querySelector(".close").onclick=()=>{ stopAutoplay(); lb.remove(); };
+  lb.querySelector(".close").onclick=closeLightbox;
   lb.querySelector(".prev").onclick=()=>{ prevSlide(); stopAutoplay(); };
   lb.querySelector(".next").onclick=()=>{ nextSlide(); stopAutoplay(); };
   lb.querySelector(".toggle").onclick=toggleAutoplay;
-  lb.onclick=e=>{ if(e.target===lb){ stopAutoplay(); lb.remove(); } };
+  lb.onclick=e=>{ if(e.target===lb) closeLightbox(); };
+
   currentIndex=index;
   startAutoplay();
+  document.addEventListener("keydown",keyHandler);
 }
 
 function galleryInit(){
