@@ -7,23 +7,17 @@
 <main class="container">
   <article class="card">
     <h1>News & Stories</h1>
-    <p class="muted">Kuratierte Entwicklungen aus Robotik, Assistenz und KI – verständlich erklärt, mit echten Anwendungsbeispielen.</p>
+    <p class="muted">Automatisch kuratierte Entwicklungen aus Robotik, Assistenz & KI.</p>
   </article>
-  <section class="card">
-    <h2>Story der Woche</h2>
-    <p><strong>Worum geht’s?</strong> Wie Assistenzroboter den Alltag von Senior:innen konkret erleichtern.</p>
-    <p><strong>Warum ist das wichtig?</strong> Mehr Selbstständigkeit, Sicherheit und Entlastung für Angehörige.</p>
-    <p><strong>Und jetzt?</strong> <a href="topics.html">Relevante Produkte ansehen</a> oder <a href="partner-signup.html">Partner werden</a>.</p>
-  </section>
-  <section class="card">
-    <h2>Quellen</h2>
-    <ul id="feedlist"></ul>
-  </section>
-</main>
+  <section id="autonews" class="grid"></section>
+<section class="card"><a class="btn" href="news-archive.html">Zum Archiv →</a></section></main>
 <footer class="footer">© 2025 SmartAssist</footer>
 <script>
-fetch('data/news_sources.json').then(r=>r.json()).then(d=>{
-  document.getElementById('feedlist').innerHTML = d.feeds.map(f=>`<li><a class="btn btn-outline" href="${f.url}" target="_blank" rel="noopener">${f.title}</a></li>`).join('');
+fetch('data/news.json').then(r=>r.json()).then(d=>{
+  const c=document.getElementById('autonews');
+  c.innerHTML=d.items.map(x=>`<a class="card" href="${x.link}" target="_blank" rel="noopener">
+    <h3>${x.title}</h3><p class="muted">${x.source} – ${x.published}</p><p>${x.summary}</p>
+  </a>`).join('');
 });
 </script>
 </body></html>
