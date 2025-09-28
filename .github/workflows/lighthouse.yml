@@ -1,0 +1,44 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Lighthouse
+        run: npm install -g lighthouse
+
+      - name: Run Lighthouse on Pages
+        run: |
+          mkdir -p reports/lh
+          URLS=(
+            "https://smartlivingberlin.github.io/smartassist-clean/index.html"
+            "https://smartlivingberlin.github.io/smartassist-clean/katalog.html"
+            "https://smartlivingberlin.github.io/smartassist-clean/news.html"
+            "https://smartlivingberlin.github.io/smartassist-clean/partner.html"
+          )
+          for u in "${URLS[@]}"; do
+            name=$(basename "$u" .html)
+            echo "🔎 Audit: $u"
+            lighthouse "$u" --quiet --chrome-flags="--headless" \
+              --output html --output-path "reports/lh/${name}.report.html"
+          done
+
+      - name: Commit Reports
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add reports/lh || true
+          git commit -m "auto: Lighthouse reports" || echo "no changes"
+          git push || true
