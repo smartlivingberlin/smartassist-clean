@@ -1,0 +1,26 @@
+name: Auto News Import
+on:
+  schedule:
+    - cron: "0 7 * * *"   # täglich um 07:00 UTC (~09:00 Berlin)
+  workflow_dispatch:       # manuell startbar
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install feedparser
+        run: pip install feedparser
+      - name: Run fetch_news.py
+        run: python scripts/fetch_news.py
+      - name: Commit & Push news.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/news.json
+          git commit -m "auto: update news.json" || echo "no changes"
+          git push
