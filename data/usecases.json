@@ -1,67 +1,38 @@
 [
   {
-    "slug": "haushalt",
-    "title": "Haushaltshilfen",
-    "intro": "Greifen, Putzen, Tragen",
-    "keywords": [
-      "Greifarm",
-      "Staubsaugerroboter"
-    ],
-    "cta": "Zum Katalog"
-  },
-  {
     "slug": "gehilfe",
     "title": "Gehilfe-Robotik",
-    "intro": "Roboter & Exoskelette, die beim Gehen & Aufstehen unterstützen.",
-    "keywords": [
-      "Exoskelett",
-      "Gehhilfe",
-      "Reha"
-    ],
-    "cta": "Zum Katalog"
+    "desc": "Exoskelette & Sensorik unterstützen beim Gehen und Aufstehen.",
+    "tags": ["gehilfe","mobilität","reha"]
   },
   {
     "slug": "sehhilfe",
     "title": "Seh-Assistenz",
-    "intro": "Computer Vision & Wearables zur Orientierung und Erkennung.",
-    "keywords": [
-      "Sehbehinderung",
-      "OCR",
-      "Wearable"
-    ],
-    "cta": "Zum Katalog"
+    "desc": "Computer Vision & Wearables für Orientierung und OCR.",
+    "tags": ["sehhilfe","cv","navigation"]
   },
   {
     "slug": "kochen",
     "title": "Küchen-Assistenz",
-    "intro": "Greifen, Rühren, Schneiden – Hilfe bei motorischen Aufgaben.",
-    "keywords": [
-      "Haushalt",
-      "Greifarm",
-      "Assistenz"
-    ],
-    "cta": "Zum Katalog"
+    "desc": "Rühren, Schneiden, Rezeptführung – weniger Hürden im Alltag.",
+    "tags": ["kochen","küche","alltag"]
   },
   {
     "slug": "pflege",
     "title": "Pflege-Assistenz",
-    "intro": "Transfer, Monitoring, soziale Roboter für den Pflegealltag.",
-    "keywords": [
-      "Pflege",
-      "Hebehilfe",
-      "Service-Roboter"
-    ],
-    "cta": "Zum Katalog"
+    "desc": "Transfer, Sturzprävention & Monitoring im Pflegealltag.",
+    "tags": ["pflege","transfer","mobilität"]
   },
   {
-    "slug": "sport",
+    "slug": "sport-reha",
     "title": "Sport-/Reha-Robotik",
-    "intro": "Sensorik & Robotik für Training und Rehabilitation.",
-    "keywords": [
-      "Reha",
-      "Sensorik",
-      "Therapie"
-    ],
-    "cta": "Zum Katalog"
+    "desc": "Training & Analyse mit Wearables und Robotik.",
+    "tags": ["sport","reha","analyse"]
+  },
+  {
+    "slug": "smart-home",
+    "title": "Smart-Home-Robotik",
+    "desc": "Mobile Heimroboter für Sicherheit und einfache Aufgaben.",
+    "tags": ["smart-home","lidar","navigation","alltag"]
   }
 ]
