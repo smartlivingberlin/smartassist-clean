@@ -1,0 +1,6 @@
+[
+  {"name":"CES","city":"Las Vegas","country":"US","from":"2026-01-06","to":"2026-01-09","focus":"Consumer Tech & Robotics","link":"https://www.ces.tech"},
+  {"name":"IFA","city":"Berlin","country":"DE","from":"2025-09-05","to":"2025-09-10","focus":"Consumer Electronics & Smart Home","link":"https://www.ifa-berlin.com"},
+  {"name":"RoboCup","city":"(verschiedene)","country":"INT","from":"2026-07-01","to":"2026-07-05","focus":"Robotik-Wettbewerbe & Forschung","link":"https://www.robocup.org"},
+  {"name":"Rehacare","city":"Düsseldorf","country":"DE","from":"2025-09-24","to":"2025-09-27","focus":"Rehabilitation & Pflegehilfsmittel","link":"https://www.rehacare.de"}
+]

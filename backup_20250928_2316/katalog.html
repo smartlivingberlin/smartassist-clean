@@ -1,0 +1,73 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Katalog – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"><meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/pages/katalog.html.svg">
+<link rel="stylesheet" href="assets/theme-variants.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-brand" href="index.html">SmartAssist</a>
+  <a href="katalog.html"><strong>Katalog</strong></a>
+  <a href="news.html">News</a><a href="partner.html">Partner</a>
+  <a href="usecases.html">Use-Cases</a><a href="stories.html">Stories</a><a href="kontakt.html">Kontakt</a>
+<a href="lead.html">📘 Guide</a>
+<a href="tags.html">Tags</a>
+</nav>
+<main class="container">
+  <div class="searchbar">
+    <input id="q" type="search" placeholder="Suche nach Name, Kategorie, Hilfe..." aria-label="Suche">
+  </div>
+  <div id="grid" class="grid"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script src="assets/search.js"></script>
+<script>
+let ALL=[];
+async function load(){
+  const g=document.getElementById('grid'); g.innerHTML='<div class="card">Lade Produkte...</div>';
+  try{ ALL=await fetch('data/products.json').then(r=>r.json()); render(''); }catch(e){ g.innerHTML='<div class="card">Keine Daten.</div>'; }
+}
+function render(q){
+  const g=document.getElementById('grid'); g.innerHTML='';
+  const items = filterItems(ALL,q,(x)=>[x.name,x.category,x.helps].join(' '));
+  g.innerHTML = items.map(x=>`<div class="card item">
+    <div class="badge">${x.category||'Alltag'}</div>
+    <h3>${x.name} ${mostClicked(x.brand)?"🔥":""}</h3><p>${x.helps||''}</p>
+    <div class="kv">
+      ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||""}" href="${x.link}" target="_blank" rel="noopener">Zur Website</a>`:''}
+      ${x.docs?`<a class="btn" href="${x.docs}" target="_blank" rel="noopener">Datenblatt</a>`:''}
+    </div>
+  </div>`).join('') || '<div class="card">Nichts gefunden.</div>';
+}
+document.getElementById('q').addEventListener('input',e=>render(e.target.value));
+load();
+</script>
+<script src="assets/product-schema.js"></script>
+<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
+<script type="module">import{videoModal} from "./assets/ui.js"; videoModal();</script>
+<script src="../assets/affiliates.js"></script>
+<script src="assets/conversion.js"></script>
+<script src="assets/csv_export.js"></script>
+<script src="assets/price_alert.js"></script>
+<script src="assets/theme.js"></script>
+<script src="assets/trending.js"></script>
+<script src="assets/palette.js"></script>
+<script src="assets/img-auto.js"></script>
+</body></html>
+<script>
+(function(){
+  const bar=document.querySelector('.searchbar')||document.querySelector('main');
+  if(!bar) return;
+  const btn=document.createElement('button'); btn.className='btn btn-outline'; btn.style.margin='8px'; btn.textContent='Favoriten als CSV';
+  btn.onclick=async ()=>{
+    try{
+      const P=await fetch('data/products.json').then(r=>r.json());
+      const fav=JSON.parse(localStorage.getItem('favProducts')||'[]'); // falls du es später nutzt
+      const rows=[['Name','Brand','Kategorie','Preis(EUR)','Link']];
+      (fav.length? P.filter(p=>fav.includes(p.name)) : P.slice(0,5)).forEach(p=>rows.push([p.name,p.brand||'',p.category||'',p.price_eur||'',p.link||'']));
+      exportCSV(rows,'produkte.csv');
+    }catch(e){alert('Kann CSV nicht erstellen.')}
+  };
+  bar.appendChild(btn);
+})();
+</script>

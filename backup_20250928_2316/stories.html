@@ -1,0 +1,53 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stories – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/story.css">
+<style>
+.tabs{display:flex;gap:.5rem;margin-bottom:1rem}
+.tabs button{flex:1;padding:.5rem;border:none;border-radius:6px;background:#e5e7eb;cursor:pointer}
+.tabs button.active{background:#2563eb;color:#fff}
+</style>
+<link rel="stylesheet" href="assets/theme-variants.css">
+</head><body>
+<nav class="nav"><a href="index.html">🏠</a> <a href="news.html">News</a> <a href="stories.html"><strong>Stories</strong></a></nav>
+
+<main class="container">
+  <h1>SmartAssist Stories</h1>
+  <p class="muted">Gefilterte Stories nach Themen.</p>
+
+  <div class="tabs">
+    <button data-tag="all" class="active">Alle</button>
+    <button data-tag="sport">Sport</button>
+    <button data-tag="pflege">Pflege</button>
+    <button data-tag="smarthome">Smart-Home</button>
+    <button data-tag="vr">VR/AR</button>
+  </div>
+
+  <div class="story-overlay" style="display:flex;position:relative;background:#000;color:#fff;height:80vh;max-width:100%">
+    <div class="story-content" style="flex:1;text-align:center"></div>
+    <div class="story-controls">
+      <button class="story-btn prev">◀</button>
+      <div class="bars" style="flex:1;display:flex;gap:.2rem"></div>
+      <button class="story-btn next">▶</button>
+    </div>
+  </div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script src="assets/story.js"></script>
+<script>
+document.querySelectorAll(".tabs button").forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const tag=btn.dataset.tag;
+    startStories(true,tag);
+  };
+});
+</script>
+<script src="assets/theme.js"></script>
+<script src="assets/polls.js"></script>
+<script src="assets/palette.js"></script>
+<script src="assets/lazy-video.js"></script>
+</body></html>

@@ -1,6 +1,29 @@
 [
-  {"name":"CES","city":"Las Vegas","country":"US","from":"2026-01-06","to":"2026-01-09","focus":"Consumer Tech & Robotics","link":"https://www.ces.tech"},
-  {"name":"IFA","city":"Berlin","country":"DE","from":"2025-09-05","to":"2025-09-10","focus":"Consumer Electronics & Smart Home","link":"https://www.ifa-berlin.com"},
-  {"name":"RoboCup","city":"(verschiedene)","country":"INT","from":"2026-07-01","to":"2026-07-05","focus":"Robotik-Wettbewerbe & Forschung","link":"https://www.robocup.org"},
-  {"name":"Rehacare","city":"Düsseldorf","country":"DE","from":"2025-09-24","to":"2025-09-27","focus":"Rehabilitation & Pflegehilfsmittel","link":"https://www.rehacare.de"}
+  {
+    "id": "automatica-2026",
+    "title": "automatica 2026 – Leitmesse Robotik & Automation",
+    "start": "2026-06-22T09:00:00",
+    "end":   "2026-06-26T17:00:00",
+    "location": "Messe München, DE",
+    "url": "https://automatica-munich.com",
+    "tags": ["Messe","Industrie","Robotik"]
+  },
+  {
+    "id": "iros-2025",
+    "title": "IROS 2025 – IEEE/RSJ Int. Conf. on Intelligent Robots and Systems",
+    "start": "2025-09-14T09:00:00",
+    "end":   "2025-09-18T17:00:00",
+    "location": "Hamburg, DE",
+    "url": "https://iros2025.org",
+    "tags": ["Kongress","Forschung","Robotik"]
+  },
+  {
+    "id": "rehacare-2025",
+    "title": "REHACARE 2025 – Hilfsmittel, Pflege, Inklusion",
+    "start": "2025-09-17T10:00:00",
+    "end":   "2025-09-20T18:00:00",
+    "location": "Düsseldorf, DE",
+    "url": "https://www.rehacare.de",
+    "tags": ["Messe","Assistenz","Pflege"]
+  }
 ]
