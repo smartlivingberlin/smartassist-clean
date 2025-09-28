@@ -1,36 +1,63 @@
 <!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SmartAssist – Assistenz-Robotik <title>SmartAssist – Assistenz & Robotik</title> KI – Katalog, News, Partner</title>
+<title>SmartAssist – Assistenz & Robotik</title>
 <link rel="stylesheet" href="assets/style.css">
-<link rel="canonical" href="https://smartlivingberlin.github.io/smartassist-clean/index.html">
-<meta property="og:site_name" content="SmartAssist">
-<meta property="og:title" content="SmartAssist">
-<meta property="og:description" content="Assistenz-Robotik <link rel="manifest" href="manifest.webmanifest">
-<meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/index.svg">
-</head> KI – Katalog, News, Partner">
-<meta property="og:image" content="https://picsum.photos/seed/smartassist/1200/630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="https://fav.farm/🤖">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SmartAssist","url":"https://smartlivingberlin.github.io/smartassist-clean/","logo":"https://fav.farm/🤖"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SmartAssist","url":"https://smartlivingberlin.github.io/smartassist-clean/","potentialAction":{"@type":"SearchAction","target":"https://smartlivingberlin.github.io/smartassist-clean/katalog.html?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<link rel="manifest" href="manifest.webmanifest">
-<meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/index.svg">
+<meta name="description" content="Assistenz-Robotik & KI: Katalog, News, Partner. Praxisnah, kuratiert, ohne externe Tokens.">
 </head><body>
 <nav class="nav">
-  <strong>SmartAssist</strong>
+  <a class="nav-brand" href="index.html">SmartAssist</a>
   <a href="katalog.html">Katalog</a>
   <a href="news.html">News</a>
   <a href="partner.html">Partner</a>
+  <a href="usecases.html">Use-Cases</a>
+  <a href="stories.html">Stories</a>
   <a href="kontakt.html">Kontakt</a>
-<a href="usecases.html">Use-Cases</a>
 </nav>
+
 <main class="container">
-  <div class="card"><h1>Assistenz-Robotik & KI – Überblick</h1>
-    <p>Kuratierter Katalog, News & Partner – ohne externe Skripte. Schnell, sauber, sicher.</p>
-    <a class="badge" href="katalog.html">Start: Katalog</a>
-    <a class="badge" href="news.html">Neu: News</a>
-  </div>
+  <section class="hero">
+    <div class="panel">
+      <h1>Assistenz-Robotik & KI, verständlich.</h1>
+      <p>Finde Lösungen für Alltag, Pflege, Reha & Sport. Kuratierter Katalog, News, Partner – 100% ohne externe Chat-Skripte.</p>
+      <div class="kv">
+        <a class="btn" href="katalog.html">Zum Katalog</a>
+        <a class="btn btn-outline" href="usecases.html">Use-Cases</a>
+        <a class="btn btn-outline" href="partner.html">Partner</a>
+      </div>
+      <div style="margin-top:10px">
+        <span class="badge">Barrierefreiheit</span>
+        <span class="badge">Pflege</span>
+        <span class="badge">Reha & Sport</span>
+      </div>
+    </div>
+    <div>
+      <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo" allowfullscreen></iframe>
+      <small class="muted">Kurzvideo: Assistenz-Robotik Ideen (Platzhalter, austauschbar)</small>
+    </div>
+  </section>
+
+  <section style="margin-top:22px">
+    <div class="grid" id="rotator"></div>
+  </section>
 </main>
-<footer>© 2025 SmartAssist</footer>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+
+<footer class="footer">© 2025 SmartAssist — <a href="newsletter.html">Newsletter</a></footer>
+<script>
+async function rotator(){
+  const el=document.getElementById('rotator'); el.innerHTML='<div class="card">Lade Highlights...</div>';
+  try{
+    const p=await fetch('data/products.json').then(r=>r.json());
+    const n=await fetch('data/news.json').then(r=>r.json());
+    const items=[...(p||[]).slice(0,4).map(x=>({type:'Produkt',title:x.name,desc:x.helps,link:x.link})),
+                 ...(n||[]).slice(0,4).map(y=>({type:'News',title:y.title,desc:y.summary,link:y.link}))];
+    el.innerHTML=items.map(i=>`<div class="card item rotate">
+      <div class="badge">${i.type}</div>
+      <h3>${i.title}</h3>
+      <p>${i.desc||''}</p>
+      ${i.link?`<a href="${i.link}" target="_blank" rel="noopener">Mehr</a>`:''}
+    </div>`).join('');
+  }catch(e){ el.innerHTML='<div class="card">Keine Daten geladen.</div>'; }
+}
+rotator();
+</script>
 </body></html>

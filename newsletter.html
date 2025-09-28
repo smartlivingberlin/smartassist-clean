@@ -1,0 +1,44 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Newsletter – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<nav class="nav">
+  <a class="nav-brand" href="index.html">SmartAssist</a>
+  <a href="katalog.html">Katalog</a><a href="news.html">News</a><a href="partner.html">Partner</a>
+  <a href="usecases.html">Use-Cases</a><a href="stories.html">Stories</a><a href="kontakt.html">Kontakt</a>
+</nav>
+<main class="container">
+  <h1>Newsletter</h1>
+  <div class="card">
+    <p>Updates zu Katalog, Use-Cases & Events (ca. 1×/Monat).</p>
+    <form id="bd" class="kv" onsubmit="return false">
+      <input id="email" type="email" placeholder="E-Mail" required style="max-width:340px">
+      <button class="btn" onclick="signup()">Anmelden</button>
+    </form>
+    <small class="muted">Buttondown oder Mailchimp – konfigurierbar.</small>
+  </div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+const BD_USER="";
+const MC_POST="";
+async function signup(){
+  const em=document.getElementById('email').value.trim(); if(!em) return alert('Bitte E-Mail eingeben');
+  try{
+    if(BD_USER && !MC_POST){
+      const r=await fetch(`https://buttondown.email/api/emails/embed-subscribe/${BD_USER}`,{
+        method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:em}).toString()
+      }); alert(r.ok?'Danke – bitte Postfach prüfen.':'Fehler – später nochmal.');
+    }else if(MC_POST){
+      // Mailchimp klassisch per POST + Hidden iFrame (Keep it simple)
+      const f=document.createElement('form'); f.action=MC_POST; f.method='POST'; f.target='_blank';
+      const i=document.createElement('input'); i.name='EMAIL'; i.value=em; f.appendChild(i); document.body.appendChild(f); f.submit();
+      alert('Weiterleitung zu Mailchimp – danke!');
+    }else{
+      alert('Demo-Modus: Bitte Buttondown oder Mailchimp konfigurieren.');
+    }
+  }catch(e){ alert('Netzwerkfehler.'); }
+}
+</script>
+</body></html>
