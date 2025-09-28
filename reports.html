@@ -15,6 +15,8 @@
     .pwa{background:#ef4444;color:#fff}
     canvas{max-width:100%; margin-top:20px}
     select,button{margin:8px;padding:6px 10px;border-radius:6px;cursor:pointer;}
+    .diff-up{color:#16a34a;font-weight:bold}
+    .diff-down{color:#ef4444;font-weight:bold}
   </style>
 </head>
 <body>
@@ -25,7 +27,7 @@
 
   <main class="container">
     <h1>🔎 Lighthouse & SEO Reports</h1>
-    <p>Automatisch erzeugt bei jedem Push. Unten die <strong>letzten 5 Läufe</strong> mit Scores & ein Verlauf-Diagramm.</p>
+    <p>Automatisch erzeugt bei jedem Push. Unten die <strong>letzten 5 Läufe</strong> mit Scores, Trends & ein Verlauf-Diagramm.</p>
 
     <div id="reports-list" class="grid"></div>
 
@@ -52,7 +54,7 @@
       const res = await fetch("reports/history.csv?"+Date.now());
       if(!res.ok) return;
       const txt = await res.text();
-      const lines = txt.trim().split("\n").slice(1); // ohne Header
+      const lines = txt.trim().split("\n").slice(1);
       allData = lines.map(l=>l.split(","));
       const pages = [...new Set(allData.map(r=>r[1]))];
       const sel = document.getElementById("pageFilter");
@@ -91,9 +93,22 @@
         scales:{y:{min:0,max:100}}
       }
     });
+
+    // ➕ Vergleich letzter vs. vorletzter Run
+    if(rows.length>=2){
+      const last = rows[rows.length-1];
+      const prev = rows[rows.length-2];
+      const diff = (i)=> last[i]-prev[i];
+      const show = (val)=> val>0 ? `<span class="diff-up">⬆️ +${val}</span>` : (val<0 ? `<span class="diff-down">⬇️ ${val}</span>` : "–");
+      document.querySelector("h3").innerHTML = `📈 Score-Verlauf <small>(letzter vs. vorher: 
+        Perf ${show(diff(2))}, 
+        SEO ${show(diff(3))}, 
+        A11y ${show(diff(4))}, 
+        BP ${show(diff(5))}, 
+        PWA ${show(diff(6))})</small>`;
+    }
   }
 
-  // 📥 CSV Export
   function exportCSV(){
     const page = document.getElementById("pageFilter").value;
     const rows = allData.filter(r=>r[1]===page);
@@ -106,7 +121,6 @@
     a.click();
   }
 
-  // 📸 PNG Export
   function exportPNG(){
     if(!chart) return;
     const url=chart.toBase64Image("image/png",1.0);
