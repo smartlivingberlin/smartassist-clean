@@ -68,3 +68,20 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--br);border-
 @media (max-width:900px){ .masonry{column-count:2} }
 @media (max-width:560px){ .masonry{column-count:1} }
 .tile{break-inside:avoid;margin:0 0 14px}
+
+/* --- Card Media Overlay --- */
+.media{
+  position:relative;border-radius:12px;overflow:hidden
+}
+.media img{display:block;width:100%;height:auto}
+.media .play{
+  position:absolute;inset:auto auto 10px 10px; background:rgba(0,0,0,.6);color:#fff;
+  padding:8px 12px;border-radius:999px;font-weight:600;display:inline-flex;align-items:center;gap:6px
+}
+.media .play::before{content:"▶"}
+
+/* --- Masonry Gallery --- */
+.masonry{column-count:3; column-gap:14px}
+@media (max-width:900px){ .masonry{column-count:2} }
+@media (max-width:560px){ .masonry{column-count:1} }
+.tile{break-inside:avoid;margin:0 0 14px}
