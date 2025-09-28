@@ -14,7 +14,7 @@
     .bp{background:#f59e0b;color:#fff}
     .pwa{background:#ef4444;color:#fff}
     canvas{max-width:100%; margin-top:20px}
-    select{margin:10px 0;padding:6px;border-radius:6px;}
+    select,button{margin:8px;padding:6px 10px;border-radius:6px;cursor:pointer;}
   </style>
 </head>
 <body>
@@ -34,6 +34,10 @@
       <label>Seite auswählen:
         <select id="pageFilter"></select>
       </label>
+      <div>
+        <button onclick="exportCSV()">⬇️ CSV Export</button>
+        <button onclick="exportPNG()">⬇️ PNG Export</button>
+      </div>
       <canvas id="scoreChart"></canvas>
     </section>
   </main>
@@ -41,7 +45,7 @@
   <footer class="footer">© 2025 SmartAssist</footer>
 
   <script>
-  let chart;
+  let chart, allData=[];
 
   async function loadHistory(){
     try {
@@ -49,12 +53,12 @@
       if(!res.ok) return;
       const txt = await res.text();
       const lines = txt.trim().split("\n").slice(1); // ohne Header
-      const data = lines.map(l=>l.split(","));
-      const pages = [...new Set(data.map(r=>r[1]))];
+      allData = lines.map(l=>l.split(","));
+      const pages = [...new Set(allData.map(r=>r[1]))];
       const sel = document.getElementById("pageFilter");
       sel.innerHTML = pages.map(p=>`<option value="${p}">${p}</option>`).join("");
-      sel.onchange=()=>renderChart(data, sel.value);
-      renderChart(data, pages[0]);
+      sel.onchange=()=>renderChart(allData, sel.value);
+      renderChart(allData, pages[0]);
     } catch(e){ console.error("History-Fehler",e); }
   }
 
@@ -87,6 +91,29 @@
         scales:{y:{min:0,max:100}}
       }
     });
+  }
+
+  // 📥 CSV Export
+  function exportCSV(){
+    const page = document.getElementById("pageFilter").value;
+    const rows = allData.filter(r=>r[1]===page);
+    const header = "timestamp,page,perf,seo,a11y,bp,pwa\n";
+    const csv = header + rows.map(r=>r.join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="scores-"+page+".csv";
+    a.click();
+  }
+
+  // 📸 PNG Export
+  function exportPNG(){
+    if(!chart) return;
+    const url=chart.toBase64Image("image/png",1.0);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="scores-chart.png";
+    a.click();
   }
 
   loadHistory();
