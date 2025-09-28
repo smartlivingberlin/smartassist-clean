@@ -38,3 +38,16 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--br);border-
 .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;box-shadow:var(--shadow)}
 .compare-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:var(--card);border:1px solid var(--br);border-radius:999px;padding:8px 14px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow)}
 .hidden{display:none}
+
+/* --- Slider / Hero --- */
+.slider{position:relative;display:grid;gap:16px}
+.slide{display:none;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center}
+.dots{display:flex;gap:8px;margin-top:8px}
+.dot{width:10px;height:10px;border-radius:50%;background:#cbd5e1;border:1px solid #94a3b8;cursor:pointer}
+.dot.active{background:#2563eb;border-color:#1e3a8a}
+
+/* --- Modal Video --- */
+#videoModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center}
+#videoModal .box{background:#000;border-radius:12px;max-width:900px;width:90%;aspect-ratio:16/9;position:relative}
+#videoModal iframe{width:100%;height:100%;border:0;border-radius:12px}
+#videoModal button#closeModal{position:absolute;top:-40px;right:0;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:6px 10px}

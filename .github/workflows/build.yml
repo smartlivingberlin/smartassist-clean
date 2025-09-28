@@ -1,0 +1,26 @@
+name: Build SmartAssist
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Generate pages & assets
+        run: |
+          python3 generate_glossary.py || true
+          python3 generate_usecases.py || true
+          python3 generate_og.py || true
+          python3 scripts/generate_rss.py || true
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add glossary/ usecases/ og/ glossary.html feed.xml || true
+          git commit -m "auto: generated pages" || echo "No changes"
+          git push || true

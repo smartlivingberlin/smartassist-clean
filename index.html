@@ -15,29 +15,41 @@
 </nav>
 
 <main class="container">
-  <section class="hero">
-    <div class="panel">
-      <h1>Assistenz-Robotik & KI, verständlich.</h1>
-      <p>Finde Lösungen für Alltag, Pflege, Reha & Sport. Kuratierter Katalog, News, Partner – 100% ohne externe Chat-Skripte.</p>
-      <div class="kv">
-        <a class="btn" href="katalog.html">Zum Katalog</a>
-        <a class="btn btn-outline" href="usecases.html">Use-Cases</a>
-        <a class="btn btn-outline" href="partner.html">Partner</a>
-      </div>
-      <div style="margin-top:10px">
-        <span class="badge">Barrierefreiheit</span>
-        <span class="badge">Pflege</span>
-        <span class="badge">Reha & Sport</span>
-      </div>
-    </div>
+<section class="slider card">
+  <div class="slide">
     <div>
-      <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo" allowfullscreen></iframe>
-      <small class="muted">Kurzvideo: Assistenz-Robotik Ideen (Platzhalter, austauschbar)</small>
+      <h1>Neue Assistenz-Geräte im Katalog</h1>
+      <p>Exoskelette, Seh-Assistenz, Küchenhilfe – kuratiert & verständlich.</p>
+      <a class="btn" href="katalog.html">Katalog ansehen</a>
+      <a class="btn btn-outline" href="usecases.html">Use-Cases</a>
     </div>
+    <img src="https://picsum.photos/seed/assist1/900/560" alt="" loading="lazy" style="width:100%;border-radius:12px">
+  </div>
+  <div class="slide">
+    <div>
+      <h1>News mit Bild & Video</h1>
+      <p>Kurz & kuratiert – echte Bilder, YouTube-Teaser, Quellen.</p>
+      <a class="btn" href="news.html">Zu den News</a>
+      <a class="btn btn-outline" href="stories.html">Stories</a>
+    </div>
+    <img src="https://picsum.photos/seed/assist2/900/560" alt="" loading="lazy" style="width:100%;border-radius:12px">
+  </div>
+  <div class="slide">
+    <div>
+      <h1>Events & Messen</h1>
+      <p>Was läuft als Nächstes? CES, IFA, RoboCup & mehr – kompakt.</p>
+      <a class="btn" href="events.html">Eventkalender</a>
+    </div>
+    <img src="https://picsum.photos/seed/assist3/900/560" alt="" loading="lazy" style="width:100%;border-radius:12px">
+  </div>
+  <div class="dots"><div class="dot" data-dot></div><div class="dot" data-dot></div><div class="dot" data-dot></div></div>
+</section>
+  </section>
   </section>
 
   <section style="margin-top:22px">
     <div class="grid" id="rotator"></div>
+  </section>
   </section>
 </main>
 
@@ -60,4 +72,6 @@ async function rotator(){
 }
 rotator();
 </script>
+<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
+<script type="module">import{slider,videoModal} from "./assets/ui.js"; slider(".slider",6000); videoModal();</script>
 </body></html>

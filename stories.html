@@ -6,21 +6,39 @@
 <nav class="nav">
   <a class="nav-brand" href="index.html">SmartAssist</a>
   <a href="katalog.html">Katalog</a><a href="news.html">News</a><a href="partner.html">Partner</a>
-  <a href="usecases.html">Use-Cases</a><a href="stories.html"><strong>Stories</strong></a><a href="kontakt.html">Kontakt</a>
+  <a href="usecases.html">Use-Cases</a><a href="stories.html"><strong>Stories</strong></a><a href="events.html">Events</a>
 </nav>
 <main class="container">
   <h1>User-Stories & Praxis</h1>
-  <div class="card story">
-    <img src="https://picsum.photos/seed/pflege/320/180" alt="" style="width:180px;height:120px;border-radius:12px;object-fit:cover">
-    <div>
-      <h3>Mehr Selbstständigkeit im Alltag</h3>
-      <p class="muted">Ein Erfahrungsbericht aus der Pflege: Greifhilfe + Sensorik im Einsatz.</p>
-      <div class="kv"><a class="btn" href="usecases/gehilfe.html">Zum Use-Case</a><a class="btn btn-outline" href="katalog.html">Produkte</a></div>
+  <div class="grid">
+    <div class="card story">
+      <img src="https://picsum.photos/seed/story1/360/220" alt="" loading="lazy" style="border-radius:12px;object-fit:cover">
+      <div>
+        <h3>„Wieder alleine einkaufen“ – Seh-Assistenz im Test</h3>
+        <p class="muted">Wearable mit OCR & Hinderniserkennung im Alltag.</p>
+        <div class="kv"><a class="btn" href="usecases/sehhilfe.html">Use-Case</a><a class="btn btn-outline" href="katalog.html">Produkte</a><a class="btn" href="#" data-yt="ysz5S6PUM-U">Video</a></div>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <iframe class="video" src="https://www.youtube.com/embed/ysz5S6PUM-U" title="Story Video" allowfullscreen></iframe>
+    <div class="card story">
+      <img src="https://picsum.photos/seed/story2/360/220" alt="" loading="lazy" style="border-radius:12px;object-fit:cover">
+      <div>
+        <h3>„Ohne Hilfe aufstehen“ – Exoskelett zu Hause</h3>
+        <p class="muted">Leichtes Modell mit Apps & Übungsplänen.</p>
+        <div class="kv"><a class="btn" href="usecases/gehilfe.html">Use-Case</a><a class="btn btn-outline" href="katalog.html">Produkte</a></div>
+      </div>
+    </div>
+    <div class="card story">
+      <img src="https://picsum.photos/seed/story3/360/220" alt="" loading="lazy" style="border-radius:12px;object-fit:cover">
+      <div>
+        <h3>Küchen-Assistenz für Feinmotorik</h3>
+        <p class="muted">Greifen, wiegen, schneiden – mit Rezept-Coach.</p>
+        <div class="kv"><a class="btn" href="usecases/kochen.html">Use-Case</a><a class="btn btn-outline" href="katalog.html">Produkte</a></div>
+      </div>
+    </div>
   </div>
 </main>
 <footer class="footer">© 2025 SmartAssist</footer>
+
+<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
+<script type="module">import{videoModal} from "./assets/ui.js"; videoModal();</script>
 </body></html>
