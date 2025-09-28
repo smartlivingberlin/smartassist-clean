@@ -1,47 +1,29 @@
 <!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>News – SmartAssist</title>
-<link rel="stylesheet" href="assets/style.css"><meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/pages/news.html.svg">
-</head>
+<title>News & Stories – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"></head>
 <body>
-<nav class="nav">
-  <a class="nav-brand" href="index.html">SmartAssist</a>
-  <a href="katalog.html">Katalog</a><a href="news.html"><strong>News</strong></a>
-  <a href="partner.html">Partner</a><a href="usecases.html">Use-Cases</a>
-  <a href="stories.html">Stories</a><a href="events.html">Events</a><a href="kontakt.html">Kontakt</a>
-<a href="lead.html">📘 Guide</a>
-<a href="tags.html">Tags</a>
-</nav>
+<nav class="nav"><a class="nav-brand" href="index.html">SmartAssist</a><a href="news.html"><strong>News</strong></a></nav>
 <main class="container">
-  <h1>Neuigkeiten</h1>
-  <div id="newslist" class="grid"></div>
+  <article class="card">
+    <h1>News & Stories</h1>
+    <p class="muted">Kuratierte Entwicklungen aus Robotik, Assistenz und KI – verständlich erklärt, mit echten Anwendungsbeispielen.</p>
+  </article>
+  <section class="card">
+    <h2>Story der Woche</h2>
+    <p><strong>Worum geht’s?</strong> Wie Assistenzroboter den Alltag von Senior:innen konkret erleichtern.</p>
+    <p><strong>Warum ist das wichtig?</strong> Mehr Selbstständigkeit, Sicherheit und Entlastung für Angehörige.</p>
+    <p><strong>Und jetzt?</strong> <a href="topics.html">Relevante Produkte ansehen</a> oder <a href="partner-signup.html">Partner werden</a>.</p>
+  </section>
+  <section class="card">
+    <h2>Quellen</h2>
+    <ul id="feedlist"></ul>
+  </section>
 </main>
 <footer class="footer">© 2025 SmartAssist</footer>
-
-<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
-
-<script type="module">
-import {videoModal} from './assets/ui.js'; videoModal();
-const box=document.getElementById('newslist');
-fetch('data/news.json').then(r=>r.json()).then(items=>{
-  // sort desc by date
-  items.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-  box.innerHTML = items.map(n=>{
-    const img = n.image ? `<img src="${n.image}" alt="" loading="lazy" style="width:100%;border-radius:12px">` :
-      (n.youtube_id ? `<img src="https://img.youtube.com/vi/${n.youtube_id}/maxresdefault.jpg" alt="" loading="lazy" style="width:100%;border-radius:12px">` : '');
-    const videoBtn = n.youtube_id ? `<a class="btn" href="#" data-yt="${n.youtube_id}">Video ansehen</a>` : '';
-    return `<div class="card item">
-      ${img}
-      <div class="badge">${n.topic||'Allgemein'}</div>
-      <h3>${n.title}</h3>
-      <small class="muted">${n.date||''}</small>
-      <p>${n.summary||''}</p>
-      <div class="kv">
-        ${n.link?`<a class="btn btn-outline" href="${n.link}" target="_blank" rel="noopener">Quelle</a>`:''}
-        ${videoBtn}
-      </div>
-    </div>`;
-  }).join('') || '<div class="card">Noch keine News.</div>';
-}).catch(_=> box.innerHTML='<div class="card">Fehler beim Laden.</div>');
+<script>
+fetch('data/news_sources.json').then(r=>r.json()).then(d=>{
+  document.getElementById('feedlist').innerHTML = d.feeds.map(f=>`<li><a class="btn btn-outline" href="${f.url}" target="_blank" rel="noopener">${f.title}</a></li>`).join('');
+});
 </script>
 </body></html>

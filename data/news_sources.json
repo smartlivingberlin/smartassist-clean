@@ -1,0 +1,8 @@
+{
+  "feeds": [
+    {"title":"IEEE Spectrum Robotics","url":"https://spectrum.ieee.org/robotics/fulltext"},
+    {"title":"The Robot Report","url":"https://www.therobotreport.com/feed/"},
+    {"title":"TechCrunch Robotics","url":"https://techcrunch.com/tag/robotics/feed/"},
+    {"title":"MIT News – AI/Robotics","url":"https://news.mit.edu/topic/robotics?rss"}
+  ]
+}
