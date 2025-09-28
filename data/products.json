@@ -1,29 +1,38 @@
 [
   {
-    "id":"swimbot1",
-    "name":"Aqua Swimbot",
-    "brand":"RoboSwim",
-    "price":"€799",
-    "features":["Schwimmhilfe","App-Tracking","Akku 6h"],
-    "image":"https://picsum.photos/id/1011/600/400",
-    "link":"https://example.com/aqua-swimbot"
+    "name": "iRobot Roomba j7",
+    "brand": "iRobot",
+    "category": "Haushalt",
+    "tags": ["Staubsauger", "Smart-Home"],
+    "price_eur": 899,
+    "battery_wh": 50,
+    "range_km": null,
+    "image": "https://images.irobot.de/roomba-j7.jpg",
+    "link": "https://www.irobot.de/roomba-j7",
+    "reason": "Erkennt Hindernisse automatisch und leert den Staubbehälter selbständig – ideal für alle, die Zeit sparen wollen."
   },
   {
-    "id":"exo1",
-    "name":"ExoWalk Gehhilfe",
-    "brand":"ExoTech",
-    "price":"€12.500",
-    "features":["Exoskelett","Mobilität","Reichweite 15km"],
-    "video":"https://www.youtube.com/embed/2L_cGjQSR80",
-    "link":"https://example.com/exowalk"
+    "name": "DJI Osmo Pocket 3",
+    "brand": "DJI",
+    "category": "Kamera",
+    "tags": ["Kamera", "Outdoor", "Vlog"],
+    "price_eur": 599,
+    "battery_wh": 15,
+    "range_km": null,
+    "image": "https://store.dji.com/dji-osmo-pocket-3.jpg",
+    "link": "https://store.dji.com/osmo-pocket-3",
+    "reason": "Kompakte 4K-Kamera – ideal für Content Creator und Robotik-Demos."
   },
   {
-    "id":"vision1",
-    "name":"VisionPlus KI-Brille",
-    "brand":"SeeAI",
-    "price":"€2.499",
-    "features":["Sehhilfe","Sprachausgabe","Navigation"],
-    "image":"https://picsum.photos/id/1025/600/400",
-    "link":"https://example.com/visionplus"
+    "name": "Boston Dynamics Spot",
+    "brand": "Boston Dynamics",
+    "category": "Mobilität",
+    "tags": ["Roboterhund", "Industrie", "Outdoor"],
+    "price_eur": 75000,
+    "battery_wh": 200,
+    "range_km": 5,
+    "image": "https://www.bostondynamics.com/sites/default/files/Spot.jpg",
+    "link": "https://www.bostondynamics.com/spot",
+    "reason": "Extrem beweglich, vielseitig einsetzbar in Industrie und Forschung – bekanntester Roboterhund der Welt."
   }
 ]

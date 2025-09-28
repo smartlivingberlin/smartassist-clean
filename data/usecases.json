@@ -1,38 +1,14 @@
 [
   {
-    "slug": "gehilfe",
-    "title": "Gehilfe-Robotik",
-    "desc": "Exoskelette & Sensorik unterstützen beim Gehen und Aufstehen.",
-    "tags": ["gehilfe","mobilität","reha"]
+    "title": "Pflegeassistenz",
+    "description": "Roboter helfen beim Transport von Medikamenten und beim Heben von Patienten.",
+    "image": "https://picsum.photos/seed/pflege/600/300",
+    "tags": ["Pflege", "Krankenhaus"]
   },
   {
-    "slug": "sehhilfe",
-    "title": "Seh-Assistenz",
-    "desc": "Computer Vision & Wearables für Orientierung und OCR.",
-    "tags": ["sehhilfe","cv","navigation"]
-  },
-  {
-    "slug": "kochen",
-    "title": "Küchen-Assistenz",
-    "desc": "Rühren, Schneiden, Rezeptführung – weniger Hürden im Alltag.",
-    "tags": ["kochen","küche","alltag"]
-  },
-  {
-    "slug": "pflege",
-    "title": "Pflege-Assistenz",
-    "desc": "Transfer, Sturzprävention & Monitoring im Pflegealltag.",
-    "tags": ["pflege","transfer","mobilität"]
-  },
-  {
-    "slug": "sport-reha",
-    "title": "Sport-/Reha-Robotik",
-    "desc": "Training & Analyse mit Wearables und Robotik.",
-    "tags": ["sport","reha","analyse"]
-  },
-  {
-    "slug": "smart-home",
-    "title": "Smart-Home-Robotik",
-    "desc": "Mobile Heimroboter für Sicherheit und einfache Aufgaben.",
-    "tags": ["smart-home","lidar","navigation","alltag"]
+    "title": "Logistik & Lager",
+    "description": "Autonome Roboter bewegen Waren effizient in großen Lagerhallen.",
+    "image": "https://picsum.photos/seed/logistik/600/300",
+    "tags": ["Logistik", "Industrie"]
   }
 ]

@@ -1,23 +1,14 @@
 [
   {
-    "name": "Robodo AG",
-    "type": "Hersteller",
-    "focus": "Pflege",
-    "country": "CH",
-    "link": "https://robodo.ch"
+    "name": "Fraunhofer IPA",
+    "logo": "https://picsum.photos/seed/fraunhofer/200/100",
+    "link": "https://www.ipa.fraunhofer.de",
+    "description": "Führendes Forschungsinstitut für Robotik und Automatisierung in Europa."
   },
   {
-    "name": "AssistLab GmbH",
-    "type": "Hersteller",
-    "focus": "Pflege & Reha",
-    "link": "https://example.com",
-    "country": "DE"
-  },
-  {
-    "name": "RoboMotion Store",
-    "type": "Händler",
-    "focus": "Alltag & Haushalt",
-    "link": "https://example.com/shop",
-    "country": "DE"
+    "name": "Robotics Hub Berlin",
+    "logo": "https://picsum.photos/seed/berlinhub/200/100",
+    "link": "https://www.robotics-hub.de",
+    "description": "Startup-Netzwerk rund um Robotik, KI und Assistenzsysteme."
   }
 ]
