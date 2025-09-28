@@ -1,0 +1,44 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News-Timeline – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.timeline{border-left:3px solid #e5e7eb;margin:2rem 0;padding-left:1rem}
+.entry{position:relative;margin-bottom:1.5rem}
+.entry::before{content:"";position:absolute;left:-1.05rem;top:.3rem;width:.9rem;height:.9rem;background:#2563eb;border-radius:50%}
+.entry h3{margin:.2rem 0}
+.entry time{font-size:.85em;color:#64748b}
+</style>
+</head><body>
+<nav class="nav"><a href="index.html">🏠</a> <a href="news.html">News</a> <a href="news-archive.html">Archiv</a> <a href="news-timeline.html"><strong>Timeline</strong></a></nav>
+<main class="container">
+  <h1>News-Timeline</h1>
+  <p class="muted">Alle Meldungen nach Monat/Jahr gruppiert – wie ein Zeitstrahl.</p>
+  <div id="timeline" class="timeline"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+async function load(){
+  const data=await fetch('data/news-archive.json').then(r=>r.json());
+  const items=data.sort((a,b)=>new Date(b.published)-new Date(a.published));
+  const groups={};
+  items.forEach(x=>{
+    const d=new Date(x.published||Date.now());
+    const key=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+    (groups[key]=groups[key]||[]).push(x);
+  });
+  const c=document.getElementById('timeline');
+  c.innerHTML=Object.entries(groups).map(([ym,list])=>{
+    const [y,m]=ym.split("-");
+    const label=new Date(y,m-1,1).toLocaleDateString("de-DE",{month:"long",year:"numeric"});
+    return `<div class="entry"><h2>${label}</h2>`+
+      list.map(x=>`<div class="card"><h3><a href="${x.link}" target="_blank" rel="noopener">${x.title}</a></h3>
+        <time>${x.source} – ${x.published}</time>
+        <p>${x.summary}</p></div>`).join("")+
+    `</div>`;
+  }).join("");
+}
+load();
+</script>
+</body></html>
