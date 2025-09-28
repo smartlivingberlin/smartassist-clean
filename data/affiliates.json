@@ -1,11 +1,11 @@
 {
   "brand_params": {
-    "BostonDynamics": "ref=bd-smartassist&utm_source=smartassist&utm_campaign=summer25",
+    "iRobot": "cid=irobot-partner&utm_campaign=cleaning2025&utm_source=smartassist",
     "DJI": "utm_source=smartassist&utm_medium=aff&utm_campaign=drones2025",
-    "iRobot": "cid=irobot-partner&utm_campaign=cleaning",
-    "ExoMotion": "ref=smartassist-exo&utm_source=smartassist",
-    "CareTech": "partner=smartassist-care&utm_campaign=health",
-    "AquaAI": "ref=aquaai-smartassist&utm_campaign=waterbots"
+    "BostonDynamics": "ref=bd-smartassist&utm_campaign=spot2025",
+    "ExoMotion": "ref=smartassist-exo&utm_campaign=mobility2025",
+    "CareTech": "partner=smartassist-care&utm_campaign=health2025",
+    "AquaAI": "ref=aquaai-smartassist&utm_campaign=swimbots2025"
   },
   "domain_fallback": {
     "amazon.": "tag=smartassist-21",
