@@ -15,10 +15,10 @@ function loadStories(){
     });
   });
 }
-function startStories(){
+function startStories(force){
   if(!stories.length){loadStories();setTimeout(startStories,1000);return;}
   const ov=document.querySelector(".story-overlay");
-  ov.style.display="flex";
+  ov.style.display="flex"; if(force){showStory();return;}
   storyIndex=0; showStory();
 }
 function showStory(){
