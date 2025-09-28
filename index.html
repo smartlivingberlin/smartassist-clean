@@ -2,117 +2,50 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SmartAssist – Assistenz & Robotik | Katalog, News, Partner</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartAssist – Assistenz & Robotik</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="canonical" href="https://smartlivingberlin.github.io/smartassist-clean/index.html">
-
-  <!-- Social Previews -->
+  <link rel="canonical" href="https://smartlivingberlin.github.io/smartassist-clean/">
   <meta property="og:site_name" content="SmartAssist">
   <meta property="og:title" content="SmartAssist – Assistenz & Robotik">
-  <meta property="og:description" content="Assistenz-Robotik & KI: Katalog, News, Partner – schnell, sauber, sicher.">
-  <meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/index.svg">
+  <meta property="og:description" content="Katalog, News & Partner für Robotik, KI & Smart Living.">
+  <meta property="og:image" content="https://picsum.photos/seed/smartassist/1200/630">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- PWA / Icons -->
-  <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="https://fav.farm/🤖">
-
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"SmartAssist",
-    "url":"https://smartlivingberlin.github.io/smartassist-clean/",
-    "logo":"https://fav.farm/🤖"
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SmartAssist",
+    "url": "https://smartlivingberlin.github.io/smartassist-clean/",
+    "logo": "https://fav.farm/🤖"
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"SmartAssist",
-    "url":"https://smartlivingberlin.github.io/smartassist-clean/",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://smartlivingberlin.github.io/smartassist-clean/katalog.html?q={search_term_string}",
-      "query-input":"required name=search_term_string"
-    }
-  }
-  </script>
-<link rel="preload" as="image" href="https://picsum.photos/seed/smartassist/1200/630">
-<link rel="stylesheet" href="assets/theme-variants.css">
 </head>
 <body>
-  <nav class="nav">
-    <strong>SmartAssist</strong>
-    <a href="katalog.html" data-track="nav:katalog" data-id="nav:katalog">Katalog</a>
-    <a href="news.html" data-track="nav:news" data-id="nav:news">News</a>
-    <a href="partner.html">Partner</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="usecases.html">Use-Cases</a>
-   <a href="events.html">Events</a></nav>
+<nav class="nav">
+  <strong>SmartAssist</strong>
+  <a href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a href="partner.html">Partner</a>
+  <a href="kontakt.html">Kontakt</a>
+  <a href="usecases.html">Use-Cases</a>
+</nav>
 
-  <main class="container">
-    <div class="card reveal">
-      <h1>Assistenz-Robotik & KI – Überblick</h1>
-      <p>Kuratierter Katalog, News & Partner – ohne externe Skripte. Schnell, sauber, sicher.</p>
-      <div class="kv">
-        <a class="badge" href="katalog.html" data-track="nav:katalog" data-id="nav:katalog">Start: Katalog</a>
-        <a class="badge" href="news.html" data-track="nav:news" data-id="nav:news">Neu: News</a>
-      </div>
-    </div>
+<main class="container">
+  <div class="card">
+    <h1>Assistenz-Robotik & KI – Überblick</h1>
+    <p>Kuratierter Katalog, News & Partner – schnell, sauber, sicher.</p>
+    <a class="badge" href="katalog.html">Zum Katalog</a>
+    <a class="badge" href="news.html">Neu: News</a>
+  </div>
+</main>
 
-    <div class="card reveal">
-      <h2>🔥 Trending-Produkte</h2>
-      <div id="trending" class="grid"></div>
-    </div>
-
-    <section class="card reveal">
-      <h2>📘 Robotics-Guide</h2>
-      <p>Exklusiver PDF-Leitfaden „Assistenz-Robotik 2026“ – gratis gegen E-Mail.</p>
-      <a class="btn" href="lead.html">Jetzt anfordern</a>
-    </section>
-  </main>
-
-  <footer class="footer">© 2025 SmartAssist</footer>
-
-  <!-- kleine Helfer -->
-  <script src="assets/reveal.js"></script>
-  <script src="assets/trending.js"></script>
-  <script>
-    // Trending-Block füllen (falls Daten vorhanden)
-    fetch("data/products.json").then(r=>r.json()).then(p=>{
-      if(!window.renderTrending) return;
-      const t=renderTrending(p);
-      const el=document.getElementById("trending");
-      if(el) el.innerHTML = t.map(x=>`
-        <div class="card item">
-          <h3>${x.name}</h3>
-          <p class="muted">${x.helps||x.reason||""}</p>
-          ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||''}" href="${x.link}" target="_blank" rel="noopener">Website</a>`:""}
-          ${x.slug?`<a class="btn" href="product/${x.slug}.html">Details</a>`:""}
-        </div>`).join("");
-    }).catch(()=>{});
-  </script>
-  <script src="assets/affiliates.js"></script>
-  <script src="assets/audit.js"></script>
-  <script src="assets/theme-extended.js"></script>
-  <script src="assets/imgsizes.js"></script>
-
-  <!-- PWA SW registrieren (falls vorhanden) -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      try { navigator.serviceWorker.register("sw.js"); } catch(e) {}
-    }
-  </script>
-<link rel="stylesheet" href="assets/story.css">
-<script src="assets/story.js"></script>
-<script src="assets/theme.js"></script>
-<script src="assets/palette.js"></script>
-<script src="assets/onboarding.js"></script>
-<script src="assets/img-auto.js"></script>
+<footer>© 2025 SmartAssist</footer>
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
 </body>
 </html>
