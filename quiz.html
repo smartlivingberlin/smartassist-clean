@@ -3,7 +3,7 @@
 <title>Welcher Roboter passt zu mir? – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css"></head>
 <body>
-<nav class="nav"><a class="nav-brand" href="index.html">SmartAssist</a><a href="quiz.html"><strong>Quiz</strong></a></nav>
+<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/quiz.html"><strong>Quiz</strong></a></nav>
 <main class="container">
   <h1>Welcher Roboter passt zu mir?</h1>
   <div class="card">
@@ -31,9 +31,9 @@ document.getElementById('go').onclick=async ()=>{
   document.getElementById('suggest').innerHTML= match.map(x=>`
     <div class="card"><h3>${x.name}</h3><p class="muted">${x.helps||x.reason||''}</p>
       ${x.link?`<a class="btn btn-outline" href="${x.link}" data-aff-brand="${x.brand}" target="_blank" rel="noopener">Website</a>`:''}
-      ${x.slug?`<a class="btn" href="product/${x.slug}.html">Details</a>`:''}
+      ${x.slug?`<a class="btn" href="/smartassist-clean/product/${x.slug}.html">Details</a>`:''}
     </div>`).join('') || '<div class="card">Keine direkten Treffer – pushe mehr Produkte / Tags.</div>';
 };
 </script>
-<script src="assets/affiliates.js"></script>
+<script src="/smartassist-clean/assets/affiliates.js"></script>
 </body></html>

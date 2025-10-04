@@ -5,9 +5,9 @@
 <link rel="manifest" href="manifest.webmanifest">
 </head><body>
 <nav class="nav">
-  <a href="index.html">SmartAssist</a>
-  <a href="katalog.html"><strong>Katalog</strong></a>
-  <a href="news.html">News</a><a href="partner.html">Partner</a><a href="kontakt.html">Kontakt</a>
+  <a href="/smartassist-clean/index.html">SmartAssist</a>
+  <a href="/smartassist-clean/katalog.html"><strong>Katalog</strong></a>
+  <a href="/smartassist-clean/news.html">News</a><a href="/smartassist-clean/partner.html">Partner</a><a href="/smartassist-clean/kontakt.html">Kontakt</a>
 </nav>
 <main class="container">
   <h1>Katalog</h1>
@@ -26,6 +26,6 @@ fetch('data/products.json').then(r=>r.json()).then(items=>{
     </div>`).join('');
 }).catch(_=>{document.getElementById('grid').innerHTML='<div class="card">Keine Daten.</div>';});
 </script>
-<script src="assets/product-schema.js"></script>
+<script src="/smartassist-clean/assets/product-schema.js"></script>
 <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body></html>
