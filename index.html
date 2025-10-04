@@ -1,52 +1,60 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SmartAssist – Assistenz & Robotik</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="canonical" href="https://smartlivingberlin.github.io/smartassist-clean/">
-  <meta property="og:site_name" content="SmartAssist">
-  <meta property="og:title" content="SmartAssist – Assistenz & Robotik">
-  <meta property="og:description" content="Katalog, News & Partner für Robotik, KI & Smart Living.">
-  <meta property="og:image" content="https://picsum.photos/seed/smartassist/1200/630">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="https://fav.farm/🤖">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SmartAssist",
-    "url": "https://smartlivingberlin.github.io/smartassist-clean/",
-    "logo": "https://fav.farm/🤖"
-  }
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartAssist – Assistenz & Robotik 2025</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="https://fav.farm/🤖">
 </head>
 <body>
-<nav class="nav">
-  <strong>SmartAssist</strong>
-  <a href="/smartassist-clean/katalog.html">Katalog</a>
-  <a href="/smartassist-clean/news.html">News</a>
-  <a href="/smartassist-clean/partner.html">Partner</a>
-  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
-  <a href="/smartassist-clean/usecases.html">Use-Cases</a>
-  <a href="/smartassist-clean/events.html">Events</a>
+
+<header class="hero">
+  <h1>🤖 SmartAssist</h1>
+  <p>Assistenz · Robotik · KI – einfach erklärt & erlebbar</p>
+  <div class="buttons">
+    <a href="katalog.html" class="btn">Zum Katalog</a>
+    <a href="news.html" class="btn secondary">Aktuelle News</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="index.html" class="active">Home</a>
+  <a href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a href="partner.html">Partner</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
 
-<main class="container">
+<main>
+<section id="intro" class="fadein">
+  <h2>Willkommen bei SmartAssist</h2>
+  <p>Hier triff Innovation auf Alltag. Erfahre mehr über smarte Hilfen in Pflege, Mobilität und Smart Home.</p>
+</section>
+
+<section id="features" class="grid fadein">
   <div class="card">
-    <h1>Assistenz-Robotik & KI – Überblick</h1>
-    <p>Kuratierter Katalog, News & Partner – schnell, sauber, sicher.</p>
-    <a class="badge" href="/smartassist-clean/katalog.html">Zum Katalog</a>
-    <a class="badge" href="/smartassist-clean/news.html">Neu: News</a>
+    <img src="https://picsum.photos/400/200?robot" alt="Assistenz-Roboter">
+    <h3>Assistenz-Roboter</h3>
+    <p>Von Servicerobotern bis Reha-Systemen – Technik mit Herz und Verstand.</p>
   </div>
+  <div class="card">
+    <img src="https://picsum.photos/400/200?ai" alt="KI im Alltag">
+    <h3>KI im Alltag</h3>
+    <p>Künstliche Intelligenz macht uns effizienter – ob im Haushalt oder im Job.</p>
+  </div>
+  <div class="card">
+    <img src="https://picsum.photos/400/200?tech" alt="Smart Living">
+    <h3>Smart Living</h3>
+    <p>Automatisierung, Nachhaltigkeit und Komfort für jedes Zuhause.</p>
+  </div>
+</section>
 </main>
 
-<footer>© 2025 SmartAssist</footer>
-<script>
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("sw.js");
-}
-</script>
+<footer>
+  <p>© 2025 SmartAssist · <a href="impressum.html">Impressum</a></p>
+</footer>
+
+<script src="assets/main.js"></script>
 </body>
 </html>
