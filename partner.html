@@ -1,26 +1,53 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Partner – SmartAssist</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<nav class="nav">
-  <a href="/smartassist-clean/index.html">Start</a>
-  <a href="/smartassist-clean/katalog.html">Katalog</a>
-  <a href="/smartassist-clean/news.html">News</a>
-  <a href="/smartassist-clean/partner.html">Partner</a>
-  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
-  <a href="/smartassist-clean/usecases.html">Use-Cases</a>
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partner – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a class="active" href="partner.html">Partner</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
-<main class="container">
-  <h1>Partner</h1>
-  <p>Hier findest du Partner, Kooperationen und Netzwerke.</p>
-  <div id="partners"></div>
-  <script src="/smartassist-clean/assets/partners.js"></script>
+
+<main>
+  <h1>Partner & Ökosystem</h1>
+  <p class="notice">Wir vernetzen Hersteller, Händler, Forschung & Anwender.</p>
+
+  <h2>Logowand</h2>
+  <div class="logo-wall" id="logos"></div>
+
+  <h2 style="margin-top:1.2rem">Ausgewählte Partner</h2>
+  <div class="grid" id="partners"></div>
 </main>
-<footer>© 2025 SmartAssist</footer>
-</body>
-</html>
+
+<footer><p>© 2025 SmartAssist</p></footer>
+<script>
+const logos=[
+  {name:"RoboHealth", logo:"https://dummyimage.com/300x100/edf/333&text=RoboHealth", link:"#"},
+  {name:"NeuroVision", logo:"https://dummyimage.com/300x100/edf/333&text=NeuroVision", link:"#"},
+  {name:"MediRobotics", logo:"https://dummyimage.com/300x100/edf/333&text=MediRobotics", link:"#"},
+  {name:"AMR Tech", logo:"https://dummyimage.com/300x100/edf/333&text=AMR+Tech", link:"#"}
+];
+document.getElementById('logos').innerHTML = logos.map(l=>`
+  <a href="${l.link}" class="logo-card" title="${l.name}" target="_blank" rel="noopener">
+    <img src="${l.logo}" alt="${l.name}" style="max-width:78%;max-height:60px">
+  </a>`).join('');
+
+const partners=[
+  {name:"RoboHealth", desc:"Exoskelette & Assistenzsysteme für Pflege & Reha.", img:"https://picsum.photos/seed/ph1/600/360"},
+  {name:"NeuroVision", desc:"VR/AR-Lösungen für Training & Navigation.", img:"https://picsum.photos/seed/ph2/600/360"},
+  {name:"MediRobotics", desc:"Serviceroboter für Klinik, Logistik & Haushalt.", img:"https://picsum.photos/seed/ph3/600/360"}
+];
+document.getElementById('partners').innerHTML = partners.map(p=>`
+  <div class="card">
+    <img src="${p.img}" alt="${p.name}">
+    <div style="padding:12px">
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <a class="btn secondary" href="kontakt.html">Kontakt aufnehmen</a>
+    </div>
+  </div>`).join('');
+</script>
+</body></html>

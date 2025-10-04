@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt – SmartAssist</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav">
+  <a href="/smartassist-clean/index.html">Start</a>
+  <a href="/smartassist-clean/katalog.html">Katalog</a>
+  <a href="/smartassist-clean/news.html">News</a>
+  <a href="/smartassist-clean/partner.html">Partner</a>
+  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
+  <a href="/smartassist-clean/usecases.html">Use-Cases</a>
+</nav>
+<main class="container">
+  <h1>Kontakt</h1>
+  <form action="https://formspree.io/f/mnqeygpr" method="POST">
+    <label>Name:<br><input type="text" name="name" required></label><br>
+    <label>Email:<br><input type="email" name="email" required></label><br>
+    <label>Nachricht:<br><textarea name="message" required></textarea></label><br>
+    <button type="submit">Senden</button>
+  </form>
+</main>
+<footer>© 2025 SmartAssist</footer>
+</body>
+</html>
