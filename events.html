@@ -1,41 +1,52 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Events & Messen – SmartAssist</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <style>
-    .chips{margin-top:.25rem}
-    .chip{display:inline-block;padding:.2rem .5rem;border:1px solid var(--border,#e2e8f0);
-      border-radius:999px;font-size:.8rem;margin-right:.3rem}
-  </style>
-</head>
-<body>
-<nav class="nav">
-  <a href="/smartassist-clean/index.html">Start</a>
-  <a href="/smartassist-clean/katalog.html">Katalog</a>
-  <a href="/smartassist-clean/news.html">News</a>
-  <a href="/smartassist-clean/partner.html">Partner</a>
-  <a href="/smartassist-clean/events.html"><strong>Events</strong></a>
-  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Events – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="navbar">
+  <a href="index.html">Home</a><a href="katalog.html">Katalog</a>
+  <a href="news.html">News</a><a href="partner.html">Partner</a>
+  <a class="active" href="events.html">Events</a>
 </nav>
-
-<main class="container">
-  <h1>Events & Messen</h1>
-  <p class="muted">Robotics/Assistenz – anstehende Termine. ⭐ mit einem Klick merken, dann als iCal exportieren.</p>
-
-  <div class="card" style="display:flex;gap:8px;flex-wrap:wrap">
-    <button class="btn" onclick="SAEvents.exportAll()">📅 iCal exportieren – Alle</button>
-    <button class="btn btn-outline" onclick="SAEvents.exportFavs()">📅 iCal – nur Bookmarks ⭐</button>
-  </div>
-
-  <section id="elist" class="grid" aria-live="polite">
-    <p class="muted">Laden…</p>
-  </section>
+<main>
+  <h1>Messen & Konferenzen</h1>
+  <div id="events" class="news-grid"></div>
+  <button id="dl" class="btn" style="margin-top:1rem">Bevorstehende als .ics laden</button>
 </main>
+<footer><p>© 2025 SmartAssist</p></footer>
+<script>
+(async function(){
+  const ev=await fetch('data/events.json').then(r=>r.json()).catch(()=>[]);
+  const box=document.getElementById('events');
+  const upcoming = ev.filter(e=> new Date(e.end)>=new Date());
+  box.innerHTML = upcoming.map(e=>`
+    <article class="news-card">
+      <img src="https://picsum.photos/seed/${encodeURIComponent(e.title)}/800/400">
+      <div class="body">
+        <h3>${e.title}</h3>
+        <p class="muted">${e.city} · ${e.start}–${e.end}</p>
+        <a class="btn" href="${e.url}" target="_blank" rel="noopener">Website</a>
+      </div>
+    </article>`).join('');
 
-<footer class="footer">© 2025 SmartAssist</footer>
-<script src="/smartassist-clean/assets/events.js"></script>
-</body>
-</html>
+  document.getElementById('dl').onclick=function(){
+    const esc=s=>s.replace(/[,;]/g,'');
+    const lines=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//SmartAssist//Events//DE"];
+    upcoming.forEach(e=>{
+      lines.push(
+        "BEGIN:VEVENT",
+        "SUMMARY:"+esc(e.title),
+        "DTSTART;VALUE=DATE:"+e.start.replace(/-/g,''),
+        "DTEND;VALUE=DATE:"+e.end.replace(/-/g,''),
+        "LOCATION:"+esc(e.city),
+        "URL:"+e.url,
+        "END:VEVENT"
+      );
+    });
+    lines.push("END:VCALENDAR");
+    const blob=new Blob([lines.join("\r\n")],{type:"text/calendar"});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download="smartassist-events.ics"; a.click();
+  };
+})();
+</script>
+</body></html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Events & Messen – SmartAssist</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .chips{margin-top:.25rem}
+    .chip{display:inline-block;padding:.2rem .5rem;border:1px solid var(--border,#e2e8f0);
+      border-radius:999px;font-size:.8rem;margin-right:.3rem}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/smartassist-clean/index.html">Start</a>
+  <a href="/smartassist-clean/katalog.html">Katalog</a>
+  <a href="/smartassist-clean/news.html">News</a>
+  <a href="/smartassist-clean/partner.html">Partner</a>
+  <a href="/smartassist-clean/events.html"><strong>Events</strong></a>
+  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
+</nav>
+
+<main class="container">
+  <h1>Events & Messen</h1>
+  <p class="muted">Robotics/Assistenz – anstehende Termine. ⭐ mit einem Klick merken, dann als iCal exportieren.</p>
+
+  <div class="card" style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn" onclick="SAEvents.exportAll()">📅 iCal exportieren – Alle</button>
+    <button class="btn btn-outline" onclick="SAEvents.exportFavs()">📅 iCal – nur Bookmarks ⭐</button>
+  </div>
+
+  <section id="elist" class="grid" aria-live="polite">
+    <p class="muted">Laden…</p>
+  </section>
+</main>
+
+<footer class="footer">© 2025 SmartAssist</footer>
+<script src="/smartassist-clean/assets/events.js"></script>
+</body>
+</html>

@@ -1,16 +1,5 @@
 [
-  {
-    "title": "CES 2025: Neue Service-Roboter vorgestellt",
-    "date": "2025-01-15",
-    "image": "https://picsum.photos/seed/ces2025/600/300",
-    "link": "https://www.ces.tech",
-    "summary": "Auf der CES 2025 wurden über 30 neue Assistenz- und Serviceroboter präsentiert."
-  },
-  {
-    "title": "Pflege & KI: Neue Studien zur Entlastung",
-    "date": "2025-03-10",
-    "image": "https://picsum.photos/seed/pflege2025/600/300",
-    "link": "https://www.bundesgesundheitsministerium.de/",
-    "summary": "KI-gestützte Pflegeassistenten könnten die Arbeitslast in Kliniken um bis zu 25% reduzieren."
-  }
+  {"title":"Pflege-Roboter in Kliniken entlasten Personal","source":"Fachpresse","image":"https://picsum.photos/seed/n1/900/450","link":"https://example.com/pflege-roboter"},
+  {"title":"VR-Training beschleunigt Reha-Fortschritte","source":"Techblog","image":"https://picsum.photos/seed/n2/900/450","link":"https://example.com/vr-reha"},
+  {"title":"AMR-Flotten steigern Effizienz im Lager","source":"Logistik Heute","image":"https://picsum.photos/seed/n3/900/450","link":"https://example.com/amr-lager"}
 ]

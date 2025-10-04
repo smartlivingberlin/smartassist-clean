@@ -1,0 +1,32 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Katalog – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a class="active" href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a href="partner.html">Partner</a>
+  <a href="kontakt.html">Kontakt</a>
+</nav>
+
+<main>
+  <h1>Produkt-Katalog</h1>
+  <p class="notice">Filtere nach Tags und vergleiche Produkte (client-seitig, ohne Server).</p>
+
+  <div id="chips" class="chips"></div>
+  <div id="catalog" class="grid"></div>
+
+  <div id="compareBar" class="compare-bar">
+    <strong id="cmpCount">0</strong> ausgewählt
+    <button class="btn" id="cmpShow">Vergleich anzeigen</button>
+    <button class="btn secondary" id="cmpClear">Leeren</button>
+  </div>
+
+  <div id="cmpOut" class="compare-table"></div>
+</main>
+
+<footer><p>© 2025 SmartAssist</p></footer>
+<script src="assets/katalog-lite.js"></script>
+</body></html>
