@@ -17,9 +17,7 @@
 </main>
 
 <footer><p>© 2025 SmartAssist</p></footer>
-<script src="assets/media.js"></script>
 <script>
-const {imgUrl,altText}=SA_MEDIA;
 const demo=[
   {title:"Pflege-Roboter unterstützen Kliniklogistik", img:"https://picsum.photos/seed/news1/800/400", src:"Fachpresse", link:"https://example.com/pflege-roboter"},
   {title:"Exoskelette entlasten Mitarbeitende im Alltag", img:"https://picsum.photos/seed/news2/800/400", src:"Industrie Magazin", link:"https://example.com/exoskelette"},

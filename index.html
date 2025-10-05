@@ -3,64 +3,156 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SmartAssist – Assistenz & Robotik 2025</title>
-<link rel="stylesheet" href="assets/style.css">
+<title>SmartAssist – Assistenz · Robotik · KI</title>
+<meta name="description" content="SmartAssist ist das Showroom-Portal für Assistenz-Robotik: Produkte, News, Partner & Events – kuratiert und verständlich.">
 <link rel="icon" href="https://fav.farm/🤖">
-<meta property="og:site_name" content="SmartAssist">
-<meta property="og:title" content="SmartAssist – Assistenz </head> Robotik">
-<meta property="og:description" content="Katalog, News, Partner </head> Events rund um Assistenz-Robotik und Smart-Home.">
-<meta property="og:image" content="https://picsum.photos/seed/smartassist/1200/630">
+<link rel="stylesheet" href="assets/style.css">
+<meta property="og:title" content="SmartAssist – Assistenz · Robotik · KI">
+<meta property="og:description" content="Showroom-Portal für Assistenz-Robotik mit Katalog, News, Partner & Events.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1581091014534-7f3c0d3d9b83?q=80&w=1200">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
-<header class="hero">
-  <h1>🤖 SmartAssist</h1>
-  <p>Assistenz · Robotik · KI – einfach erklärt & erlebbar</p>
-  <div class="buttons">
-    <a href="katalog.html" class="btn">Zum Katalog</a>
-    <a href="news.html" class="btn secondary">Aktuelle News</a>
+<!-- NAV -->
+<div class="navbar">
+  <div class="container inner">
+    <div class="brand">🤖 SmartAssist</div>
+    <a class="active" href="index.html">Start</a>
+    <a href="katalog.html">Katalog</a>
+    <a href="news.html">News</a>
+    <a href="partner.html">Partner</a>
+    <a href="events.html">Events</a>
+    <a href="kontakt.html">Kontakt</a>
+    <div class="spacer"></div>
+    <a href="#kontakt" class="btn secondary">Beratung</a>
   </div>
-</header>
+</div>
 
-<nav class="navbar">
-  <a href="index.html" class="active">Home</a>
-  <a href="katalog.html">Katalog</a>
-  <a href="news.html">News</a>
-  <a href="partner.html">Partner</a>
-  <a href="kontakt.html">Kontakt</a>
-  <a href="events.html" style="margin-left:auto">Events</a>
-</nav>
-
-<main>
-<section id="intro" class="fadein">
-  <h2>Willkommen bei SmartAssist</h2>
-  <p>Hier trifft Innovation auf Alltag. Erfahre mehr über smarte Hilfen in Pflege, Mobilität und Smart Home.</p>
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline src="assets/videos/hero.mp4"></video>
+  <div class="container wrap">
+    <div>
+      <div class="badge">Showroom-Edition 2025</div>
+      <h1>Technologie, die hilft.<br>Assistenz · Robotik · KI</h1>
+      <p class="lead">Wir kuratieren Produkte, erklären Anwendungsfälle und verbinden dich mit Partnern – von Pflege-Exoskeletten bis Smart-Home-Automation.</p>
+      <div class="cta-row">
+        <a class="btn" href="katalog.html">Katalog ansehen <img src="assets/icons/arrow-right.svg" alt=""></a>
+        <a class="btn secondary" href="news.html">Aktuelle Meldungen</a>
+      </div>
+      <div class="kpis" style="margin-top:14px">
+        <div class="kpi"><strong>+20</strong><br>Produkte (Start)</div>
+        <div class="kpi"><strong>Wöch.</strong><br>News-Update</div>
+        <div class="kpi"><strong>Top</strong><br>Partner-Netzwerk</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1596495578065-8a37e9f9f6b9?q=80&w=1200" alt="Exoskelett Pflege">
+        <h3>Pflege-Exoskelette</h3>
+        <p>Entlastung bei Transfers & Heben – mit intelligenten Sicherheitssystemen.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1200" alt="AR/VR Reha">
+        <h3>AR/VR Assistenz</h3>
+        <p>Reha-Training, Navigation & Motivation durch visuelle Overlays.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200" alt="AMR Logistik">
+        <h3>Mobile Robotik (AMR)</h3>
+        <p>Autonome Transporte in Klinik, Lager und Service-Umgebungen.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="features" class="grid fadein">
-  <div class="card">
-    <img src="https://picsum.photos/400/200?robot" alt="Assistenz-Roboter">
-    <h3>Assistenz-Roboter</h3>
-    <p>Von Servicerobotern bis Reha-Systemen – Technik mit Herz und Verstand.</p>
-  </div>
-  <div class="card">
-    <img src="https://picsum.photos/400/200?ai" alt="KI im Alltag">
-    <h3>KI im Alltag</h3>
-    <p>Künstliche Intelligenz macht uns effizienter – ob im Haushalt oder im Job.</p>
-  </div>
-  <div class="card">
-    <img src="https://picsum.photos/400/200?tech" alt="Smart Living">
-    <h3>Smart Living</h3>
-    <p>Automatisierung, Nachhaltigkeit und Komfort für jedes Zuhause.</p>
+<!-- SECTION: PRODUKT-TEASER -->
+<section class="section">
+  <div class="container">
+    <h2>Aus dem Katalog</h2>
+    <p class="sub">Schneller Überblick über ausgewählte Produkte. Alle Daten client-seitig – ohne Tracking, ohne Cookies.</p>
+    <div id="prod" class="grid"></div>
+    <div style="margin-top:12px">
+      <a class="btn" href="katalog.html">Zum Produkt-Vergleich</a>
+    </div>
   </div>
 </section>
-</main>
 
-<footer>
-  <p>© 2025 SmartAssist · <a href="impressum.html">Impressum</a></p>
+<!-- SECTION: NEWS -->
+<section class="section">
+  <div class="container">
+    <h2>News & Hintergründe</h2>
+    <p class="sub">Aktuelle Meldungen aus Pflege, Smart-Home, AR/VR und mobiler Robotik.</p>
+    <div id="news" class="grid"></div>
+    <div style="margin-top:12px">
+      <a class="btn secondary" href="news.html">Alle Meldungen</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: PARTNER -->
+<section class="section">
+  <div class="container">
+    <h2>Partner-Ökosystem</h2>
+    <p class="sub">Hersteller, Forschung & Händler – für Beratung, Pilotprojekte & Einkauf.</p>
+    <div id="logos" class="grid"></div>
+    <div class="hr"></div>
+    <div id="kontakt" class="feature-list">
+      <div class="feature">
+        <h3>Beratung anfragen</h3>
+        <p class="muted">Wir helfen beim Vergleich, bei Tests und bei der Einführung im Alltag.</p>
+        <p><a class="btn" href="kontakt.html">Kontakt aufnehmen</a></p>
+      </div>
+      <div class="feature">
+        <h3>Partner werden</h3>
+        <p class="muted">Hersteller & Händler: Stellen Sie Ihre Assistenz-Technologien vor.</p>
+        <p><a class="btn secondary" href="partner.html">Partnerbereich</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    © 2025 SmartAssist · <span class="muted">Kuratiert, unabhängig & verständlich.</span>
+  </div>
 </footer>
 
-<script src="assets/main.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(async function(){
+  // Produkte laden
+  const P = await fetch('data/products.json').then(r=>r.json()).catch(()=>[]);
+  const prod=document.getElementById('prod');
+  prod.innerHTML = P.slice(0,4).map(p=>`
+    <div class="card">
+      <img src="${p.image}" alt="${p.name} – ${p.brand}">
+      <h3>${p.name}</h3>
+      <p class="muted">${p.brand} · ${p.category}</p>
+      <p>${p.reason||''}</p>
+    </div>`).join('');
+
+  // News laden
+  const N = await fetch('data/news.json').then(r=>r.json()).catch(()=>[]);
+  const news=document.getElementById('news');
+  news.innerHTML = N.slice(0,3).map(n=>`
+    <a class="card" href="${n.link}" target="_blank" rel="noopener">
+      <img src="${n.image}" alt="${n.title}">
+      <h3>${n.title}</h3>
+      <p class="muted">${n.source}</p>
+    </a>`).join('');
+
+  // Partnerlogos
+  const L = await fetch('data/partners.json').then(r=>r.json()).catch(()=>[]);
+  const logos=document.getElementById('logos');
+  logos.innerHTML = L.map(l=>`
+    <a class="card" href="${l.link||'#'}" title="${l.name}">
+      <img src="${l.logo}" alt="${l.name}" style="max-height:60px;margin:auto">
+      <p style="text-align:center;margin-top:8px">${l.name}</p>
+    </a>`).join('');
+})();
+</script>
 </body>
 </html>

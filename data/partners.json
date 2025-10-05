@@ -1,14 +1,6 @@
 [
-  {
-    "name": "Fraunhofer IPA",
-    "logo": "https://picsum.photos/seed/fraunhofer/200/100",
-    "link": "https://www.ipa.fraunhofer.de",
-    "description": "Führendes Forschungsinstitut für Robotik und Automatisierung in Europa."
-  },
-  {
-    "name": "Robotics Hub Berlin",
-    "logo": "https://picsum.photos/seed/berlinhub/200/100",
-    "link": "https://www.robotics-hub.de",
-    "description": "Startup-Netzwerk rund um Robotik, KI und Assistenzsysteme."
-  }
+  {"name":"RoboHealth","logo":"https://dummyimage.com/300x100/1b2547/eaf0ff&text=RoboHealth","link":"#"},
+  {"name":"NeuroVision","logo":"https://dummyimage.com/300x100/1b2547/eaf0ff&text=NeuroVision","link":"#"},
+  {"name":"LogiBots","logo":"https://dummyimage.com/300x100/1b2547/eaf0ff&text=LogiBots","link":"#"},
+  {"name":"Cleanify","logo":"https://dummyimage.com/300x100/1b2547/eaf0ff&text=Cleanify","link":"#"}
 ]
