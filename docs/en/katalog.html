@@ -1,0 +1,31 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Katalog – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head><body>
+<nav class="nav">
+  <a href="/smartassist-clean/index.html">SmartAssist</a>
+  <a href="/smartassist-clean/katalog.html"><strong>Katalog</strong></a>
+  <a href="/smartassist-clean/news.html">News</a><a href="/smartassist-clean/partner.html">Partner</a><a href="/smartassist-clean/kontakt.html">Kontakt</a>
+</nav>
+<main class="container">
+  <h1>Katalog</h1>
+  <div id="grid" class="grid"></div>
+</main>
+<footer>© 2025 SmartAssist</footer>
+<script>
+fetch('data/products.json').then(r=>r.json()).then(items=>{
+  const g=document.getElementById('grid'); g.innerHTML='';
+  g.innerHTML = items.map(x=>`
+    <div class="card">
+      <div class="badge">${x.category||'Alltag'}</div>
+      <h3>${x.name}</h3>
+      <p>${x.helps||''}</p>
+      ${x.link?`<a href="${x.link}" target="_blank" rel="noopener">Zur Website</a>`:''}
+    </div>`).join('');
+}).catch(_=>{document.getElementById('grid').innerHTML='<div class="card">Keine Daten.</div>';});
+</script>
+<script src="/smartassist-clean/assets/product-schema.js"></script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body></html>

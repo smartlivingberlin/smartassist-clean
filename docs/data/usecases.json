@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Pflegeassistenz",
+    "description": "Roboter helfen beim Transport von Medikamenten und beim Heben von Patienten.",
+    "image": "https://picsum.photos/seed/pflege/600/300",
+    "tags": ["Pflege", "Krankenhaus"]
+  },
+  {
+    "title": "Logistik & Lager",
+    "description": "Autonome Roboter bewegen Waren effizient in großen Lagerhallen.",
+    "image": "https://picsum.photos/seed/logistik/600/300",
+    "tags": ["Logistik", "Industrie"]
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {"type":"image","src":"https://picsum.photos/seed/med1/1200/800","title":"ExoWalk Training"},
+  {"type":"image","src":"https://picsum.photos/seed/med2/1200/800","title":"VisionAssist Demo"},
+  {"type":"video","youtube_id":"ysz5S6PUM-U","title":"OCR On-Device"},
+  {"type":"image","src":"https://picsum.photos/seed/med3/1200/800","title":"LiftCare Transfer"},
+  {"type":"image","src":"https://picsum.photos/seed/med4/1200/800","title":"HomeGuard Patrol"}
+]

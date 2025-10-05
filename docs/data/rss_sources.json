@@ -1,0 +1,13 @@
+{
+  "feeds": [
+    "https://spectrum.ieee.org/robotics/rss",
+    "https://www.therobotreport.com/feed/",
+    "https://techcrunch.com/tag/robotics/feed/",
+    "https://venturebeat.com/category/ai/feed/",
+    "https://news.mit.edu/topic/robotics-rss",
+    "https://blogs.nvidia.com/blog/tag/robotics/feed/",
+    "https://eu-robotics.net/news/feed/"
+  ],
+  "max_items": 12,
+  "keep_days": 45
+}

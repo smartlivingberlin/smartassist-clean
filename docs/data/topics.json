@@ -1,0 +1,6 @@
+[
+  {"slug":"vr-ar","title":"VR/AR in Assistenz & Reha","tags":["vr","ar","cv","analyse"],"intro":"Immersive Therapien, visuelle Assistenz & Training."},
+  {"slug":"sport","title":"Sport & Rehabilitation","tags":["sport","reha","analyse","gehilfe"],"intro":"Sensorik, Exoskelette, Gangbildanalyse & Coaching."},
+  {"slug":"pflege","title":"Pflege & Alltag","tags":["pflege","transfer","alltag","mobilität"],"intro":"Transferhilfen, Monitoring, Greif- und Hebehilfen."},
+  {"slug":"smart-home","title":"Smart-Home & Sicherheit","tags":["smart-home","lidar","navigation","alltag"],"intro":"Mobile Heimroboter, Navigation, LiDAR & Monitoring."}
+]

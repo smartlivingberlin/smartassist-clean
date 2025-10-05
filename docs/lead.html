@@ -1,0 +1,39 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Assistenz-Robotik 2026 – Guide</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<nav class="nav"><a href="/smartassist-clean/index.html">🏠</a> <strong>Guide</strong></nav>
+<main class="container">
+  <article class="card">
+    <h1>📘 Assistenz-Robotik 2026 – Praxis-Guide</h1>
+    <p class="muted">Kompakt: Marktüberblick, Kauf-Checklisten, Top-Anbieter, Förderungen.</p>
+    <form id="gate" class="card" onsubmit="return submitGate(event)">
+      <label>E-Mail (zum Zusenden des Guides):
+        <input type="email" id="email" required placeholder="your@email.de" style="width:100%">
+      </label>
+      <div class="btn-group">
+        <button class="btn">Guide erhalten</button>
+        <a class="btn btn-outline" href="/smartassist-clean/assets/lead/guide.html" target="_blank" rel="noopener">Demo öffnen</a>
+      </div>
+      <p class="muted" style="font-size:.85em">Kein Spam. Abmeldung jederzeit. DSGVO-freundlich.</p>
+    </form>
+  </article>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+const BUTTONDOWN_URL = ""; // z.B. https://buttondown.email/api/emails (wenn vorhanden)
+const MAILCHIMP_ACTION = ""; // z.B. https://xxx.list-manage.com/subscribe/post?u=...&id=...
+function submitGate(e){
+  e.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  localStorage.setItem('sa_lead_email',email);
+  // Optional: an Newsletter-Dienst posten (wenn URL gesetzt)
+  if (BUTTONDOWN_URL || MAILCHIMP_ACTION){
+    // minimal, nur Demo – Details je Dienst in deren Doku
+  }
+  location.href="/smartassist-clean/assets/lead/guide.html"; // später guide.pdf
+  return false;
+}
+</script>
+</body></html>

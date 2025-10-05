@@ -1,0 +1,27 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Media-Galerie – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/gallery.html"><strong>Galerie</strong></a><a href="/smartassist-clean/news.html">News</a></nav>
+<main class="container">
+  <h1>Media-Galerie</h1>
+  <div id="gal" class="masonry"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+
+<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
+<script type="module">
+import {videoModal} from './assets/ui.js'; videoModal();
+fetch('data/media.json').then(r=>r.json()).then(items=>{
+  const g=document.getElementById('gal');
+  g.innerHTML = items.map(m=>{
+    if(m.type==='video'){
+      return `<div class="tile card"><a href="#" data-yt="${m.youtube_id}" class="btn">▶ ${m.title||'Video'}</a></div>`;
+    } else {
+      return `<div class="tile"><img src="${m.src}" alt="${m.title||''}" loading="lazy" style="width:100%;border-radius:12px"></div>`;
+    }
+  }).join('');
+});
+</script>
+</body></html>

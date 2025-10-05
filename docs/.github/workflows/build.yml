@@ -1,0 +1,33 @@
+name: Build & Refresh
+on:
+  push: { branches: [ main ] }
+  schedule:
+    - cron: "0 */12 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with: { python-version: '3.x' }
+      - name: Install deps
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Generate dynamic assets
+        run: |
+          python3 scripts/generate_rss.py || true
+          python3 scripts/generate_feed.py || true
+          python3 scripts/generate_topics.py || true
+          python3 scripts/generate_product_pages.py || true
+          python3 scripts/generate_partner_pages.py || true
+          python3 scripts/generate_ics.py || true
+          python3 scripts/generate_pages_og.py || true
+          python3 scripts/generate_sitemap.py || true
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add og/ sitemap.xml feed.xml product/ partners/ topics/ events/ || true
+          git commit -m "auto: generated dynamic assets" || echo "No changes"
+          git push || true

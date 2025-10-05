@@ -1,0 +1,59 @@
+name: Lighthouse CI
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Lighthouse + jq
+        run: |
+          npm install -g lighthouse
+          sudo apt-get update && sudo apt-get install -y jq
+      - name: Run Lighthouse on Pages
+        run: |
+          set -e
+          mkdir -p reports/lh
+          TS=$(date -u +%Y%m%d-%H%M)   # UTC Zeitstempel
+          URLS=(
+            "https://smartlivingberlin.github.io/smartassist-clean/index.html"
+            "https://smartlivingberlin.github.io/smartassist-clean/katalog.html"
+            "https://smartlivingberlin.github.io/smartassist-clean/news.html"
+            "https://smartlivingberlin.github.io/smartassist-clean/partner.html"
+          )
+          mkdir -p reports
+          HIST=reports/history.csv
+          [ -f "$HIST" ] || echo "timestamp,page,perf,seo,a11y,bp,pwa" > "$HIST"
+
+          for U in "${URLS[@]}"; do
+            NAME=$(basename "$U" .html)
+            OUT="reports/lh/${NAME}-${TS}.report.html"
+            echo "🔎 Audit: $U"
+            lighthouse "$U" --quiet --chrome-flags="--headless" \
+              --output html --output-path "$OUT" \
+              --output json --output-path "tmp.json"
+
+            # Scores aus JSON holen
+            PERF=$(jq -r '.categories.performance.score*100|floor' tmp.json)
+            SEO=$(jq -r '.categories.seo.score*100|floor' tmp.json)
+            A11Y=$(jq -r '.categories.accessibility.score*100|floor' tmp.json)
+            BP=$(jq -r '.categories["best-practices"].score*100|floor' tmp.json)
+            PWA=$(jq -r '.categories.pwa.score*100|floor' tmp.json)
+            echo "$TS,$NAME,$PERF,$SEO,$A11Y,$BP,$PWA" >> "$HIST"
+
+            # Bequemer "latest"-Alias überschreiben
+            cp -f "$OUT" "reports/lh/${NAME}.latest.report.html"
+          done
+      - name: Commit Reports
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add reports/lh reports/history.csv || true
+          git commit -m "auto: Lighthouse reports + history update" || echo "no changes"
+          git push || true

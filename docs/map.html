@@ -1,0 +1,29 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Event-Karte – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>#map{height:70vh;border-radius:12px}</style>
+<meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/pages/map.html.svg">
+</head>
+<body>
+<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/events.html">Events</a><a href="/smartassist-clean/map.html"><strong>Karte</strong></a></nav>
+<main class="container">
+  <h1>Events auf der Karte</h1>
+  <div id="map" class="card"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const m=L.map('map').setView([20,0],2);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OSM'}).addTo(m);
+fetch('data/events.json').then(r=>r.json()).then(list=>{
+  list.forEach(ev=>{
+    // naive Fallback: grobe Position nach Land (nur Demo)
+    const pos = (ev.country=='DE')?[51.2,10.3]:(ev.country=='US')?[39.8,-98.6]:(ev.country=='INT')?[30,0]:[48,8];
+    const html = `<strong>${ev.name}</strong><br>${ev.city||''}, ${ev.country||''}<br>${ev.from} – ${ev.to}<br>${ev.link?`<a href="${ev.link}" target="_blank" rel="noopener">Eventseite</a>`:''}`;
+    L.marker(pos).addTo(m).bindPopup(html);
+  });
+});
+</script>
+</body></html>

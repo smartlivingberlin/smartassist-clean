@@ -1,0 +1,39 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcher Roboter passt zu mir? – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/quiz.html"><strong>Quiz</strong></a></nav>
+<main class="container">
+  <h1>Welcher Roboter passt zu mir?</h1>
+  <div class="card">
+    <label>Wichtigster Zweck</label>
+    <select id="purpose"><option>Haushalt</option><option>Assistenz</option><option>Sport</option><option>Mobilität</option><option>Kamera</option></select>
+    <label>Budget</label>
+    <select id="budget"><option>&lt; 1000</option><option>1000–5000</option><option>&gt; 5000</option></select>
+    <button class="btn" id="go">Vorschläge zeigen</button>
+  </div>
+  <div id="suggest" class="grid" style="margin-top:12px"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+document.getElementById('go').onclick=async ()=>{
+  const purpose=document.getElementById('purpose').value;
+  const budget=document.getElementById('budget').value;
+  const P=await fetch('data/products.json').then(r=>r.json());
+  const inBudget=p=>{
+    const v=+p.price_eur||0;
+    if(budget.includes('<')) return v<1000;
+    if(budget.includes('>')) return v>5000;
+    return v>=1000&&v<=5000;
+  };
+  const match=P.filter(p=>(p.category===purpose || (p.tags||[]).includes(purpose.toLowerCase())) && inBudget(p));
+  document.getElementById('suggest').innerHTML= match.map(x=>`
+    <div class="card"><h3>${x.name}</h3><p class="muted">${x.helps||x.reason||''}</p>
+      ${x.link?`<a class="btn btn-outline" href="${x.link}" data-aff-brand="${x.brand}" target="_blank" rel="noopener">Website</a>`:''}
+      ${x.slug?`<a class="btn" href="/smartassist-clean/product/${x.slug}.html">Details</a>`:''}
+    </div>`).join('') || '<div class="card">Keine direkten Treffer – pushe mehr Produkte / Tags.</div>';
+};
+</script>
+<script src="/smartassist-clean/assets/affiliates.js"></script>
+</body></html>

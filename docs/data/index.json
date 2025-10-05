@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Start",
+    "url": "index.html"
+  },
+  {
+    "title": "Katalog",
+    "url": "katalog.html"
+  },
+  {
+    "title": "News",
+    "url": "news.html"
+  },
+  {
+    "title": "Partner",
+    "url": "partner.html"
+  },
+  {
+    "title": "Glossar",
+    "url": "glossary.html"
+  },
+  {
+    "title": "Use-Cases",
+    "url": "usecases.html"
+  },
+  {
+    "title": "Produkt: ExoWalk Lite",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: VisionAssist Pro",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: ChefMate Duo",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: LiftCare Transfer",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: TrackRehab S",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: GripArm Home",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: PoolAssist",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Produkt: HomeGuard Rover",
+    "url": "katalog.html"
+  },
+  {
+    "title": "Use-Case: Gehilfe-Robotik",
+    "url": "usecases/gehilfe.html"
+  },
+  {
+    "title": "Use-Case: Seh-Assistenz",
+    "url": "usecases/sehhilfe.html"
+  },
+  {
+    "title": "Use-Case: Küchen-Assistenz",
+    "url": "usecases/kochen.html"
+  },
+  {
+    "title": "Use-Case: Pflege-Assistenz",
+    "url": "usecases/pflege.html"
+  },
+  {
+    "title": "Use-Case: Sport-/Reha-Robotik",
+    "url": "usecases/sport-reha.html"
+  },
+  {
+    "title": "Use-Case: Smart-Home-Robotik",
+    "url": "usecases/smart-home.html"
+  }
+]

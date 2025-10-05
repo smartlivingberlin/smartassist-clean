@@ -1,0 +1,3 @@
+/* News Grid Critical */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.news-grid .card img{width:100%;border-radius:12px}
