@@ -2,25 +2,39 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Katalog – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
-<meta name="description" content="Produktkatalog Assistenz-Robotik & Smart-Home mit Vergleich & Filtern.">
+<meta name="description" content="Vergleiche Assistenz-Robotik & Smart-Home nach Preis, Gewicht, Reichweite, Akku u.v.m.">
 </head><body>
-<nav class="navbar">
-  <a href="index.html">Home</a><a class="active" href="katalog.html">Katalog</a>
-  <a href="news.html">News</a><a href="partner.html">Partner</a><a href="kontakt.html">Kontakt</a>
-  <a href="search.html" style="margin-left:auto">🔎 Suche</a>
+<nav class="nav">
+  <strong>🤖 SmartAssist</strong>
+  <a href="index.html">Start</a>
+  <a class="active" href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a href="partner.html">Partner</a>
+  <a href="events.html">Events</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
-<main>
+
+<main class="container">
   <h1>Produkt-Katalog</h1>
-  <div id="chips" class="chips"></div>
-  <div class="chips" id="featureChips"></div>
+  <p class="notice">Wähle unten Features, filtere per Tags und vergleiche Produkte in einer Tabelle.</p>
+
+  <h3>Feature-Auswahl</h3>
+  <div id="featureChips" class="chips"></div>
+
+  <h3>Tags</h3>
+  <div id="tagChips" class="chips"></div>
+
   <div id="catalog" class="grid"></div>
+
   <div id="bar" class="compare-bar">
     <strong id="cnt">0</strong> ausgewählt
-    <button class="btn" id="go">Vergleichen</button>
+    <button class="btn" id="go">Vergleich anzeigen</button>
     <button class="btn secondary" id="clr">Leeren</button>
   </div>
-  <div id="table" class="compare-table"></div>
+
+  <div id="table"></div>
 </main>
-<footer><p>© 2025 SmartAssist</p></footer>
-<script src="assets/katalog.js"></script>
+
+<footer>© 2025 SmartAssist</footer>
+<script src="assets/app.js"></script>
 </body></html>

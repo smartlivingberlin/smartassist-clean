@@ -1,6 +1,44 @@
 [
-  {"id":"exo1","name":"ExoCare X1","brand":"RoboHealth","category":"Pflege/Exoskelett","price":14990,"weight":"12 kg","range":"8 h","battery":"6000 mAh","tags":["Pflege","Exoskelett","Reha"],"image":"https://images.unsplash.com/photo-1596495578065-8a37e9f9f6b9?q=80&w=1200","reason":"Entlastet beim Transfer – KI-gestützte Hebeassistenz"},
-  {"id":"vr1","name":"VisionGuide AR","brand":"NeuroVision","category":"VR/AR Sehhilfe","price":3990,"weight":"0.8 kg","range":"kabellos","battery":"5 h","tags":["VR","Sehhilfe","Training"],"image":"https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1200","reason":"AR-Overlays für Navigation, Objekterkennung & Training"},
-  {"id":"amr1","name":"CarryAMR 50","brand":"LogiBots","category":"Mobile Robotik (AMR)","price":21990,"weight":"55 kg","range":"10 h","battery":"Li-Ion 9000 mAh","tags":["Logistik","AMR","Indoor"],"image":"https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1200","reason":"Autonome Transporte in Klinik & Lager (LiDAR, SLAM)"},
-  {"id":"vac1","name":"HomeVac S7 LiDAR","brand":"Cleanify","category":"Smart-Home","price":499,"weight":"3.2 kg","range":"180 min","battery":"5200 mAh","tags":["Haushalt","Smart-Home","Staubsauger"],"image":"https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200","reason":"Multi-Room LiDAR-Map, Teppichboost, App-Automation"}
+  {
+    "id":"exocare-x1",
+    "name":"ExoCare X1",
+    "brand":"RoboHealth",
+    "category":"Pflege · Exoskelett",
+    "tags":["Pflege","Reha","Exoskelett"],
+    "price_eur":14990,
+    "weight":"12 kg",
+    "range_km":null,
+    "battery_wh":6000,
+    "image":"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200",
+    "link":"https://example.com/exocare-x1",
+    "reason":"Entlastet beim Transfer; KI-gestützte Sicherheit und Sturzsensorik."
+  },
+  {
+    "id":"visionguide-ar",
+    "name":"VisionGuide AR",
+    "brand":"NeuroVision",
+    "category":"Sehhilfe · AR",
+    "tags":["AR","Sehhilfe","Navigation"],
+    "price_eur":2290,
+    "weight":"220 g",
+    "range_km":null,
+    "battery_wh":45,
+    "image":"https://images.unsplash.com/photo-1551754655-cd27e38d2076?q=80&w=1200",
+    "link":"https://example.com/visionguide",
+    "reason":"AR-Overlays mit Objekt- & Hinderniserkennung für sichere Wege."
+  },
+  {
+    "id":"carryamr-50",
+    "name":"CarryAMR 50",
+    "brand":"LogiBots",
+    "category":"Mobile Robotik (AMR)",
+    "tags":["AMR","Logistik","Krankenhaus"],
+    "price_eur":38900,
+    "weight":"68 kg",
+    "range_km":25,
+    "battery_wh":900,
+    "image":"https://images.unsplash.com/photo-1581094794329-c8112a89f3f0?q=80&w=1200",
+    "link":"https://example.com/carryamr-50",
+    "reason":"Autonome Transporte mit LIDAR/SLAM – für Klinik und Lager."
+  }
 ]

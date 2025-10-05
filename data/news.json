@@ -1,5 +1,26 @@
 [
-  {"title":"Pflege: Exoskelette reduzieren Belastungen um 30%","source":"Fachpresse","image":"https://images.unsplash.com/photo-1628708906729-6b8e5cf72d23?q=80&w=1200","link":"https://example.com/exoskelette-pflege"},
-  {"title":"AR-Assistenz macht Reha-Training motivierender","source":"Techblog","image":"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=1200","link":"https://example.com/ar-reha"},
-  {"title":"AMR-Flotten: Kliniklogistik wird autonom","source":"Logistik Heute","image":"https://images.unsplash.com/photo-1581091014534-7f3c0d3d9b83?q=80&w=1200","link":"https://example.com/amr-klinik"}
+  {
+    "title":"Pflege: Exoskelette reduzieren Belastungen um 30%",
+    "source":"Fachpresse",
+    "date":"2025-09-15",
+    "link":"https://example.com/news/exoskelette-arbeitsplätze",
+    "image":"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200",
+    "summary":"Studie aus DACH zeigt deutliche Entlastung in Pflegeeinrichtungen."
+  },
+  {
+    "title":"AR-Assistenten machen Reha-Training motivierender",
+    "source":"Techblog",
+    "date":"2025-08-27",
+    "link":"https://example.com/news/ar-reha",
+    "image":"https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=1200",
+    "summary":"Echtzeit-Feedback verbessert Bewegungsausführung und Fortschritt."
+  },
+  {
+    "title":"AMR-Flotten: Kliniklogistik wird autonom",
+    "source":"Logistik Heute",
+    "date":"2025-07-30",
+    "link":"https://example.com/news/amr-klinik",
+    "image":"https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200",
+    "summary":"Sichere Korridore, automatische Aufzüge, interoperable Leitstände."
+  }
 ]

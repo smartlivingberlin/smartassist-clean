@@ -3,33 +3,30 @@
 <title>Kontakt – SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 </head><body>
-<nav class="navbar">
-  <a href="index.html">Home</a>
+<nav class="nav">
+  <strong>🤖 SmartAssist</strong>
+  <a href="index.html">Start</a>
   <a href="katalog.html">Katalog</a>
   <a href="news.html">News</a>
   <a href="partner.html">Partner</a>
+  <a href="events.html">Events</a>
   <a class="active" href="kontakt.html">Kontakt</a>
 </nav>
 
-<main>
+<main class="container">
   <h1>Kontakt</h1>
-  <form class="form" action="https://formspree.io/f/xyzzzzzz" method="POST">
-    <label>Ihr Name</label>
-    <input type="text" name="name" required>
-    <label>E-Mail</label>
-    <input type="email" name="_replyto" required>
-    <label>Betreff</label>
-    <select name="subject">
-      <option>Allgemeine Anfrage</option>
-      <option>Partner werden</option>
-      <option>Produkt einreichen</option>
-    </select>
-    <label>Nachricht</label>
-    <textarea name="message" rows="6" required></textarea>
-    <button class="btn" type="submit">Senden</button>
-    <p class="notice">Hinweis: Der Versand erfolgt über Formspree (keine Registrierung nötig). Trage später deine eigene Endpoint-ID ein.</p>
-  </form>
+  <div class="card"><div class="pad">
+    <p>Fragen, Kooperation oder Produktvorschlag? Schreibe uns.</p>
+    <form action="https://formspree.io/f/xbjvknqk" method="POST">
+      <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr;max-width:680px">
+        <input name="name" placeholder="Dein Name" required style="padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1736;color:#dfe8ff">
+        <input type="email" name="email" placeholder="E-Mail" required style="padding:10px;border-radius:10px;border:1px solid var(--line);background:#0f1736;color:#dfe8ff">
+      </div>
+      <textarea name="message" placeholder="Nachricht…" rows="6" required style="margin-top:10px;width:100%;padding:10px;border-radius:12px;border:1px solid var(--line);background:#0f1736;color:#dfe8ff"></textarea>
+      <button class="btn" type="submit">Senden</button>
+    </form>
+  </div></div>
 </main>
 
-<footer><p>© 2025 SmartAssist</p></footer>
+<footer>© 2025 SmartAssist</footer>
 </body></html>
