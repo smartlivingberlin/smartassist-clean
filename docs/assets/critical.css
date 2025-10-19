@@ -1,4 +1,4 @@
-﻿/* Minimal Critical: Layout, Nav, Container, Buttons, Cards */
+/* Minimal Critical: Layout, Nav, Container, Buttons, Cards */
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg,#f8fafc);color:var(--text,#0f172a)}
 .nav{display:flex;gap:.8rem;align-items:center;padding:.7rem 1rem;background:var(--card,#fff);border-bottom:1px solid var(--border,#e2e8f0);position:sticky;top:0;z-index:50}
@@ -12,4 +12,3 @@ img{max-width:100%;height:auto;border-radius:12px}
 .muted{color:#64748b}
 .footer{padding:1rem;color:#64748b}
 :focus-visible{outline:3px solid #22c55e;outline-offset:2px}
-
