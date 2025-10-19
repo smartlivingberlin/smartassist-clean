@@ -1,7 +1,7 @@
-/**
+﻿/**
  * Minimalist Poll-Widget
  * - localStorage basiert, keine Cookies/Server
- * - renderPoll(el, key, options) → Balken + Prozent + klickbar
+ * - renderPoll(el, key, options) â†’ Balken + Prozent + klickbar
  */
 (function(){
   const LS="smartassist-polls";
@@ -46,7 +46,7 @@
     `;
     document.head.appendChild(style);
     el.innerHTML=""; el.appendChild(wrap);
-    const alreadyVoted = false; // lokal, pro Seite neu abstimmbar; falls pro Schlüssel sperren: setze true wenn LS-Flag
+    const alreadyVoted = false; // lokal, pro Seite neu abstimmbar; falls pro SchlÃ¼ssel sperren: setze true wenn LS-Flag
     draw(alreadyVoted);
   }
 })();

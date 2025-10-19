@@ -1,4 +1,4 @@
-let galleryItems=[];
+﻿let galleryItems=[];
 let currentIndex=0;
 let autoplayTimer=null;
 let autoplayOn=true;
@@ -19,7 +19,7 @@ function prevSlide(){ renderLightbox((currentIndex-1+galleryItems.length)%galler
 function startAutoplay(){ stopAutoplay(); autoplayTimer=setInterval(nextSlide,5000); autoplayOn=true; updateStatus(); }
 function stopAutoplay(){ if(autoplayTimer) clearInterval(autoplayTimer); autoplayOn=false; updateStatus(); }
 function toggleAutoplay(){ autoplayOn?stopAutoplay():startAutoplay(); }
-function updateStatus(){ const s=document.querySelector(".lightbox .status"); if(s) s.innerText=autoplayOn?"⏸ Auto-Play läuft":"▶ Manuell"; }
+function updateStatus(){ const s=document.querySelector(".lightbox .status"); if(s) s.innerText=autoplayOn?"â¸ Auto-Play lÃ¤uft":"â–¶ Manuell"; }
 
 function closeLightbox(){ stopAutoplay(); const lb=document.querySelector(".lightbox"); if(lb) lb.remove(); document.removeEventListener("keydown",keyHandler); }
 
@@ -49,10 +49,10 @@ function openLightbox(index){
       <div class="media">${item.media}</div>
       <h3>${item.title}</h3>
       <p>${item.info}</p>
-      <button class="close">×</button>
-      <button class="prev">◀</button>
-      <button class="next">▶</button>
-      <button class="toggle">⏯</button>
+      <button class="close">Ã—</button>
+      <button class="prev">â—€</button>
+      <button class="next">â–¶</button>
+      <button class="toggle">â¯</button>
       <div class="status"></div>
     </div>`;
   document.body.appendChild(lb);

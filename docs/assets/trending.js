@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const KEY="sa_clicks";
   function load(){ try{return JSON.parse(localStorage.getItem(KEY)||"{}");}catch(e){return{}} }
   function save(d){ localStorage.setItem(KEY, JSON.stringify(d)); }
@@ -12,7 +12,7 @@
     });
   }
 
-  // Badges "🔥 Trending" auf Produktkarten
+  // Badges "ðŸ”¥ Trending" auf Produktkarten
   function addBadges(){
     const ids=new Set(topIds(12));
     document.querySelectorAll('[data-id]').forEach(el=>{
@@ -21,7 +21,7 @@
         const b=document.createElement('span');
         b.className='badge badge-trend';
         b.style.marginLeft='.4rem';
-        b.textContent='🔥 Trending';
+        b.textContent='ðŸ”¥ Trending';
         const h = el.querySelector('h3, h2, strong') || el.firstChild;
         h && h.appendChild(b);
       }
@@ -31,6 +31,6 @@
   // Beim Laden aktivieren
   window.addEventListener('DOMContentLoaded',()=>{ autoTrack(); addBadges(); });
 
-  // Expose für Debug
+  // Expose fÃ¼r Debug
   window.SATrending={inc,topIds};
 })();

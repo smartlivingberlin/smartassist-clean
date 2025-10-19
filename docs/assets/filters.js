@@ -1,10 +1,10 @@
-/* Client-Filter: Tags, Brand, Preis */
+﻿/* Client-Filter: Tags, Brand, Preis */
 (function(){
   const state={ q:"", tags:new Set(), brands:new Set(), price:null };
   const PRICE_RANGES=[
-    {id:"p1", label:"< 1000 €", test:v=>v>0 && v<1000},
-    {id:"p2", label:"1000–5000 €", test:v=>v>=1000 && v<=5000},
-    {id:"p3", label:"> 5000 €", test:v=>v>5000}
+    {id:"p1", label:"< 1000 â‚¬", test:v=>v>0 && v<1000},
+    {id:"p2", label:"1000â€“5000 â‚¬", test:v=>v>=1000 && v<=5000},
+    {id:"p3", label:"> 5000 â‚¬", test:v=>v>5000}
   ];
   window.attachFilters = function(products, render){
     const host=document.getElementById('filters'); if(!host) return;

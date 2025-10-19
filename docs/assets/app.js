@@ -1,10 +1,10 @@
-/* Modal */
+﻿/* Modal */
 (function(){ window.SA_MODAL={
   open(id){document.getElementById(id).style.display='flex'},
   close(id){document.getElementById(id).style.display='none'}
 };})();
 
-/* Katalog – Vergleich+ */
+/* Katalog â€“ Vergleich+ */
 async function initCatalog(){
   const P = await fetch('data/products.json').then(r=>r.json()).catch(()=>[]);
   const FIELDS=["name","brand","category","price_eur","weight","range_km","battery_wh","reason"];
@@ -31,7 +31,7 @@ async function initCatalog(){
         <div class="badge">${p.category||'Alltag'}</div>
         <h3>${p.name}</h3>
         <p class="muted">${p.brand||''}</p>
-        <p><strong>${p.price_eur? (p.price_eur.toLocaleString('de-DE')+' €') : ''}</strong> ${p.weight?(' · '+p.weight):''} ${p.range_km?(' · '+p.range_km+' km'):''}</p>
+        <p><strong>${p.price_eur? (p.price_eur.toLocaleString('de-DE')+' â‚¬') : ''}</strong> ${p.weight?(' Â· '+p.weight):''} ${p.range_km?(' Â· '+p.range_km+' km'):''}</p>
         ${p.reason?`<p class="muted">${p.reason}</p>`:''}
         <div class="chips" style="margin-top:.4rem">${(p.tags||[]).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
         <div style="display:flex;gap:.5rem;margin-top:.6rem">
@@ -56,7 +56,7 @@ async function initCatalog(){
     const head='<tr>'+fields.map(f=>`<th>${f}</th>`).join('')+'</tr>';
     const rows=chosen.map(p=>'<tr>'+fields.map(f=>{
       const v = p[f];
-      return `<td>${f==='price_eur' ? (v? (v.toLocaleString('de-DE')+' €') : '') : (v||'')}</td>`;
+      return `<td>${f==='price_eur' ? (v? (v.toLocaleString('de-DE')+' â‚¬') : '') : (v||'')}</td>`;
     }).join('')+'</tr>').join('');
     tbl.innerHTML='<div class="compare-table"><table>'+head+rows+'</table></div>';
     window.scrollTo({top:tbl.offsetTop-60,behavior:'smooth'});
@@ -64,7 +64,7 @@ async function initCatalog(){
   render();
 }
 
-/* Events – .ics Export (bevorstehend) */
+/* Events â€“ .ics Export (bevorstehend) */
 async function initEvents(){
   const wrap=document.getElementById('events'); if(!wrap) return;
   const ev=await fetch('data/events.json').then(r=>r.json()).catch(()=>[]);
@@ -74,7 +74,7 @@ async function initEvents(){
       <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=1200" alt="${e.title}">
       <div class="pad">
         <h3>${e.title}</h3>
-        <p class="muted">${e.city} · ${e.start}–${e.end}</p>
+        <p class="muted">${e.city} Â· ${e.start}â€“${e.end}</p>
       </div>
     </a>`).join('') || '<div class="card"><div class="pad">Keine bevorstehenden Events.</div></div>';
 

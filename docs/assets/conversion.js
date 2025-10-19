@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const KEY="clickCounts";
   const get=()=>JSON.parse(localStorage.getItem(KEY)||"{}");
   const set=v=>localStorage.setItem(KEY,JSON.stringify(v));

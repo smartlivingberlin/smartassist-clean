@@ -1,4 +1,4 @@
-let stories=[],storyIndex=0,storyTimer=null,storyDur=5000;
+﻿let stories=[],storyIndex=0,storyTimer=null,storyDur=5000;
 let currentTag="all";
 
 async function loadStories(tag="all"){
@@ -12,13 +12,13 @@ async function loadStories(tag="all"){
       const thumb=x.thumb||"https://picsum.photos/seed/"+encodeURIComponent(x.id)+"/600/400";
       media=`<img src="${thumb}" alt="">`;
     }
-    // einfache Tag-Simulation (Titel enthält Wort)
+    // einfache Tag-Simulation (Titel enthÃ¤lt Wort)
     let tags=[];
     if(/sport/i.test(x.title)) tags.push("sport");
     if(/pflege|health|care/i.test(x.title)) tags.push("pflege");
     if(/smart.?home/i.test(x.title)) tags.push("smarthome");
     if(/vr|ar|mixed/i.test(x.title)) tags.push("vr");
-    return {media,title:x.title,info:x.source+" – "+x.published,tags};
+    return {media,title:x.title,info:x.source+" â€“ "+x.published,tags};
   });
   if(tag!=="all"){ stories=stories.filter(s=>s.tags.includes(tag)); }
 }
@@ -40,7 +40,7 @@ function showStory(){
   const bars=ov.querySelectorAll(".story-progress span");
   bars.forEach((b,i)=>{b.style.width=i<storyIndex?"100%":(i===storyIndex?"0":"0");});
   animateProgress(bars[storyIndex]);
-  try{ const spot=document.getElementById("poll-here"); if(spotclearTimeout(storyTimer);clearTimeout(storyTimer);window.renderPoll){ renderPoll(spot,"news-"+storyIndex,["👍 Hilfreich","👎 Nicht relevant"]); } }catch(e){}
+  try{ const spot=document.getElementById("poll-here"); if(spotclearTimeout(storyTimer);clearTimeout(storyTimer);window.renderPoll){ renderPoll(spot,"news-"+storyIndex,["ðŸ‘ Hilfreich","ðŸ‘Ž Nicht relevant"]); } }catch(e){}
   clearTimeout(storyTimer);
   storyTimer=setTimeout(()=>{ nextStory(); },storyDur);
 }

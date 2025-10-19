@@ -1,4 +1,4 @@
-(async function(){
+﻿(async function(){
   const out=document.getElementById('catalog');
   const chipsBox=document.getElementById('chips');
   const bar=document.getElementById('compareBar');
@@ -25,8 +25,8 @@
       <img src="${p.image}" alt="${p.name}" loading="lazy">
       <div style="padding:12px">
         <h3>${p.name}</h3>
-        <p class="muted">${p.brand} · ${p.category}</p>
-        <p><strong>${p.price.toLocaleString('de-DE')} €</strong></p>
+        <p class="muted">${p.brand} Â· ${p.category}</p>
+        <p><strong>${p.price.toLocaleString('de-DE')} â‚¬</strong></p>
         <div class="chips" style="margin:.5rem 0 0 0">${(p.tags||[]).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
         <button class="btn" data-add="${p.id}">Vergleichen</button>
       </div>
@@ -44,7 +44,7 @@
     if(!chosen.length){cmpOut.innerHTML=''; return;}
     const fields=['name','brand','category','price','weight','range','battery'];
     const head='<tr>'+fields.map(f=>`<th>${f}</th>`).join('')+'</tr>';
-    const rows=chosen.map(p=>'<tr>'+fields.map(f=>`<td>${f==='price'?(p[f].toLocaleString('de-DE')+' €'):(p[f]||'')}</td>`).join('')+'</tr>').join('');
+    const rows=chosen.map(p=>'<tr>'+fields.map(f=>`<td>${f==='price'?(p[f].toLocaleString('de-DE')+' â‚¬'):(p[f]||'')}</td>`).join('')+'</tr>').join('');
     cmpOut.innerHTML='<table>'+head+rows+'</table>';
     window.scrollTo({top:cmpOut.offsetTop-60,behavior:'smooth'});
   };

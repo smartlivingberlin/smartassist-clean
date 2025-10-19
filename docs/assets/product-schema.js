@@ -1,4 +1,4 @@
-(async function(){
+﻿(async function(){
   try{
     const res=await fetch('data/products.json',{cache:'no-store'});
     const items=await res.json();

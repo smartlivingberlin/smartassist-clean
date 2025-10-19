@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const key="smartassist-theme";
   const saved=localStorage.getItem(key);
   if(saved) document.documentElement.dataset.theme=saved;
@@ -19,10 +19,10 @@
     const btn=document.createElement("button");
     btn.className="btn btn-outline";
     btn.style.marginLeft="auto";
-    btn.textContent="🌓";
+    btn.textContent="ðŸŒ“";
     btn.title="Theme wechseln (Hell/Dunkel)";
     btn.onclick=toggle;
-    // wenn schon eine Suche rechts sitzt → davor einfügen
+    // wenn schon eine Suche rechts sitzt â†’ davor einfÃ¼gen
     const last=nav.lastElementChild;
     if(last && last.tagName==="DIV" && last.querySelector('input[type="search"]')){
       nav.insertBefore(btn,last);

@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   document.addEventListener("DOMContentLoaded",()=>{
     document.querySelectorAll("img[data-auto]").forEach(img=>{
       const src=img.getAttribute("src");

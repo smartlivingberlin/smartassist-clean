@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   // News (cards in news.html)
   if(location.pathname.endsWith('/news.html')){
     fetch('data/news.json').then(r=>r.json()).then(d=>{

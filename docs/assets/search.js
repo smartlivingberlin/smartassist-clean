@@ -1,4 +1,4 @@
-(async function(){
+﻿(async function(){
   const [products, partners] = await Promise.all([
     fetch('data/products.json').then(r=>r.json()).catch(()=>[]),
     fetch('data/partners.json').then(r=>r.json()).catch(()=>[])
@@ -13,7 +13,7 @@
   const wrap=document.createElement('div');
   wrap.style.marginLeft='auto';wrap.style.position='relative';
   wrap.innerHTML=`
-    <input id="ga-search" type="search" placeholder="Suchen…" style="padding:.45rem .7rem;border:1px solid #e5e7eb;border-radius:8px;min-width:220px">
+    <input id="ga-search" type="search" placeholder="Suchenâ€¦" style="padding:.45rem .7rem;border:1px solid #e5e7eb;border-radius:8px;min-width:220px">
     <div id="ga-results" style="position:absolute;right:0;top:38px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.08);display:none;max-height:320px;overflow:auto;min-width:260px;z-index:99"></div>`;
   nav.appendChild(wrap);
   const input=wrap.querySelector('#ga-search');

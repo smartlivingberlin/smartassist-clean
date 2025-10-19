@@ -1,4 +1,4 @@
-/* Mini-Helpers */
+﻿/* Mini-Helpers */
 export function qs(s,root=document){return root.querySelector(s)}
 export function qsa(s,root=document){return [...root.querySelectorAll(s)]}
 export const on=(el,ev,fn)=>el&&el.addEventListener(ev,fn);

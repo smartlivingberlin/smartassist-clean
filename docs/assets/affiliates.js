@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   function hostMatch(url, pat){ try{ return new URL(url).host.includes(pat); }catch(_){ return false; } }
   fetch("data/affiliates.json").then(r=>r.json()).then(cfg=>{
     const brands = cfg.brand_params||{}, fall = cfg.domain_fallback||{}, def = cfg.default_params||"";

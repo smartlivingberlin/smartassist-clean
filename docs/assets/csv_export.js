@@ -1,4 +1,4 @@
-window.exportCSV = function(rows, filename="export.csv"){
+﻿window.exportCSV = function(rows, filename="export.csv"){
   const esc=s=>('"'+String(s).replace(/"/g,'""')+'"');
   const body=rows.map(r=>r.map(esc).join(',')).join('\n');
   const blob=new Blob([body],{type:"text/csv;charset=utf-8"});

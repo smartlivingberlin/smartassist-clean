@@ -1,4 +1,4 @@
-fetch("data/partners.json")
+﻿fetch("data/partners.json")
   .then(r => r.json())
   .then(data => {
     const el = document.getElementById("partners");

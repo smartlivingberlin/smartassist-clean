@@ -1,4 +1,4 @@
-let products=[],slides=[],pIndex=0,pTimer=null,pDur=6000;
+﻿let products=[],slides=[],pIndex=0,pTimer=null,pDur=6000;
 
 async function loadProducts(){
   const d=await fetch("data/products.json").then(r=>r.json());
@@ -13,7 +13,7 @@ async function loadProducts(){
       id:x.id,
       media,
       title:x.name,
-      info:`${x.brand||""} – ${x.price||"Preis auf Anfrage"}`,
+      info:`${x.brand||""} â€“ ${x.price||"Preis auf Anfrage"}`,
       features:(x.features||[]).join(", "),
       link:x.link||"#"
     };
@@ -28,7 +28,7 @@ async function loadProducts(){
     slides.push({
       compare:true,
       title:`Vergleich: ${a.title} vs ${b.title}`,
-      info:"Gegenüberstellung der Features",
+      info:"GegenÃ¼berstellung der Features",
       media:`
         <div style="display:flex;gap:1rem;justify-content:center">
           <div style="flex:1;background:#fff;color:#000;padding:.5rem;border-radius:6px">
@@ -58,12 +58,12 @@ function showPStory(){
     ${s.media}
     <h3>${s.title}</h3>
     <p>${s.info}</p><div id="poll-here" style="margin-top:.5rem"></div>
-    ${!s.compare?`<a class="btn" href="${s.link}" target="_blank" rel="noopener">🔗 Zum Produkt</a>`:""}
+    ${!s.compare?`<a class="btn" href="${s.link}" target="_blank" rel="noopener">ðŸ”— Zum Produkt</a>`:""}
   `;
   const bars=ov.querySelectorAll(".story-progress span");
   bars.forEach((b,i)=>{b.style.width=i<pIndex?"100%":(i===pIndex?"0":"0");});
   animateP(bars[pIndex]);
-  try{ const spot=document.getElementById("poll-here"); if(spotclearTimeout(pTimer);clearTimeout(pTimer);window.renderPoll){ if(s.compare){ renderPoll(spot,"cmp-"+pIndex,["◀ Links besser","▶ Rechts besser"]); } else { renderPoll(spot,"prod-"+pIndex,["⭐ Will ich merken","🙂 Interessant"]); } } }catch(e){}
+  try{ const spot=document.getElementById("poll-here"); if(spotclearTimeout(pTimer);clearTimeout(pTimer);window.renderPoll){ if(s.compare){ renderPoll(spot,"cmp-"+pIndex,["â—€ Links besser","â–¶ Rechts besser"]); } else { renderPoll(spot,"prod-"+pIndex,["â­ Will ich merken","ðŸ™‚ Interessant"]); } } }catch(e){}
   clearTimeout(pTimer);
   pTimer=setTimeout(()=>{ nextP(); },pDur);
 }

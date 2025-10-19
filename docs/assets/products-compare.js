@@ -1,4 +1,4 @@
-// Produkte laden + Filter + Vergleich
+﻿// Produkte laden + Filter + Vergleich
 let allProducts = [];
 
 function renderProducts(list) {
@@ -8,9 +8,9 @@ function renderProducts(list) {
       <input type="checkbox" class="compare" value="${p.name}">
       <img src="${p.image}" alt="${p.name}" width="200">
       <h2>${p.name}</h2>
-      <p><strong>${p.brand}</strong> – ${p.category}</p>
+      <p><strong>${p.brand}</strong> â€“ ${p.category}</p>
       <p>${p.reason}</p>
-      <span>${p.price_eur} €</span>
+      <span>${p.price_eur} â‚¬</span>
     </div>
   `).join("");
 }
@@ -19,7 +19,7 @@ function renderCompare() {
   const selected = [...document.querySelectorAll(".compare:checked")]
     .map(cb => cb.value);
   if (selected.length < 2) {
-    document.getElementById("compare").innerHTML = "<p>Bitte mindestens 2 Produkte auswählen</p>";
+    document.getElementById("compare").innerHTML = "<p>Bitte mindestens 2 Produkte auswÃ¤hlen</p>";
     return;
   }
   const products = allProducts.filter(p => selected.includes(p.name));

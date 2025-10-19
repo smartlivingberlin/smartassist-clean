@@ -17,7 +17,7 @@ fetch('data/media.json').then(r=>r.json()).then(items=>{
   const g=document.getElementById('gal');
   g.innerHTML = items.map(m=>{
     if(m.type==='video'){
-      return `<div class="tile card"><a href="#" data-yt="${m.youtube_id}" class="btn">â–¶ ${m.title||'Video'}</a></div>`;
+      return `<div class="tile card"><a href="javascript:void(0)" data-yt="${m.youtube_id}" class="btn">â–¶ ${m.title||'Video'}</a></div>`;
     } else {
       return `<div class="tile"><img src="${m.src}" alt="${m.title||''}" loading="lazy" style="width:100%;border-radius:12px"></div>`;
     }

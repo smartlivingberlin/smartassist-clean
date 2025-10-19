@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const FKEY="sa_event_favs";
   const favs=new Set(JSON.parse(localStorage.getItem(FKEY)||"[]"));
   const fmtDate = s => new Date(s).toLocaleString('de-DE',{dateStyle:'medium', timeStyle:'short'});
@@ -9,7 +9,7 @@
   function render(list){
     const wrap=document.getElementById('elist');
     if(!wrap) return;
-    if(!list.length){ wrap.innerHTML='<p class="muted">Keine anstehenden Termine…</p>'; return; }
+    if(!list.length){ wrap.innerHTML='<p class="muted">Keine anstehenden Termineâ€¦</p>'; return; }
     wrap.innerHTML = list.map(e=>{
       const starred=favs.has(e.id);
       return `
@@ -17,12 +17,12 @@
           <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
             <div>
               <h3 style="margin:.2rem 0">${e.title}</h3>
-              <p class="muted" style="margin:.2rem 0">${fmtDate(e.start)} – ${fmtDate(e.end)} • ${esc(e.location)}</p>
+              <p class="muted" style="margin:.2rem 0">${fmtDate(e.start)} â€“ ${fmtDate(e.end)} â€¢ ${esc(e.location)}</p>
               ${e.tags?.length? `<div class="chips">${e.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join(' ')}</div>`:''}
             </div>
             <div style="display:flex;gap:8px;align-items:center">
-              <button class="btn btn-outline" onclick="location.href='${e.url}'" title="Zur Event-Seite">🌐</button>
-              <button class="btn ${starred?'':'btn-outline'}" data-star="${e.id}" title="Merken">${starred?'⭐':'☆'}</button>
+              <button class="btn btn-outline" onclick="location.href='${e.url}'" title="Zur Event-Seite">ðŸŒ</button>
+              <button class="btn ${starred?'':'btn-outline'}" data-star="${e.id}" title="Merken">${starred?'â­':'â˜†'}</button>
             </div>
           </div>
         </article>`;
@@ -31,8 +31,8 @@
     wrap.querySelectorAll('[data-star]').forEach(b=>{
       b.onclick=()=>{
         const id=b.getAttribute('data-star');
-        if(favs.has(id)){ favs.delete(id); b.textContent='☆'; b.classList.add('btn-outline'); }
-        else { favs.add(id); b.textContent='⭐'; b.classList.remove('btn-outline'); }
+        if(favs.has(id)){ favs.delete(id); b.textContent='â˜†'; b.classList.add('btn-outline'); }
+        else { favs.add(id); b.textContent='â­'; b.classList.remove('btn-outline'); }
         saveFavs();
       };
     });
@@ -71,7 +71,7 @@
     exportFavs: () => fetch('data/events.json').then(r=>r.json()).then(d=>{
       const set=new Set(JSON.parse(localStorage.getItem(FKEY)||"[]"));
       const pick=d.filter(x=>set.has(x.id));
-      if(!pick.length){ alert('Keine Bookmarks ⭐ vorhanden.'); return; }
+      if(!pick.length){ alert('Keine Bookmarks â­ vorhanden.'); return; }
       downloadICS(pick,'events_bookmarks.ics');
     })
   };

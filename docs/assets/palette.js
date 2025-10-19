@@ -1,9 +1,9 @@
-(function(){
+﻿(function(){
   const KEY="sa_palette";
   function set(p){ document.documentElement.dataset.palette=p; localStorage.setItem(KEY,p); }
   window.addEventListener("DOMContentLoaded",()=>{
     const saved=localStorage.getItem(KEY)||"tech"; set(saved);
-    // UI: kleinem Switcher im Footer hinzufügen
+    // UI: kleinem Switcher im Footer hinzufÃ¼gen
     document.querySelectorAll('.footer').forEach(ft=>{
       const wrap=document.createElement('div');
       wrap.style.marginTop='6px';

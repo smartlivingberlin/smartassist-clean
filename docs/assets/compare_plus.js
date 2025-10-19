@@ -1,4 +1,4 @@
-/* Vergleich mit Feature-Checkboxen */
+﻿/* Vergleich mit Feature-Checkboxen */
 const ComparePlus = (() => {
   let selected = [];
   let products = [];
@@ -12,7 +12,7 @@ const ComparePlus = (() => {
     const features = document.getElementById('compare-features');
     if(!panel || !table || !features) return;
 
-    // Alle möglichen Keys einsammeln (aus allen selektierten oder fallback: allen Produkten)
+    // Alle mÃ¶glichen Keys einsammeln (aus allen selektierten oder fallback: allen Produkten)
     function allKeys(){
       const base = selected.length ? selected : products;
       return [...new Set(base.flatMap(p => Object.keys(p).filter(k=>!SKIP.has(k))))];
@@ -20,7 +20,7 @@ const ComparePlus = (() => {
 
     function renderFeatureChips(){
       const keys = allKeys();
-      if(visibleKeys.size===0) { // default: 3 gängige
+      if(visibleKeys.size===0) { // default: 3 gÃ¤ngige
         ["weight_kg","range_km","battery_Wh","payload_kg","price_eur"].forEach(k=>keys.includes(k)&&visibleKeys.add(k));
       }
       features.innerHTML = keys.map(k=>`
@@ -37,11 +37,11 @@ const ComparePlus = (() => {
     function renderTable(){
       panel.style.display = selected.length ? 'block' : 'none';
       if(!selected.length){ table.innerHTML=''; return; }
-      const header = selected.map(x=>`<th>${x.name}<br><button class="btn btn-outline" data-rem="${x.name}">✖</button></th>`).join('');
+      const header = selected.map(x=>`<th>${x.name}<br><button class="btn btn-outline" data-rem="${x.name}">âœ–</button></th>`).join('');
       const rows = [...visibleKeys].map(k=>`
         <tr><td>${k}</td>${selected.map(p=>`<td>${(p[k] ?? '')}</td>`).join('')}</tr>
       `).join('');
-      table.innerHTML = `<tr><th>Attribut</th>${header}</tr>${rows || '<tr><td colspan="'+(selected.length+1)+'">Keine Features ausgewählt.</td></tr>'}`;
+      table.innerHTML = `<tr><th>Attribut</th>${header}</tr>${rows || '<tr><td colspan="'+(selected.length+1)+'">Keine Features ausgewÃ¤hlt.</td></tr>'}`;
       table.querySelectorAll('button[data-rem]').forEach(b=>{
         b.onclick=()=>{ selected = selected.filter(p=>p.name!==b.dataset.rem); renderTable(); renderFeatureChips(); if(selected.length===0) panel.style.display='none'; };
       });

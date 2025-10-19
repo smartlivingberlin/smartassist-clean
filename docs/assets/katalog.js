@@ -1,4 +1,4 @@
-(async function(){
+﻿(async function(){
   const P = await fetch('data/products.json').then(r=>r.json());
   const {imgUrl, altText} = SA_MEDIA;
   const chips=document.getElementById('chips');
@@ -21,8 +21,8 @@
       <img src="${imgUrl(p,'card')}" alt="${altText(p,'Produktbild')}" loading="lazy">
       <div style="padding:12px">
         <h3>${p.name}</h3>
-        <p class="muted">${p.brand} · ${p.category}</p>
-        <p><strong>${(p.price||0).toLocaleString('de-DE')} €</strong></p>
+        <p class="muted">${p.brand} Â· ${p.category}</p>
+        <p><strong>${(p.price||0).toLocaleString('de-DE')} â‚¬</strong></p>
         ${p.reason?`<p class="notice" style="margin-top:.3rem">${p.reason}</p>`:''}
         <div class="chips" style="margin:.4rem 0">${(p.tags||[]).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
         <div style="display:flex;gap:.5rem;flex-wrap:wrap">
@@ -46,7 +46,7 @@
     if(!chosen.length){tbl.innerHTML='';return;}
     const fields=[...activeFields];
     const head='<tr>'+fields.map(f=>`<th>${f}</th>`).join('')+'</tr>';
-    const rows=chosen.map(p=>'<tr>'+fields.map(f=>`<td>${f==='price'? ((p[f]||0).toLocaleString('de-DE')+' €') : (p[f]||'')}</td>`).join('')+'</tr>').join('');
+    const rows=chosen.map(p=>'<tr>'+fields.map(f=>`<td>${f==='price'? ((p[f]||0).toLocaleString('de-DE')+' â‚¬') : (p[f]||'')}</td>`).join('')+'</tr>').join('');
     tbl.innerHTML='<table>'+head+rows+'</table>';
     window.scrollTo({top:tbl.offsetTop-60,behavior:'smooth'});
   };
