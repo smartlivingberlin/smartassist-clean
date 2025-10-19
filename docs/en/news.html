@@ -1,21 +1,21 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>News – SmartAssist</title>
+<title>News â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="News RSS" href="feed.xml">
 <link rel="manifest" href="manifest.webmanifest">
 </head><body>
 <nav class="nav">
-  <a href="/smartassist-clean/index.html">SmartAssist</a>
-  <a href="/smartassist-clean/katalog.html">Katalog</a>
-  <a href="/smartassist-clean/news.html"><strong>News</strong></a>
-  <a href="/smartassist-clean/partner.html">Partner</a><a href="/smartassist-clean/kontakt.html">Kontakt</a>
+  <a href="./smartassist-clean/index.html">SmartAssist</a>
+  <a href="./smartassist-clean/katalog.html">Katalog</a>
+  <a href="./smartassist-clean/news.html"><strong>News</strong></a>
+  <a href="./smartassist-clean/partner.html">Partner</a><a href="./smartassist-clean/kontakt.html">Kontakt</a>
 </nav>
 <main class="container">
   <h1>News</h1>
   <div id="news"></div>
 </main>
-<footer>© 2025 SmartAssist</footer>
+<footer>Â© 2025 SmartAssist</footer>
 <script>
 fetch('data/news.json').then(r=>r.json()).then(items=>{
   const box=document.getElementById('news'); box.innerHTML='';
@@ -24,3 +24,4 @@ fetch('data/news.json').then(r=>r.json()).then(items=>{
 </script>
 <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body></html>
+

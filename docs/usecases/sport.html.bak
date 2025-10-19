@@ -1,0 +1,20 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sport-/Reha-Robotik – SmartAssist</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="canonical" href="/smartassist-clean/usecases/sport.html">
+<meta name="description" content="Sensorik & Robotik für Training und Rehabilitation.">
+<meta property="og:title" content="Sport-/Reha-Robotik – SmartAssist">
+<meta property="og:description" content="Assistenz-Robotik & KI: Katalog, News, Partner – schnell, sauber, sicher.">
+<meta property="og:image" content="../og/sport.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Sport-/Reha-Robotik","url":"usecases/sport.html","about":[{"@type":"Thing","name":"Reha"},{"@type":"Thing","name":"Sensorik"},{"@type":"Thing","name":"Therapie"}]}</script>
+</head><body>
+<nav class="nav"><a href="/smartassist-clean/../index.html">SmartAssist</a><a href="/smartassist-clean/../katalog.html">Katalog</a><a href="/smartassist-clean/../news.html">News</a><a href="/smartassist-clean/../partner.html">Partner</a><a href="/smartassist-clean/../kontakt.html">Kontakt</a></nav>
+<main class="container">
+  <h1>Sport-/Reha-Robotik</h1>
+  <p class="card">Sensorik & Robotik für Training und Rehabilitation.</p>
+  <div class="card">Relevante Schlagwörter: Reha, Sensorik, Therapie</div>
+  <p><a class="badge" href="/smartassist-clean/../katalog.html">Zum Katalog</a></p>
+</main>
+<footer>© 2025 SmartAssist</footer>
+</body></html>

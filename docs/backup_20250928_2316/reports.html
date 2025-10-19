@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Audit Reports – SmartAssist</title>
+  <title>Audit Reports â€“ SmartAssist</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -32,24 +32,24 @@
 </head>
 <body>
   <nav class="nav">
-    <a href="/smartassist-clean/index.html">🏠 Home</a>
+    <a href="./smartassist-clean/index.html">ðŸ  Home</a>
     <strong>Audit Reports</strong>
   </nav>
 
   <main class="container">
-    <h1>🔎 Lighthouse & SEO Reports</h1>
-    <p>Automatisch erzeugt bei jedem Push. Unten die <strong>letzten 5 Läufe</strong> mit Scores, Trends & ein Verlauf-Diagramm.</p>
+    <h1>ðŸ”Ž Lighthouse & SEO Reports</h1>
+    <p>Automatisch erzeugt bei jedem Push. Unten die <strong>letzten 5 LÃ¤ufe</strong> mit Scores, Trends & ein Verlauf-Diagramm.</p>
 
     <div id="reports-list" class="grid"></div>
 
     <section class="card">
-      <h3>📈 Score-Verlauf</h3>
-      <label>Seite auswählen:
+      <h3>ðŸ“ˆ Score-Verlauf</h3>
+      <label>Seite auswÃ¤hlen:
         <select id="pageFilter"></select>
       </label>
       <div>
-        <button onclick="exportCSV()">⬇️ CSV Export</button>
-        <button onclick="exportPNG()">⬇️ PNG Export</button>
+        <button onclick="exportCSV()">â¬‡ï¸ CSV Export</button>
+        <button onclick="exportPNG()">â¬‡ï¸ PNG Export</button>
       </div>
       <div id="ampelBox"></div>
       <ul id="tipsBox" class="tips"></ul>
@@ -57,7 +57,7 @@
     </section>
   </main>
 
-  <footer class="footer">© 2025 SmartAssist</footer>
+  <footer class="footer">Â© 2025 SmartAssist</footer>
 
   <!-- Modal -->
   <div id="tipModal" class="modal">
@@ -65,7 +65,7 @@
       <span class="close" onclick="closeModal()">&times;</span>
       <h3 id="tipTitle"></h3>
       <p id="tipText"></p>
-      <p><a id="tipLink" href="#" target="_blank">🔗 Mehr erfahren</a></p>
+      <p><a id="tipLink" href="#" target="_blank">ðŸ”— Mehr erfahren</a></p>
     </div>
   </div>
 
@@ -75,17 +75,17 @@
   const tipDetails={
     perf:{
       title:"Performance verbessern",
-      text:"Optimieren Sie Bilder (WebP, AVIF), nutzen Sie Lazy Loading und Browser-Caching. Minimieren Sie CSS/JS und prüfen Sie die Ladezeit mit PageSpeed.",
+      text:"Optimieren Sie Bilder (WebP, AVIF), nutzen Sie Lazy Loading und Browser-Caching. Minimieren Sie CSS/JS und prÃ¼fen Sie die Ladezeit mit PageSpeed.",
       link:"https://web.dev/performance-scoring/"
     },
     seo:{
       title:"SEO optimieren",
-      text:"Achten Sie auf aussagekräftige Meta-Titel und Beschreibungen. Fügen Sie hreflang-Tags hinzu, wenn mehrere Sprachen genutzt werden.",
+      text:"Achten Sie auf aussagekrÃ¤ftige Meta-Titel und Beschreibungen. FÃ¼gen Sie hreflang-Tags hinzu, wenn mehrere Sprachen genutzt werden.",
       link:"https://web.dev/seo/"
     },
     a11y:{
       title:"Accessibility (Barrierefreiheit)",
-      text:"Sorgen Sie für ausreichende Farbkontraste, Tastatur-Navigation und Alt-Texte bei Bildern. So wird die Seite für alle zugänglich.",
+      text:"Sorgen Sie fÃ¼r ausreichende Farbkontraste, Tastatur-Navigation und Alt-Texte bei Bildern. So wird die Seite fÃ¼r alle zugÃ¤nglich.",
       link:"https://web.dev/accessibility-scoring/"
     },
     bp:{
@@ -95,7 +95,7 @@
     },
     pwa:{
       title:"Progressive Web App (PWA)",
-      text:"Richten Sie ein Manifest.json und Service Worker korrekt ein. Prüfen Sie die Seite offline und aktivieren Sie Push-Optionen.",
+      text:"Richten Sie ein Manifest.json und Service Worker korrekt ein. PrÃ¼fen Sie die Seite offline und aktivieren Sie Push-Optionen.",
       link:"https://web.dev/progressive-web-apps/"
     }
   };
@@ -167,20 +167,20 @@
         pwa:+last[6]
       };
       const avg = Math.round((scores.perf+ scores.seo+ scores.a11y+ scores.bp+ scores.pwa) / 5);
-      let cls="green", txt="🟢 Sehr gut";
-      if(avg<90 && avg>=70){cls="yellow";txt="🟡 Mittel";}
-      if(avg<70){cls="red";txt="🔴 Schwach";}
+      let cls="green", txt="ðŸŸ¢ Sehr gut";
+      if(avg<90 && avg>=70){cls="yellow";txt="ðŸŸ¡ Mittel";}
+      if(avg<70){cls="red";txt="ðŸ”´ Schwach";}
       document.getElementById("ampelBox").innerHTML =
         `<div class="ampel ${cls}">Gesamt-Score: ${avg} (${txt})</div>`;
 
       const tips=[];
-      if(scores.perf<90) tips.push(`<li onclick="openModal('perf')">🔧 Performance verbessern</li>`);
-      if(scores.seo<90) tips.push(`<li onclick="openModal('seo')">📈 SEO optimieren</li>`);
-      if(scores.a11y<90) tips.push(`<li onclick="openModal('a11y')">♿ Accessibility verbessern</li>`);
-      if(scores.bp<90) tips.push(`<li onclick="openModal('bp')">🛡 Best Practices prüfen</li>`);
-      if(scores.pwa<90) tips.push(`<li onclick="openModal('pwa')">📱 PWA Funktionen erweitern</li>`);
+      if(scores.perf<90) tips.push(`<li onclick="openModal('perf')">ðŸ”§ Performance verbessern</li>`);
+      if(scores.seo<90) tips.push(`<li onclick="openModal('seo')">ðŸ“ˆ SEO optimieren</li>`);
+      if(scores.a11y<90) tips.push(`<li onclick="openModal('a11y')">â™¿ Accessibility verbessern</li>`);
+      if(scores.bp<90) tips.push(`<li onclick="openModal('bp')">ðŸ›¡ Best Practices prÃ¼fen</li>`);
+      if(scores.pwa<90) tips.push(`<li onclick="openModal('pwa')">ðŸ“± PWA Funktionen erweitern</li>`);
       document.getElementById("tipsBox").innerHTML =
-        tips.length ? tips.join("") : "<li>✅ Alles im grünen Bereich!</li>";
+        tips.length ? tips.join("") : "<li>âœ… Alles im grÃ¼nen Bereich!</li>";
     }
   }
 
@@ -209,3 +209,4 @@
   </script>
 </body>
 </html>
+

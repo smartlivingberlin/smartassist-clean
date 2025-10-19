@@ -1,3 +1,4 @@
-:root[data-palette="ocean"]{ --brand:#0ea5e9; --accent:#22d3ee }
+﻿:root[data-palette="ocean"]{ --brand:#0ea5e9; --accent:#22d3ee }
 :root[data-palette="tech"]{  --brand:#7c3aed; --accent:#06b6d4 }
 :root[data-palette="sun"]{   --brand:#f59e0b; --accent:#ef4444 }
+

@@ -1,7 +1,7 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Media-Galerie – SmartAssist</title>
+<title>Media-Galerie â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
 .masonry{column-count:3;column-gap:1rem}
@@ -15,18 +15,18 @@
 </style>
 <link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
-<nav class="nav"><a href="/smartassist-clean/index.html">🏠</a> 
-<a href="/smartassist-clean/news.html">News</a>
-<a href="/smartassist-clean/news-archive.html">Archiv</a>
-<a href="/smartassist-clean/news-timeline.html">Timeline</a>
-<a href="/smartassist-clean/media-gallery.html"><strong>Galerie</strong></a></nav>
+<nav class="nav"><a href="./smartassist-clean/index.html">ðŸ </a> 
+<a href="./smartassist-clean/news.html">News</a>
+<a href="./smartassist-clean/news-archive.html">Archiv</a>
+<a href="./smartassist-clean/news-timeline.html">Timeline</a>
+<a href="./smartassist-clean/media-gallery.html"><strong>Galerie</strong></a></nav>
 
 <main class="container">
   <h1>Media-Galerie</h1>
-  <p class="muted">Alle Bilder & Videos aus News gesammelt – im Pinterest-Stil.</p>
+  <p class="muted">Alle Bilder & Videos aus News gesammelt â€“ im Pinterest-Stil.</p>
   <div id="gallery" class="masonry"></div>
 </main>
-<footer class="footer">© 2025 SmartAssist</footer>
+<footer class="footer">Â© 2025 SmartAssist</footer>
 <script>
 async function load(){
   const data=await fetch('data/news-archive.json').then(r=>r.json());
@@ -43,18 +43,19 @@ async function load(){
     return `<a class="item" href="${x.link}" target="_blank" rel="noopener">
       ${media}
       <h3>${x.title}</h3>
-      <p>${x.source} – ${x.published}</p>
+      <p>${x.source} â€“ ${x.published}</p>
     </a>`;
   }).join('');
 }
 load();
 </script>
 <link rel="stylesheet" href="assets/lightbox.css">
-<script src="/smartassist-clean/assets/lightbox.js"></script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/polls.js"></script>
-<script src="/smartassist-clean/assets/trending.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
-<script src="/smartassist-clean/assets/lazy-video.js"></script>
-<script src="/smartassist-clean/assets/img-auto.js"></script>
+<script src="./smartassist-clean/assets/lightbox.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/polls.js"></script>
+<script src="./smartassist-clean/assets/trending.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/lazy-video.js"></script>
+<script src="./smartassist-clean/assets/img-auto.js"></script>
 </body></html>
+

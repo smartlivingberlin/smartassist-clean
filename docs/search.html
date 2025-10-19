@@ -1,6 +1,6 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Suche – SmartAssist</title>
+<title>Suche â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 </head><body>
 <nav class="navbar">
@@ -10,10 +10,10 @@
 </nav>
 <main>
   <h1>Suche</h1>
-  <input id="q" placeholder="z. B. Exoskelett, VR, Pflege…" style="width:100%;padding:.8rem;border:1px solid #e5e7eb;border-radius:10px">
+  <input id="q" placeholder="z. B. Exoskelett, VR, Pflegeâ€¦" style="width:100%;padding:.8rem;border:1px solid #e5e7eb;border-radius:10px">
   <div id="res" class="grid" style="margin-top:1rem"></div>
 </main>
-<footer><p>© 2025 SmartAssist</p></footer>
+<footer><p>Â© 2025 SmartAssist</p></footer>
 <script>
 (async function(){
   const q=document.getElementById('q'), res=document.getElementById('res');
@@ -22,10 +22,11 @@
   function render(val){
     const v=(val||'').toLowerCase(); if(!v){res.innerHTML='';return;}
     const p=products.filter(x=>(x.name+x.brand+(x.tags||[]).join()).toLowerCase().includes(v)).map(x=>`<div class="card"><img src="${x.image}"><div style="padding:12px"><h3>${x.name}</h3><p>${x.brand}</p><a class="btn" href="katalog.html">Zum Katalog</a></div></div>`);
-    const n=news.filter(x=>(x.title+x.source).toLowerCase().includes(v)).map(x=>`<a class="news-card" href="${x.link}" target="_blank" rel="noopener"><img src="${x.image}"><div class="body"><h3>${x.title}</h3><p class="muted">${x.source}</p><span class="btn secondary">Öffnen</span></div></a>`);
+    const n=news.filter(x=>(x.title+x.source).toLowerCase().includes(v)).map(x=>`<a class="news-card" href="${x.link}" target="_blank" rel="noopener"><img src="${x.image}"><div class="body"><h3>${x.title}</h3><p class="muted">${x.source}</p><span class="btn secondary">Ã–ffnen</span></div></a>`);
     res.innerHTML=p.concat(n).join('') || '<p class="notice">Keine Treffer.</p>';
   }
   q.oninput=e=>render(e.target.value);
 })();
 </script>
 </body></html>
+

@@ -1,17 +1,17 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Katalog – SmartAssist</title>
+<title>Katalog â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css"><meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/pages/katalog.html.svg">
 <link rel="stylesheet" href="assets/theme-variants.css">
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a>
-  <a href="/smartassist-clean/katalog.html"><strong>Katalog</strong></a>
-  <a href="/smartassist-clean/news.html">News</a><a href="/smartassist-clean/partner.html">Partner</a>
-  <a href="/smartassist-clean/usecases.html">Use-Cases</a><a href="/smartassist-clean/stories.html">Stories</a><a href="/smartassist-clean/kontakt.html">Kontakt</a>
-<a href="/smartassist-clean/lead.html">📘 Guide</a>
-<a href="/smartassist-clean/tags.html">Tags</a>
+  <a class="nav-brand" href="./smartassist-clean/index.html">SmartAssist</a>
+  <a href="./smartassist-clean/katalog.html"><strong>Katalog</strong></a>
+  <a href="./smartassist-clean/news.html">News</a><a href="./smartassist-clean/partner.html">Partner</a>
+  <a href="./smartassist-clean/usecases.html">Use-Cases</a><a href="./smartassist-clean/stories.html">Stories</a><a href="./smartassist-clean/kontakt.html">Kontakt</a>
+<a href="./smartassist-clean/lead.html">ðŸ“˜ Guide</a>
+<a href="./smartassist-clean/tags.html">Tags</a>
 </nav>
 <main class="container">
   <div class="searchbar">
@@ -19,8 +19,8 @@
   </div>
   <div id="grid" class="grid"></div>
 </main>
-<footer class="footer">© 2025 SmartAssist</footer>
-<script src="/smartassist-clean/assets/search.js"></script>
+<footer class="footer">Â© 2025 SmartAssist</footer>
+<script src="./smartassist-clean/assets/search.js"></script>
 <script>
 let ALL=[];
 async function load(){
@@ -32,7 +32,7 @@ function render(q){
   const items = filterItems(ALL,q,(x)=>[x.name,x.category,x.helps].join(' '));
   g.innerHTML = items.map(x=>`<div class="card item">
     <div class="badge">${x.category||'Alltag'}</div>
-    <h3>${x.name} ${mostClicked(x.brand)?"🔥":""}</h3><p>${x.helps||''}</p>
+    <h3>${x.name} ${mostClicked(x.brand)?"ðŸ”¥":""}</h3><p>${x.helps||''}</p>
     <div class="kv">
       ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||""}" href="${x.link}" target="_blank" rel="noopener">Zur Website</a>`:''}
       ${x.docs?`<a class="btn" href="${x.docs}" target="_blank" rel="noopener">Datenblatt</a>`:''}
@@ -42,17 +42,17 @@ function render(q){
 document.getElementById('q').addEventListener('input',e=>render(e.target.value));
 load();
 </script>
-<script src="/smartassist-clean/assets/product-schema.js"></script>
-<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">Schließen</button><iframe allowfullscreen></iframe></div></div>
+<script src="./smartassist-clean/assets/product-schema.js"></script>
+<div id="videoModal"><div class="box"><button id="closeModal" class="btn btn-outline">SchlieÃŸen</button><iframe allowfullscreen></iframe></div></div>
 <script type="module">import{videoModal} from "./assets/ui.js"; videoModal();</script>
 <script src="../assets/affiliates.js"></script>
-<script src="/smartassist-clean/assets/conversion.js"></script>
-<script src="/smartassist-clean/assets/csv_export.js"></script>
-<script src="/smartassist-clean/assets/price_alert.js"></script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/trending.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
-<script src="/smartassist-clean/assets/img-auto.js"></script>
+<script src="./smartassist-clean/assets/conversion.js"></script>
+<script src="./smartassist-clean/assets/csv_export.js"></script>
+<script src="./smartassist-clean/assets/price_alert.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/trending.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/img-auto.js"></script>
 </body></html>
 <script>
 (function(){
@@ -62,7 +62,7 @@ load();
   btn.onclick=async ()=>{
     try{
       const P=await fetch('data/products.json').then(r=>r.json());
-      const fav=JSON.parse(localStorage.getItem('favProducts')||'[]'); // falls du es später nutzt
+      const fav=JSON.parse(localStorage.getItem('favProducts')||'[]'); // falls du es spÃ¤ter nutzt
       const rows=[['Name','Brand','Kategorie','Preis(EUR)','Link']];
       (fav.length? P.filter(p=>fav.includes(p.name)) : P.slice(0,5)).forEach(p=>rows.push([p.name,p.brand||'',p.category||'',p.price_eur||'',p.link||'']));
       exportCSV(rows,'produkte.csv');
@@ -71,3 +71,4 @@ load();
   bar.appendChild(btn);
 })();
 </script>
+

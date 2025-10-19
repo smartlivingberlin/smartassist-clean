@@ -1,23 +1,23 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SmartAssist – Assistenz & Robotik | Katalog, News, Partner</title>
+  <title>SmartAssist â€“ Assistenz & Robotik | Katalog, News, Partner</title>
 
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="canonical" href="/smartassist-clean/https://smartlivingberlin.github.io/smartassist-clean/index.html">
+  <link rel="canonical" href="./smartassist-clean/https://smartlivingberlin.github.io/smartassist-clean/index.html">
 
   <!-- Social Previews -->
   <meta property="og:site_name" content="SmartAssist">
-  <meta property="og:title" content="SmartAssist – Assistenz & Robotik">
-  <meta property="og:description" content="Assistenz-Robotik & KI: Katalog, News, Partner – schnell, sauber, sicher.">
+  <meta property="og:title" content="SmartAssist â€“ Assistenz & Robotik">
+  <meta property="og:description" content="Assistenz-Robotik & KI: Katalog, News, Partner â€“ schnell, sauber, sicher.">
   <meta property="og:image" content="https://smartlivingberlin.github.io/smartassist-clean/og/index.svg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- PWA / Icons -->
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="https://fav.farm/🤖">
+  <link rel="icon" href="https://fav.farm/ðŸ¤–">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -26,7 +26,7 @@
     "@type":"Organization",
     "name":"SmartAssist",
     "url":"https://smartlivingberlin.github.io/smartassist-clean/",
-    "logo":"https://fav.farm/🤖"
+    "logo":"https://fav.farm/ðŸ¤–"
   }
   </script>
   <script type="application/ld+json">
@@ -48,42 +48,42 @@
 <body>
   <nav class="nav">
     <strong>SmartAssist</strong>
-    <a href="/smartassist-clean/katalog.html" data-track="nav:katalog" data-id="nav:katalog">Katalog</a>
-    <a href="/smartassist-clean/news.html" data-track="nav:news" data-id="nav:news">News</a>
-    <a href="/smartassist-clean/partner.html">Partner</a>
-    <a href="/smartassist-clean/kontakt.html">Kontakt</a>
-    <a href="/smartassist-clean/usecases.html">Use-Cases</a>
-   <a href="/smartassist-clean/events.html">Events</a></nav>
+    <a href="./smartassist-clean/katalog.html" data-track="nav:katalog" data-id="nav:katalog">Katalog</a>
+    <a href="./smartassist-clean/news.html" data-track="nav:news" data-id="nav:news">News</a>
+    <a href="./smartassist-clean/partner.html">Partner</a>
+    <a href="./smartassist-clean/kontakt.html">Kontakt</a>
+    <a href="./smartassist-clean/usecases.html">Use-Cases</a>
+   <a href="./smartassist-clean/events.html">Events</a></nav>
 
   <main class="container">
     <div class="card reveal">
-      <h1>Assistenz-Robotik & KI – Überblick</h1>
-      <p>Kuratierter Katalog, News & Partner – ohne externe Skripte. Schnell, sauber, sicher.</p>
+      <h1>Assistenz-Robotik & KI â€“ Ãœberblick</h1>
+      <p>Kuratierter Katalog, News & Partner â€“ ohne externe Skripte. Schnell, sauber, sicher.</p>
       <div class="kv">
-        <a class="badge" href="/smartassist-clean/katalog.html" data-track="nav:katalog" data-id="nav:katalog">Start: Katalog</a>
-        <a class="badge" href="/smartassist-clean/news.html" data-track="nav:news" data-id="nav:news">Neu: News</a>
+        <a class="badge" href="./smartassist-clean/katalog.html" data-track="nav:katalog" data-id="nav:katalog">Start: Katalog</a>
+        <a class="badge" href="./smartassist-clean/news.html" data-track="nav:news" data-id="nav:news">Neu: News</a>
       </div>
     </div>
 
     <div class="card reveal">
-      <h2>🔥 Trending-Produkte</h2>
+      <h2>ðŸ”¥ Trending-Produkte</h2>
       <div id="trending" class="grid"></div>
     </div>
 
     <section class="card reveal">
-      <h2>📘 Robotics-Guide</h2>
-      <p>Exklusiver PDF-Leitfaden „Assistenz-Robotik 2026“ – gratis gegen E-Mail.</p>
-      <a class="btn" href="/smartassist-clean/lead.html">Jetzt anfordern</a>
+      <h2>ðŸ“˜ Robotics-Guide</h2>
+      <p>Exklusiver PDF-Leitfaden â€žAssistenz-Robotik 2026â€œ â€“ gratis gegen E-Mail.</p>
+      <a class="btn" href="./smartassist-clean/lead.html">Jetzt anfordern</a>
     </section>
   </main>
 
-  <footer class="footer">© 2025 SmartAssist</footer>
+  <footer class="footer">Â© 2025 SmartAssist</footer>
 
   <!-- kleine Helfer -->
-  <script src="/smartassist-clean/assets/reveal.js"></script>
-  <script src="/smartassist-clean/assets/trending.js"></script>
+  <script src="./smartassist-clean/assets/reveal.js"></script>
+  <script src="./smartassist-clean/assets/trending.js"></script>
   <script>
-    // Trending-Block füllen (falls Daten vorhanden)
+    // Trending-Block fÃ¼llen (falls Daten vorhanden)
     fetch("data/products.json").then(r=>r.json()).then(p=>{
       if(!window.renderTrending) return;
       const t=renderTrending(p);
@@ -93,14 +93,14 @@
           <h3>${x.name}</h3>
           <p class="muted">${x.helps||x.reason||""}</p>
           ${x.link?`<a class="btn btn-outline" data-aff-brand="${x.brand||''}" href="${x.link}" target="_blank" rel="noopener">Website</a>`:""}
-          ${x.slug?`<a class="btn" href="/smartassist-clean/product/${x.slug}.html">Details</a>`:""}
+          ${x.slug?`<a class="btn" href="./smartassist-clean/product/${x.slug}.html">Details</a>`:""}
         </div>`).join("");
     }).catch(()=>{});
   </script>
-  <script src="/smartassist-clean/assets/affiliates.js"></script>
-  <script src="/smartassist-clean/assets/audit.js"></script>
-  <script src="/smartassist-clean/assets/theme-extended.js"></script>
-  <script src="/smartassist-clean/assets/imgsizes.js"></script>
+  <script src="./smartassist-clean/assets/affiliates.js"></script>
+  <script src="./smartassist-clean/assets/audit.js"></script>
+  <script src="./smartassist-clean/assets/theme-extended.js"></script>
+  <script src="./smartassist-clean/assets/imgsizes.js"></script>
 
   <!-- PWA SW registrieren (falls vorhanden) -->
   <script>
@@ -109,10 +109,11 @@
     }
   </script>
 <link rel="stylesheet" href="assets/story.css">
-<script src="/smartassist-clean/assets/story.js"></script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
-<script src="/smartassist-clean/assets/onboarding.js"></script>
-<script src="/smartassist-clean/assets/img-auto.js"></script>
+<script src="./smartassist-clean/assets/story.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/onboarding.js"></script>
+<script src="./smartassist-clean/assets/img-auto.js"></script>
 </body>
 </html>
+

@@ -1,0 +1,35 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kontakt – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a href="partner.html">Partner</a>
+  <a class="active" href="kontakt.html">Kontakt</a>
+</nav>
+
+<main>
+  <h1>Kontakt</h1>
+  <form class="form" action="https://formspree.io/f/xyzzzzzz" method="POST">
+    <label>Ihr Name</label>
+    <input type="text" name="name" required>
+    <label>E-Mail</label>
+    <input type="email" name="_replyto" required>
+    <label>Betreff</label>
+    <select name="subject">
+      <option>Allgemeine Anfrage</option>
+      <option>Partner werden</option>
+      <option>Produkt einreichen</option>
+    </select>
+    <label>Nachricht</label>
+    <textarea name="message" rows="6" required></textarea>
+    <button class="btn" type="submit">Senden</button>
+    <p class="notice">Hinweis: Der Versand erfolgt über Formspree (keine Registrierung nötig). Trage später deine eigene Endpoint-ID ein.</p>
+  </form>
+</main>
+
+<footer><p>© 2025 SmartAssist</p></footer>
+</body></html>

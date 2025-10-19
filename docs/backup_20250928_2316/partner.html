@@ -1,10 +1,10 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Partner – SmartAssist</title>
+<title>Partner â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme-variants.css">
 </head>
 <body>
-<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/partner.html"><strong>Partner</strong></a> <a href="/smartassist-clean/lead.html">Guide</a> <a href="/smartassist-clean/events.html">Events</a></nav><div class="container" style="margin-top:8px"><a class="btn btn-outline" href="/smartassist-clean/../partner-kontakt.html">Partner kontaktieren</a></div>
+<nav class="nav"><a class="nav-brand" href="./smartassist-clean/index.html">SmartAssist</a><a href="./smartassist-clean/partner.html"><strong>Partner</strong></a> <a href="./smartassist-clean/lead.html">Guide</a> <a href="./smartassist-clean/events.html">Events</a></nav><div class="container" style="margin-top:8px"><a class="btn btn-outline" href="./smartassist-clean/../partner-kontakt.html">Partner kontaktieren</a></div>
 <main class="container">
   <h1>Partner</h1>
   <div>
@@ -14,7 +14,7 @@
   </div>
   <div id="plist" class="grid logos"></div>
 </main>
-<footer class="footer">© 2025 SmartAssist</footer>
+<footer class="footer">Â© 2025 SmartAssist</footer>
 <script>
 let PARTNERS=[];
 fetch('data/partners.json').then(r=>r.json()).then(d=>{PARTNERS=d;render();});
@@ -26,7 +26,7 @@ function render(){
     (!land|| (p.country||'').toLowerCase().includes(land)) &&
     (!cat|| (p.categories||[]).join(' ').toLowerCase().includes(cat))
   );
-  c.innerHTML=f.map(p=>`<a class="card logo" href="/smartassist-clean/partners/${p.slug}.html">
+  c.innerHTML=f.map(p=>`<a class="card logo" href="./smartassist-clean/partners/${p.slug}.html">
     <img src="${p.logo}" alt="${p.name}" loading="lazy"><div><strong>${p.name}</strong></div></a>`).join('');
 }
 document.getElementById('filterCountry').oninput=render;
@@ -41,8 +41,9 @@ function exportCSV(){
   a.href=URL.createObjectURL(blob);a.download="partners.csv";a.click();
 }
 </script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/trending.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
-<script src="/smartassist-clean/assets/img-auto.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/trending.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/img-auto.js"></script>
 </body></html>
+

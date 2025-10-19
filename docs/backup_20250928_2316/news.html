@@ -1,7 +1,7 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>News & Stories – SmartAssist</title>
+<title>News & Stories â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
 .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
@@ -14,18 +14,18 @@
 </style>
 <link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
-<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a> 
-<a href="/smartassist-clean/news.html"><strong>News</strong></a>
-<a href="/smartassist-clean/news-archive.html">Archiv</a>
-<a href="/smartassist-clean/news-timeline.html">Timeline</a> <a href="/smartassist-clean/lead.html">Guide</a> <a href="/smartassist-clean/events.html">Events</a></nav>
+<nav class="nav"><a class="nav-brand" href="./smartassist-clean/index.html">SmartAssist</a> 
+<a href="./smartassist-clean/news.html"><strong>News</strong></a>
+<a href="./smartassist-clean/news-archive.html">Archiv</a>
+<a href="./smartassist-clean/news-timeline.html">Timeline</a> <a href="./smartassist-clean/lead.html">Guide</a> <a href="./smartassist-clean/events.html">Events</a></nav>
 
 <main class="container">
   <article class="card"><h1>News & Stories</h1>
     <p class="muted">Mit Bildern und Videos aus Robotik, Assistenz & KI.</p>
   </article>
   <section id="autonews" class="news-grid"></section>
-<section class="card"><a class="btn" href="/smartassist-clean/media-gallery.html">Zur Media-Galerie →</a></section><section class="card"><a class="btn btn-outline" href="news.xml">RSS abonnieren</a></section></main>
-<footer class="footer">© 2025 SmartAssist</footer>
+<section class="card"><a class="btn" href="./smartassist-clean/media-gallery.html">Zur Media-Galerie â†’</a></section><section class="card"><a class="btn btn-outline" href="news.xml">RSS abonnieren</a></section></main>
+<footer class="footer">Â© 2025 SmartAssist</footer>
 <script>
 fetch('data/news.json').then(r=>r.json()).then(d=>{
   const c=document.getElementById('autonews');
@@ -42,18 +42,19 @@ fetch('data/news.json').then(r=>r.json()).then(d=>{
       ${media}
       <div class="body">
         <h3>${x.title}</h3>
-        <p class="muted">${x.source} – ${x.published}</p>
+        <p class="muted">${x.source} â€“ ${x.published}</p>
         <p>${x.summary}</p>
       </div>
     </a>`;
   }).join('');
 });
 </script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/polls.js"></script>
-<script src="/smartassist-clean/assets/trending.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/polls.js"></script>
+<script src="./smartassist-clean/assets/trending.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
 <script src="../assets/structured-data.js"></script>
-<script src="/smartassist-clean/assets/lazy-video.js"></script>
-<script src="/smartassist-clean/assets/img-auto.js"></script>
+<script src="./smartassist-clean/assets/lazy-video.js"></script>
+<script src="./smartassist-clean/assets/img-auto.js"></script>
 </body></html>
+

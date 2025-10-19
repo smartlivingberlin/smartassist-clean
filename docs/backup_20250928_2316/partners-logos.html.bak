@@ -1,0 +1,25 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partner-Logos – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<nav class="nav"><a class="nav-brand" href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/partner.html">Partner</a></nav>
+<main class="container">
+  <h1>Partner-Logowand</h1>
+  <div class="grid" id="logogrid"></div>
+</main>
+<footer class="footer">© 2025 SmartAssist</footer>
+<script>
+(async ()=>{
+  const res=await fetch('data/partners.json'); const list=await res.json();
+  const g=document.getElementById('logogrid');
+  g.innerHTML = list.map(p=>{
+    const slug=(p.name||'partner').toLowerCase().replace(/\\s+/g,'-');
+    return `<div class="card" style="text-align:center">
+      <img src="partner-logos/${slug}.svg" alt="" loading="lazy" width="320" height="160" style="width:100%;height:auto;border-radius:12px">
+      <div style="margin-top:8px"><strong>${p.name}</strong><br><small class="muted">${p.type||''}</small></div>
+    </div>`
+  }).join('');
+})();
+</script>
+</body></html>

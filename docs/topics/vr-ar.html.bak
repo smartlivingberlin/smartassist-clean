@@ -1,0 +1,7 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VR/AR in Assistenz & Reha – Themen</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><nav class="nav"><a class="nav-brand" href="/smartassist-clean/../index.html">SmartAssist</a><a href="/smartassist-clean/../katalog.html">Katalog</a><a href="/smartassist-clean/../topics.html"><strong>Themen</strong></a></nav>
+<main class="container"><h1>VR/AR in Assistenz & Reha</h1><p class="card">Immersive Therapien, visuelle Assistenz & Training.</p><div class="grid"><div class="card"><h3>VisionAssist Pro</h3><p class="muted">Wearable mit OCR & Objekterkennung für Orientierung.</p><a class="btn btn-outline" href="https://example.com/visionassist-pro" target="_blank">Website</a></div><div class="card"><h3>TrackRehab S</h3><p class="muted">Wearable Sensorik für Gangbild- & Übungsanalyse.</p><a class="btn btn-outline" href="https://example.com/trackrehab-s" target="_blank">Website</a></div></div></main>
+<footer class="footer">© 2025 SmartAssist</footer></body></html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartAssist – Assistenz & Robotik</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="canonical" href="https://smartlivingberlin.github.io/smartassist-clean/">
+  <meta property="og:site_name" content="SmartAssist">
+  <meta property="og:title" content="SmartAssist – Assistenz & Robotik">
+  <meta property="og:description" content="Katalog, News & Partner für Robotik, KI & Smart Living.">
+  <meta property="og:image" content="https://picsum.photos/seed/smartassist/1200/630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="https://fav.farm/🤖">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SmartAssist",
+    "url": "https://smartlivingberlin.github.io/smartassist-clean/",
+    "logo": "https://fav.farm/🤖"
+  }
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <strong>SmartAssist</strong>
+  <a href="/smartassist-clean/katalog.html">Katalog</a>
+  <a href="/smartassist-clean/news.html">News</a>
+  <a href="/smartassist-clean/partner.html">Partner</a>
+  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
+  <a href="/smartassist-clean/usecases.html">Use-Cases</a>
+</nav>
+
+<main class="container">
+  <div class="card">
+    <h1>Assistenz-Robotik & KI – Überblick</h1>
+    <p>Kuratierter Katalog, News & Partner – schnell, sauber, sicher.</p>
+    <a class="badge" href="/smartassist-clean/katalog.html">Zum Katalog</a>
+    <a class="badge" href="/smartassist-clean/news.html">Neu: News</a>
+  </div>
+</main>
+
+<footer>© 2025 SmartAssist</footer>
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+</body>
+</html>

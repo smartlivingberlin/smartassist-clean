@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Audit Reports – SmartAssist</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .scores span {display:inline-block; margin:0 6px; padding:4px 8px; border-radius:6px; font-weight:600;}
+    .perf{background:#16a34a;color:#fff}
+    .seo{background:#2563eb;color:#fff}
+    .a11y{background:#9333ea;color:#fff}
+    .bp{background:#f59e0b;color:#fff}
+    .pwa{background:#ef4444;color:#fff}
+    canvas{max-width:100%; margin-top:20px}
+    select,button{margin:8px;padding:6px 10px;border-radius:6px;cursor:pointer;}
+    .ampel{margin:15px 0;font-size:1.2em;font-weight:bold;padding:10px;border-radius:8px;display:inline-block;}
+    .green{background:#16a34a;color:#fff}
+    .yellow{background:#facc15;color:#000}
+    .red{background:#ef4444;color:#fff}
+    .diff-up{color:#16a34a;font-weight:bold}
+    .diff-down{color:#ef4444;font-weight:bold}
+    .tips{margin-top:10px;font-size:0.95em}
+    .tips li{margin:6px 0;cursor:pointer;color:#2563eb;text-decoration:underline}
+    /* Modal */
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;}
+    .modal-content{background:#fff;padding:20px;border-radius:8px;max-width:500px;width:90%;box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+    .modal-content h3{margin-top:0}
+    .close{float:right;font-size:1.4em;cursor:pointer}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/smartassist-clean/index.html">🏠 Home</a>
+    <strong>Audit Reports</strong>
+  </nav>
+
+  <main class="container">
+    <h1>🔎 Lighthouse & SEO Reports</h1>
+    <p>Automatisch erzeugt bei jedem Push. Unten die <strong>letzten 5 Läufe</strong> mit Scores, Trends & ein Verlauf-Diagramm.</p>
+
+    <div id="reports-list" class="grid"></div>
+
+    <section class="card">
+      <h3>📈 Score-Verlauf</h3>
+      <label>Seite auswählen:
+        <select id="pageFilter"></select>
+      </label>
+      <div>
+        <button onclick="exportCSV()">⬇️ CSV Export</button>
+        <button onclick="exportPNG()">⬇️ PNG Export</button>
+      </div>
+      <div id="ampelBox"></div>
+      <ul id="tipsBox" class="tips"></ul>
+      <canvas id="scoreChart"></canvas>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 SmartAssist</footer>
+
+  <!-- Modal -->
+  <div id="tipModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="tipTitle"></h3>
+      <p id="tipText"></p>
+      <p><a id="tipLink" href="#" target="_blank">🔗 Mehr erfahren</a></p>
+    </div>
+  </div>
+
+  <script>
+  let chart, allData=[];
+
+  const tipDetails={
+    perf:{
+      title:"Performance verbessern",
+      text:"Optimieren Sie Bilder (WebP, AVIF), nutzen Sie Lazy Loading und Browser-Caching. Minimieren Sie CSS/JS und prüfen Sie die Ladezeit mit PageSpeed.",
+      link:"https://web.dev/performance-scoring/"
+    },
+    seo:{
+      title:"SEO optimieren",
+      text:"Achten Sie auf aussagekräftige Meta-Titel und Beschreibungen. Fügen Sie hreflang-Tags hinzu, wenn mehrere Sprachen genutzt werden.",
+      link:"https://web.dev/seo/"
+    },
+    a11y:{
+      title:"Accessibility (Barrierefreiheit)",
+      text:"Sorgen Sie für ausreichende Farbkontraste, Tastatur-Navigation und Alt-Texte bei Bildern. So wird die Seite für alle zugänglich.",
+      link:"https://web.dev/accessibility-scoring/"
+    },
+    bp:{
+      title:"Best Practices",
+      text:"Stellen Sie sicher, dass alle Links sicher sind (rel=noopener), HTTPS aktiv ist und keine JavaScript-Fehler im Browser auftreten.",
+      link:"https://web.dev/pwa-checklist/"
+    },
+    pwa:{
+      title:"Progressive Web App (PWA)",
+      text:"Richten Sie ein Manifest.json und Service Worker korrekt ein. Prüfen Sie die Seite offline und aktivieren Sie Push-Optionen.",
+      link:"https://web.dev/progressive-web-apps/"
+    }
+  };
+
+  function openModal(key){
+    const tip=tipDetails[key];
+    document.getElementById("tipTitle").innerText=tip.title;
+    document.getElementById("tipText").innerText=tip.text;
+    document.getElementById("tipLink").href=tip.link;
+    document.getElementById("tipModal").style.display="flex";
+  }
+  function closeModal(){
+    document.getElementById("tipModal").style.display="none";
+  }
+
+  async function loadHistory(){
+    try {
+      const res = await fetch("reports/history.csv?"+Date.now());
+      if(!res.ok) return;
+      const txt = await res.text();
+      const lines = txt.trim().split("\n").slice(1);
+      allData = lines.map(l=>l.split(","));
+      const pages = [...new Set(allData.map(r=>r[1]))];
+      const sel = document.getElementById("pageFilter");
+      sel.innerHTML = pages.map(p=>`<option value="${p}">${p}</option>`).join("");
+      sel.onchange=()=>renderChart(allData, sel.value);
+      renderChart(allData, pages[0]);
+    } catch(e){ console.error("History-Fehler",e); }
+  }
+
+  function renderChart(data, page){
+    const rows = data.filter(r=>r[1]===page);
+    const labels = rows.map(r=>r[0]);
+    const perf = rows.map(r=>+r[2]);
+    const seo  = rows.map(r=>+r[3]);
+    const a11y = rows.map(r=>+r[4]);
+    const bp   = rows.map(r=>+r[5]);
+    const pwa  = rows.map(r=>+r[6]);
+
+    const ctx = document.getElementById("scoreChart");
+    if(chart) chart.destroy();
+    chart = new Chart(ctx,{
+      type:"line",
+      data:{
+        labels,
+        datasets:[
+          {label:"Perf",data:perf,borderColor:"#16a34a"},
+          {label:"SEO",data:seo,borderColor:"#2563eb"},
+          {label:"A11y",data:a11y,borderColor:"#9333ea"},
+          {label:"BestP",data:bp,borderColor:"#f59e0b"},
+          {label:"PWA",data:pwa,borderColor:"#ef4444"},
+        ]
+      },
+      options:{
+        responsive:true,
+        plugins:{legend:{position:"bottom"}},
+        scales:{y:{min:0,max:100}}
+      }
+    });
+
+    // Ampel + Tipps
+    if(rows.length>=1){
+      const last = rows[rows.length-1];
+      const scores = {
+        perf:+last[2],
+        seo:+last[3],
+        a11y:+last[4],
+        bp:+last[5],
+        pwa:+last[6]
+      };
+      const avg = Math.round((scores.perf+ scores.seo+ scores.a11y+ scores.bp+ scores.pwa) / 5);
+      let cls="green", txt="🟢 Sehr gut";
+      if(avg<90 && avg>=70){cls="yellow";txt="🟡 Mittel";}
+      if(avg<70){cls="red";txt="🔴 Schwach";}
+      document.getElementById("ampelBox").innerHTML =
+        `<div class="ampel ${cls}">Gesamt-Score: ${avg} (${txt})</div>`;
+
+      const tips=[];
+      if(scores.perf<90) tips.push(`<li onclick="openModal('perf')">🔧 Performance verbessern</li>`);
+      if(scores.seo<90) tips.push(`<li onclick="openModal('seo')">📈 SEO optimieren</li>`);
+      if(scores.a11y<90) tips.push(`<li onclick="openModal('a11y')">♿ Accessibility verbessern</li>`);
+      if(scores.bp<90) tips.push(`<li onclick="openModal('bp')">🛡 Best Practices prüfen</li>`);
+      if(scores.pwa<90) tips.push(`<li onclick="openModal('pwa')">📱 PWA Funktionen erweitern</li>`);
+      document.getElementById("tipsBox").innerHTML =
+        tips.length ? tips.join("") : "<li>✅ Alles im grünen Bereich!</li>";
+    }
+  }
+
+  function exportCSV(){
+    const page = document.getElementById("pageFilter").value;
+    const rows = allData.filter(r=>r[1]===page);
+    const header = "timestamp,page,perf,seo,a11y,bp,pwa\n";
+    const csv = header + rows.map(r=>r.join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="scores-"+page+".csv";
+    a.click();
+  }
+
+  function exportPNG(){
+    if(!chart) return;
+    const url=chart.toBase64Image("image/png",1.0);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="scores-chart.png";
+    a.click();
+  }
+
+  loadHistory();
+  </script>
+</body>
+</html>

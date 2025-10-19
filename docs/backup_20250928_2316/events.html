@@ -1,24 +1,25 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Events & Messen – SmartAssist</title>
+<title>Events & Messen â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css"></head>
 <body>
-<nav class="nav"><a href="/smartassist-clean/index.html">🏠</a> <strong>Events</strong></nav>
+<nav class="nav"><a href="./smartassist-clean/index.html">ðŸ </a> <strong>Events</strong></nav>
 <main class="container">
   <h1>Events & Messen</h1>
-  <p class="muted">Robotics/Assistenz – anstehende Termine mit iCal-Export.</p>
+  <p class="muted">Robotics/Assistenz â€“ anstehende Termine mit iCal-Export.</p>
   <div id="elist" class="grid"></div>
-  <p class="card"><a class="btn" href="events.ics">📅 iCal Export (alle)</a></p>
+  <p class="card"><a class="btn" href="events.ics">ðŸ“… iCal Export (alle)</a></p>
 </main>
-<footer class="footer">© 2025 SmartAssist</footer>
+<footer class="footer">Â© 2025 SmartAssist</footer>
 <script>
 fetch('data/events.json').then(r=>r.json()).then(d=>{
   const upcoming=d.filter(x=>new Date(x.start) >= new Date()).sort((a,b)=>new Date(a.start)-new Date(b.start));
   const c=document.getElementById('elist');
   c.innerHTML=upcoming.map(x=>`<a class="card" href="${x.url}" target="_blank" rel="noopener" data-track="event:${x.title}" data-id="event:${x.title}">
     <h3>${x.title}</h3>
-    <p class="muted">${new Date(x.start).toLocaleString('de-DE')} – ${x.location||''}</p>
-  </a>`).join('') || "<p class='muted'>Bald neue Termine…</p>";
+    <p class="muted">${new Date(x.start).toLocaleString('de-DE')} â€“ ${x.location||''}</p>
+  </a>`).join('') || "<p class='muted'>Bald neue Termineâ€¦</p>";
 });
 </script>
 </body></html>
+

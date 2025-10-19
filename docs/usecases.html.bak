@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Use-Cases – SmartAssist</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav">
+  <a href="/smartassist-clean/index.html">Start</a>
+  <a href="/smartassist-clean/katalog.html">Katalog</a>
+  <a href="/smartassist-clean/news.html">News</a>
+  <a href="/smartassist-clean/partner.html">Partner</a>
+  <a href="/smartassist-clean/kontakt.html">Kontakt</a>
+  <a href="/smartassist-clean/usecases.html">Use-Cases</a>
+</nav>
+<main class="container">
+  <h1>Use-Cases</h1>
+  <p>Beispiele, wie Assistenz-Roboter im Alltag, in der Pflege oder im Sport helfen.</p>
+  <div id="usecases"></div>
+  <script src="/smartassist-clean/assets/usecases.js"></script>
+</main>
+<footer>© 2025 SmartAssist</footer>
+</body>
+</html>

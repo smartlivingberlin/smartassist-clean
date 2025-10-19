@@ -1,6 +1,6 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sport – SmartAssist</title>
+<title>Sport â€“ SmartAssist</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head><body>
 <nav class="navbar">
@@ -8,21 +8,22 @@
   <a href="../katalog.html">Katalog</a><a href="../news.html">News</a><a href="../events.html">Events</a>
 </nav>
 <main>
-  <h1>Sport – Produkte & News</h1>
+  <h1>Sport â€“ Produkte & News</h1>
   <div id="prods" class="grid"></div>
   <h2 style="margin-top:1rem">Aktuelle Meldungen</h2>
   <div id="n" class="news-grid"></div>
 </main>
-<footer><p>© 2025 SmartAssist</p></footer>
+<footer><p>Â© 2025 SmartAssist</p></footer>
 <script>
 (async function(){
   const hub="sport".toLowerCase();
   const P=await fetch('../data/products.json').then(r=>r.json()).catch(()=>[]);
   const N=await fetch('../data/news.json').then(r=>r.json()).catch(()=>[]);
   const pf=P.filter(p=>(p.tags||[]).map(x=>x.toLowerCase()).some(t=>t.includes(hub) || (hub==='smart-home' && t.includes('smart'))));
-  document.getElementById('prods').innerHTML = pf.map(p=>`<div class="card"><img src="${p.image}"><div style="padding:12px"><h3>${p.name}</h3><p class="muted">${p.brand} · ${p.category}</p><a class="btn" href="../katalog.html">Vergleichen</a></div></div>`).join('') || '<p class="notice">Noch keine Produkte.</p>';
+  document.getElementById('prods').innerHTML = pf.map(p=>`<div class="card"><img src="${p.image}"><div style="padding:12px"><h3>${p.name}</h3><p class="muted">${p.brand} Â· ${p.category}</p><a class="btn" href="../katalog.html">Vergleichen</a></div></div>`).join('') || '<p class="notice">Noch keine Produkte.</p>';
   const nf=N.filter(n=>(n.title+n.source).toLowerCase().includes(hub)).slice(0,6);
   document.getElementById('n').innerHTML = nf.map(n=>`<a class="news-card" href="${n.link}" target="_blank" rel="noopener"><img src="${n.image}"><div class="body"><h3>${n.title}</h3><p class="muted">${n.source}</p></div></a>`).join('') || '<p class="notice">Noch keine News.</p>';
 })();
 </script>
 </body></html>
+

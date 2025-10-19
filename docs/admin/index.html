@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-  <h1>⚙️ SmartAssist Admin</h1>
+  <h1>âš™ï¸ SmartAssist Admin</h1>
 
   <div class="form">
     <h2>Affiliate Mapping bearbeiten</h2>
@@ -20,25 +20,25 @@
     <input id="affBrand" placeholder="z. B. BostonDynamics">
     <label>Parameter</label>
     <input id="affParam" placeholder="z. B. ref=bd&utm_campaign=summer25">
-    <button onclick="addAffiliate()">➕ Affiliate speichern</button>
+    <button onclick="addAffiliate()">âž• Affiliate speichern</button>
     <pre id="affList"></pre>
-    <button onclick="downloadAff()">⬇️ Affiliates.json speichern</button>
+    <button onclick="downloadAff()">â¬‡ï¸ Affiliates.json speichern</button>
   </div>
 
   <div class="form">
     <h2>Produkt-Empfehlungstext</h2>
-    <label>Produkt auswählen</label>
+    <label>Produkt auswÃ¤hlen</label>
     <select id="prodSelect"></select>
     <label>Warum wir empfehlen</label>
     <textarea id="prodReason" rows="3"></textarea>
-    <button onclick="saveReason()">💾 Reason speichern</button>
+    <button onclick="saveReason()">ðŸ’¾ Reason speichern</button>
     <pre id="prodPreview"></pre>
-    <button onclick="downloadProds()">⬇️ Products.json speichern</button>
+    <button onclick="downloadProds()">â¬‡ï¸ Products.json speichern</button>
   </div>
 
   <div class="form">
     <h2>Commit-Hinweis</h2>
-    <p>Nach dem Speichern bitte diese Befehle im Terminal ausführen:</p>
+    <p>Nach dem Speichern bitte diese Befehle im Terminal ausfÃ¼hren:</p>
     <pre>git add data/affiliates.json data/products.json
 git commit -m "update: affiliates & reasons via admin"
 git push</pre>
@@ -106,3 +106,4 @@ git push</pre>
   </script>
 </body>
 </html>
+

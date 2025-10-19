@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SmartAssist – Assistenz · Robotik · KI</title>
+<title>SmartAssist â€“ Assistenz Â· Robotik Â· KI</title>
 <link rel="stylesheet" href="assets/style.css">
-<meta name="description" content="Showroom-Portal für Assistenz-Robotik: Produkte, News, Partner & Events – kuratiert und verständlich.">
+<meta name="description" content="Showroom-Portal fÃ¼r Assistenz-Robotik: Produkte, News, Partner & Events â€“ kuratiert und verstÃ¤ndlich.">
 <style>
 :root{--bg:#0b1020;--fg:#eaf0ff;--mut:#a8b8da;--line:#1e2a4a;--card:#10183a;--a1:#39d2c0;--a2:#7c54ff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
@@ -31,7 +31,7 @@ footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
 </head><body>
 
 <nav class="nav">
-  <strong>🤖 SmartAssist</strong>
+  <strong>ðŸ¤– SmartAssist</strong>
   <a href="index.html">Start</a>
   <a href="katalog.html">Katalog</a>
   <a href="news.html">News</a>
@@ -42,15 +42,15 @@ footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
 <header class="hero">
   <div class="container">
     <div class="badge">Showroom-Edition 2025</div>
-    <h1>Technologie, die hilft.<br>Assistenz · Robotik · KI</h1>
-    <p class="lead">Produkte vergleichen, Anwendungsfälle verstehen, Partner finden – von Pflege-Exoskeletten bis Smart-Home-Automation.</p>
+    <h1>Technologie, die hilft.<br>Assistenz Â· Robotik Â· KI</h1>
+    <p class="lead">Produkte vergleichen, AnwendungsfÃ¤lle verstehen, Partner finden â€“ von Pflege-Exoskeletten bis Smart-Home-Automation.</p>
     <p style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 24px">
       <a class="btn" href="katalog.html">Katalog ansehen</a>
       <a class="btn sec" href="news.html">Aktuelle Meldungen</a>
     </p>
     <div class="kpis">
       <div class="kpi"><strong>+20</strong><br>Start-Produkte</div>
-      <div class="kpi"><strong>Wöch.</strong><br>News-Update</div>
+      <div class="kpi"><strong>WÃ¶ch.</strong><br>News-Update</div>
       <div class="kpi"><strong>Top</strong><br>Partner-Netz</div>
     </div>
   </div>
@@ -59,14 +59,14 @@ footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
 <main class="section">
   <div class="container">
     <h2>Aus dem Katalog</h2>
-    <p class="muted">Schneller Überblick über ausgewählte Produkte.</p>
+    <p class="muted">Schneller Ãœberblick Ã¼ber ausgewÃ¤hlte Produkte.</p>
     <div id="prod" class="grid"></div>
   </div>
 </main>
 
 <section class="section">
   <div class="container">
-    <h2>News & Hintergründe</h2>
+    <h2>News & HintergrÃ¼nde</h2>
     <p class="muted">Aktuelle Meldungen aus Pflege, Smart-Home, AR/VR und mobiler Robotik.</p>
     <div id="news" class="grid"></div>
   </div>
@@ -74,13 +74,13 @@ footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
 
 <section class="section">
   <div class="container">
-    <h2>Partner-Ökosystem</h2>
-    <p class="muted">Hersteller, Forschung & Händler – für Beratung, Pilotprojekte & Einkauf.</p>
+    <h2>Partner-Ã–kosystem</h2>
+    <p class="muted">Hersteller, Forschung & HÃ¤ndler â€“ fÃ¼r Beratung, Pilotprojekte & Einkauf.</p>
     <div id="logos" class="grid"></div>
   </div>
 </section>
 
-<footer><div class="container">© 2025 SmartAssist · <span class="muted">Kuratiert, unabhängig & verständlich.</span></div></footer>
+<footer><div class="container">Â© 2025 SmartAssist Â· <span class="muted">Kuratiert, unabhÃ¤ngig & verstÃ¤ndlich.</span></div></footer>
 
 <script>
 (async function(){
@@ -88,9 +88,9 @@ footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
     const P=await fetch('data/products.json').then(r=>r.json());
     document.getElementById('prod').innerHTML = P.slice(0,3).map(p=>`
       <a class="card" href="katalog.html">
-        <img src="${p.image}" alt="${p.name} – ${p.brand}">
+        <img src="${p.image}" alt="${p.name} â€“ ${p.brand}">
         <h3>${p.name}</h3>
-        <p class="muted">${p.brand} · ${p.category}</p>
+        <p class="muted">${p.brand} Â· ${p.category}</p>
         <p>${p.reason||''}</p>
       </a>`).join('');
   }catch(e){document.getElementById('prod').innerHTML='<div class="card">Keine Produktdaten gefunden.</div>';}
@@ -118,3 +118,4 @@ footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
 })();
 </script>
 </body></html>
+

@@ -1,17 +1,17 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>News-Archiv – SmartAssist</title>
+<title>News-Archiv â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
-<nav class="nav"><a href="/smartassist-clean/index.html">🏠</a> <a href="/smartassist-clean/news.html">News</a> <a href="/smartassist-clean/news-archive.html"><strong>Archiv</strong></a></nav>
+<nav class="nav"><a href="./smartassist-clean/index.html">ðŸ </a> <a href="./smartassist-clean/news.html">News</a> <a href="./smartassist-clean/news-archive.html"><strong>Archiv</strong></a></nav>
 <main class="container">
   <h1>News-Archiv</h1>
-  <input id="filter" placeholder="🔍 suchen…" style="padding:.45rem .7rem;border:1px solid #ddd;border-radius:8px;width:100%;max-width:420px;margin:12px 0;">
+  <input id="filter" placeholder="ðŸ” suchenâ€¦" style="padding:.45rem .7rem;border:1px solid #ddd;border-radius:8px;width:100%;max-width:420px;margin:12px 0;">
   <div id="alist" class="news-grid"></div>
 </main>
-<footer class="footer">© 2025 SmartAssist</footer>
+<footer class="footer">Â© 2025 SmartAssist</footer>
 <script>
 let ALL=[];
 fetch('data/news-archive.json').then(r=>r.json()).then(d=>{
@@ -23,12 +23,13 @@ function render(q=""){
   const f=ALL.filter(x=>!q||x.title.toLowerCase().includes(q)||x.summary.toLowerCase().includes(q)||x.source.toLowerCase().includes(q));
   c.innerHTML=f.map(x=>`<a class="card" href="${x.link}" target="_blank" rel="noopener">
     <h3>${x.title}</h3>
-    <p class="muted">${x.source} – ${x.published}</p>
+    <p class="muted">${x.source} â€“ ${x.published}</p>
     <p>${x.summary}</p>
   </a>`).join('') || "<p class='muted'>Keine Treffer</p>";
 }
 document.getElementById('filter').oninput=e=>render(e.target.value.toLowerCase());
 </script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
 </body></html>
+

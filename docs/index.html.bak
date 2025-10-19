@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartAssist – Assistenz · Robotik · KI</title>
+<link rel="stylesheet" href="assets/style.css">
+<meta name="description" content="Showroom-Portal für Assistenz-Robotik: Produkte, News, Partner & Events – kuratiert und verständlich.">
+<style>
+:root{--bg:#0b1020;--fg:#eaf0ff;--mut:#a8b8da;--line:#1e2a4a;--card:#10183a;--a1:#39d2c0;--a2:#7c54ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+.nav{display:flex;gap:14px;align-items:center;padding:12px 18px;position:sticky;top:0;background:rgba(11,16,32,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav strong{letter-spacing:.4px}
+.nav a{color:#cfe3ff;text-decoration:none;padding:8px 10px;border-radius:10px}
+.nav a:hover{background:rgba(255,255,255,.07)}
+.hero{padding:64px 18px;background:radial-gradient(900px 420px at 70% -10%, rgba(124,84,255,.35), transparent 60%)}
+.container{max-width:1200px;margin:0 auto}
+h1{font-size:clamp(34px,5vw,56px);margin:0 0 8px 0}
+.lead{color:var(--mut);max-width:60ch}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--a1),var(--a2));color:#071225;padding:11px 18px;border-radius:999px;font-weight:700;box-shadow:0 10px 30px rgba(60,160,255,.25);text-decoration:none}
+.btn.sec{background:#18224a;color:#dbe7ff;border:1px solid #2b3a6a;box-shadow:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:linear-gradient(180deg,#10183a,#0b132e);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 6px 26px rgba(0,0,0,.22);transition:transform .15s, box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(0,0,0,.38)}
+.card img{border-radius:12px}
+.muted{color:var(--mut)}
+.section{padding:28px 18px;border-top:1px solid var(--line)}
+footer{border-top:1px solid var(--line);color:#a8b8da;padding:18px}
+.badge{display:inline-block;background:rgba(124,84,255,.18);color:#d7c9ff;border:1px solid rgba(124,84,255,.35);padding:6px 10px;border-radius:999px;font-size:13px}
+.kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.kpi{background:#0f1736;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:#d4e0ff}
+</style>
+</head><body>
+
+<nav class="nav">
+  <strong>🤖 SmartAssist</strong>
+  <a href="index.html">Start</a>
+  <a href="katalog.html">Katalog</a>
+  <a href="news.html">News</a>
+  <a href="partner.html">Partner</a>
+  <a href="kontakt.html">Kontakt</a>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="badge">Showroom-Edition 2025</div>
+    <h1>Technologie, die hilft.<br>Assistenz · Robotik · KI</h1>
+    <p class="lead">Produkte vergleichen, Anwendungsfälle verstehen, Partner finden – von Pflege-Exoskeletten bis Smart-Home-Automation.</p>
+    <p style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 24px">
+      <a class="btn" href="katalog.html">Katalog ansehen</a>
+      <a class="btn sec" href="news.html">Aktuelle Meldungen</a>
+    </p>
+    <div class="kpis">
+      <div class="kpi"><strong>+20</strong><br>Start-Produkte</div>
+      <div class="kpi"><strong>Wöch.</strong><br>News-Update</div>
+      <div class="kpi"><strong>Top</strong><br>Partner-Netz</div>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <h2>Aus dem Katalog</h2>
+    <p class="muted">Schneller Überblick über ausgewählte Produkte.</p>
+    <div id="prod" class="grid"></div>
+  </div>
+</main>
+
+<section class="section">
+  <div class="container">
+    <h2>News & Hintergründe</h2>
+    <p class="muted">Aktuelle Meldungen aus Pflege, Smart-Home, AR/VR und mobiler Robotik.</p>
+    <div id="news" class="grid"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Partner-Ökosystem</h2>
+    <p class="muted">Hersteller, Forschung & Händler – für Beratung, Pilotprojekte & Einkauf.</p>
+    <div id="logos" class="grid"></div>
+  </div>
+</section>
+
+<footer><div class="container">© 2025 SmartAssist · <span class="muted">Kuratiert, unabhängig & verständlich.</span></div></footer>
+
+<script>
+(async function(){
+  try{
+    const P=await fetch('data/products.json').then(r=>r.json());
+    document.getElementById('prod').innerHTML = P.slice(0,3).map(p=>`
+      <a class="card" href="katalog.html">
+        <img src="${p.image}" alt="${p.name} – ${p.brand}">
+        <h3>${p.name}</h3>
+        <p class="muted">${p.brand} · ${p.category}</p>
+        <p>${p.reason||''}</p>
+      </a>`).join('');
+  }catch(e){document.getElementById('prod').innerHTML='<div class="card">Keine Produktdaten gefunden.</div>';}
+
+  try{
+    const N=await fetch('data/news.json').then(r=>r.json());
+    document.getElementById('news').innerHTML = N.slice(0,3).map(n=>`
+      <a class="card" href="${n.link}" target="_blank" rel="noopener">
+        <img src="${n.image}" alt="${n.title}">
+        <h3>${n.title}</h3>
+        <p class="muted">${n.source||''}</p>
+      </a>`).join('');
+  }catch(e){document.getElementById('news').innerHTML='<div class="card">Noch keine News.</div>';}
+
+  const logos=[
+    {name:"RoboHealth", logo:"https://dummyimage.com/300x100/1b2547/eaf0ff&text=RoboHealth"},
+    {name:"NeuroVision", logo:"https://dummyimage.com/300x100/1b2547/eaf0ff&text=NeuroVision"},
+    {name:"LogiBots", logo:"https://dummyimage.com/300x100/1b2547/eaf0ff&text=LogiBots"}
+  ];
+  document.getElementById('logos').innerHTML = logos.map(l=>`
+    <div class="card" title="${l.name}">
+      <img src="${l.logo}" alt="${l.name}" style="max-height:60px;margin:auto">
+      <p style="text-align:center;margin-top:8px" class="muted">${l.name}</p>
+    </div>`).join('');
+})();
+</script>
+</body></html>

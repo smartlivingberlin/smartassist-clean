@@ -1,0 +1,16 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Use-Cases – SmartAssist</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="canonical" href="/smartassist-clean/usecases.html">
+<meta property="og:title" content="Use-Cases – SmartAssist">
+<meta property="og:description" content="Assistenz-Robotik & KI: Katalog, News, Partner – schnell, sauber, sicher.">
+<meta property="og:image" content="og/usecases.svg">
+</head><body>
+<nav class="nav"><a href="/smartassist-clean/index.html">SmartAssist</a><a href="/smartassist-clean/katalog.html">Katalog</a><a href="/smartassist-clean/news.html">News</a><a href="/smartassist-clean/partner.html">Partner</a><a href="/smartassist-clean/kontakt.html">Kontakt</a></nav>
+<main class="container"><h1>Use-Cases</h1><div class="card"><h3>Haushaltshilfen</h3><p>Greifen, Putzen, Tragen</p><a class="badge" href="/smartassist-clean/usecases/haushalt.html">Ansehen</a></div>
+<div class="card"><h3>Gehilfe-Robotik</h3><p>Roboter & Exoskelette, die beim Gehen & Aufstehen unterstützen.</p><a class="badge" href="/smartassist-clean/usecases/gehilfe.html">Ansehen</a></div>
+<div class="card"><h3>Seh-Assistenz</h3><p>Computer Vision & Wearables zur Orientierung und Erkennung.</p><a class="badge" href="/smartassist-clean/usecases/sehhilfe.html">Ansehen</a></div>
+<div class="card"><h3>Küchen-Assistenz</h3><p>Greifen, Rühren, Schneiden – Hilfe bei motorischen Aufgaben.</p><a class="badge" href="/smartassist-clean/usecases/kochen.html">Ansehen</a></div>
+<div class="card"><h3>Pflege-Assistenz</h3><p>Transfer, Monitoring, soziale Roboter für den Pflegealltag.</p><a class="badge" href="/smartassist-clean/usecases/pflege.html">Ansehen</a></div>
+<div class="card"><h3>Sport-/Reha-Robotik</h3><p>Sensorik & Robotik für Training und Rehabilitation.</p><a class="badge" href="/smartassist-clean/usecases/sport.html">Ansehen</a></div></main><footer>© 2025 SmartAssist</footer></body></html>

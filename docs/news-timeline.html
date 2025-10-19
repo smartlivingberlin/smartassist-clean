@@ -1,7 +1,7 @@
-<!doctype html><html lang="de"><head>
+﻿<!doctype html><html lang="de"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>News-Timeline – SmartAssist</title>
+<title>News-Timeline â€“ SmartAssist</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
 .timeline{border-left:3px solid #e5e7eb;margin:2rem 0;padding-left:1rem}
@@ -12,13 +12,13 @@
 </style>
 <link rel="stylesheet" href="assets/theme-variants.css">
 </head><body>
-<nav class="nav"><a href="/smartassist-clean/index.html">🏠</a> <a href="/smartassist-clean/news.html">News</a> <a href="/smartassist-clean/news-archive.html">Archiv</a> <a href="/smartassist-clean/news-timeline.html"><strong>Timeline</strong></a></nav>
+<nav class="nav"><a href="./smartassist-clean/index.html">ðŸ </a> <a href="./smartassist-clean/news.html">News</a> <a href="./smartassist-clean/news-archive.html">Archiv</a> <a href="./smartassist-clean/news-timeline.html"><strong>Timeline</strong></a></nav>
 <main class="container">
   <h1>News-Timeline</h1>
-  <p class="muted">Alle Meldungen nach Monat/Jahr gruppiert – wie ein Zeitstrahl.</p>
+  <p class="muted">Alle Meldungen nach Monat/Jahr gruppiert â€“ wie ein Zeitstrahl.</p>
   <div id="timeline" class="timeline"></div>
 </main>
-<footer class="footer">© 2025 SmartAssist</footer>
+<footer class="footer">Â© 2025 SmartAssist</footer>
 <script>
 async function load(){
   const data=await fetch('data/news-archive.json').then(r=>r.json());
@@ -35,13 +35,14 @@ async function load(){
     const label=new Date(y,m-1,1).toLocaleDateString("de-DE",{month:"long",year:"numeric"});
     return `<div class="entry"><h2>${label}</h2>`+
       list.map(x=>`<div class="card"><h3><a href="${x.link}" target="_blank" rel="noopener">${x.title}</a></h3>
-        <time>${x.source} – ${x.published}</time>
+        <time>${x.source} â€“ ${x.published}</time>
         <p>${x.summary}</p></div>`).join("")+
     `</div>`;
   }).join("");
 }
 load();
 </script>
-<script src="/smartassist-clean/assets/theme.js"></script>
-<script src="/smartassist-clean/assets/palette.js"></script>
+<script src="./smartassist-clean/assets/theme.js"></script>
+<script src="./smartassist-clean/assets/palette.js"></script>
 </body></html>
+
